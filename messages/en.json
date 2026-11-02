@@ -1,0 +1,43 @@
+{
+  "app": {
+    "name": "AduPay",
+    "tagline": "Your money, your community."
+  },
+  "nav": {
+    "home": "Home",
+    "tontines": "Tontines",
+    "payFor": "Pay for",
+    "savings": "Savings",
+    "profile": "Profile",
+    "label": "Main navigation"
+  },
+  "home": {
+    "title": "Home",
+    "placeholder": "Your balance, upcoming tontine dues and latest transactions will appear here."
+  },
+  "tontines": {
+    "title": "Tontines",
+    "placeholder": "Create a tontine or join your group's. Everyone sees the same ledger."
+  },
+  "payFor": {
+    "title": "Pay for",
+    "placeholder": "Pay a school, pharmacy, bill or tontine directly, with proof of payment."
+  },
+  "savings": {
+    "title": "Savings",
+    "placeholder": "Set goals: back to school, Tabaski, rent."
+  },
+  "profile": {
+    "title": "Profile",
+    "placeholder": "Your identity, verification level and linked accounts.",
+    "language": "Language",
+    "theme": "Appearance",
+    "themeLight": "Light",
+    "themeDark": "Dark",
+    "themeSystem": "System"
+  },
+  "common": {
+    "comingSoon": "Coming soon",
+    "sandboxNotice": "Demo mode: no real money moves."
+  }
+}

@@ -1,0 +1,43 @@
+{
+  "app": {
+    "name": "AduPay",
+    "tagline": "Votre argent, votre communauté."
+  },
+  "nav": {
+    "home": "Accueil",
+    "tontines": "Tontines",
+    "payFor": "Payer pour",
+    "savings": "Épargne",
+    "profile": "Profil",
+    "label": "Navigation principale"
+  },
+  "home": {
+    "title": "Accueil",
+    "placeholder": "Votre solde, vos échéances de tontine et vos dernières opérations apparaîtront ici."
+  },
+  "tontines": {
+    "title": "Tontines",
+    "placeholder": "Créez une tontine ou rejoignez celle de votre groupe. Chacun voit le même registre."
+  },
+  "payFor": {
+    "title": "Payer pour",
+    "placeholder": "Payez directement une école, une pharmacie, une facture ou une tontine, avec preuve de paiement."
+  },
+  "savings": {
+    "title": "Épargne",
+    "placeholder": "Fixez des objectifs : rentrée scolaire, Tabaski, loyer."
+  },
+  "profile": {
+    "title": "Profil",
+    "placeholder": "Votre identité, votre niveau de vérification et vos comptes liés.",
+    "language": "Langue",
+    "theme": "Apparence",
+    "themeLight": "Clair",
+    "themeDark": "Sombre",
+    "themeSystem": "Système"
+  },
+  "common": {
+    "comingSoon": "Bientôt disponible",
+    "sandboxNotice": "Mode démo : aucun argent réel ne circule."
+  }
+}

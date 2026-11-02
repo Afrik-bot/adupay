@@ -1,0 +1,93 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+/* AduPay brand: indigo #1F2A5A, saffron #F2A93B, off-white #FAF7F2.
+   Token names follow shadcn/ui so its components pick them up. */
+:root {
+  --radius: 0.75rem;
+  --background: #faf7f2;
+  --foreground: #1f2a5a;
+  --card: #ffffff;
+  --card-foreground: #1f2a5a;
+  --popover: #ffffff;
+  --popover-foreground: #1f2a5a;
+  --primary: #1f2a5a;
+  --primary-foreground: #faf7f2;
+  --secondary: #ece7dd;
+  --secondary-foreground: #1f2a5a;
+  --muted: #ece7dd;
+  --muted-foreground: #565e7d;
+  --accent: #f2a93b;
+  --accent-foreground: #1f2a5a;
+  --destructive: #b42318;
+  --success: #1e7a46;
+  --warning: #8a5a00;
+  --border: #ddd6c9;
+  --input: #ddd6c9;
+  --ring: #f2a93b;
+}
+
+.dark {
+  --background: #10152e;
+  --foreground: #f3efe7;
+  --card: #1a2142;
+  --card-foreground: #f3efe7;
+  --popover: #1a2142;
+  --popover-foreground: #f3efe7;
+  --primary: #f2a93b;
+  --primary-foreground: #10152e;
+  --secondary: #262e55;
+  --secondary-foreground: #f3efe7;
+  --muted: #262e55;
+  --muted-foreground: #b4b9d0;
+  --accent: #f2a93b;
+  --accent-foreground: #10152e;
+  --destructive: #f97066;
+  --success: #6ce9a6;
+  --warning: #fdb022;
+  --border: #2f3862;
+  --input: #2f3862;
+  --ring: #f2a93b;
+}
+
+@theme inline {
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-success: var(--success);
+  --color-warning: var(--warning);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-brand-indigo: #1f2a5a;
+  --color-brand-saffron: #f2a93b;
+  --color-brand-offwhite: #faf7f2;
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground antialiased;
+  }
+}
