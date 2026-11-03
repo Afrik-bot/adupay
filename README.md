@@ -44,16 +44,22 @@ No real money moves: all payments go through `SandboxProvider`.
 
 ## Connecting Supabase
 
-Not done yet; there is no project connected. When you have one:
+The development project is **AduPay** (`xhjvajbivwabczgwgipk`, region West EU / Paris). Keys live in `.env.local` only.
+
+To set up a fresh clone or a new project:
 
 ```powershell
 npx supabase login
 npx supabase link --project-ref YOUR-PROJECT-REF
-npx supabase db push            # applies supabase/migrations
+npx supabase db push --remote   # applies supabase/migrations; without --remote the CLI targets a local Docker DB
 npm run db:types:remote         # regenerates src/types/database.ts from the live schema
 ```
 
-For demo data, run `supabase/seed.sql` in the Supabase SQL editor (fictional users and payees).
+For demo data, open the Supabase SQL editor, start a **new, empty** query, paste `supabase/seed.sql` once and run it (fictional users and payees). It can only run once per database. To copy it with the accents intact:
+
+```powershell
+Get-Content supabase\seed.sql -Raw -Encoding UTF8 | Set-Clipboard
+```
 
 ## Scripts
 
