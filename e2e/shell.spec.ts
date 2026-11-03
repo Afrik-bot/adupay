@@ -1,10 +1,18 @@
 import { expect, test } from "@playwright/test";
 
-test("/ opens Accueil in French by default", async ({ page }) => {
+test("landing page is in French by default and links into the app", async ({ page }) => {
   await page.goto("/");
-  await expect(page).toHaveURL(/\/accueil$/);
   await expect(page.locator("html")).toHaveAttribute("lang", "fr");
+  await expect(page.getByRole("heading", { level: 1, name: "Votre argent, votre communauté." })).toBeVisible();
+  await page.getByRole("link", { name: "Ouvrir l’app de démo" }).click();
+  await expect(page).toHaveURL(/\/accueil$/);
   await expect(page.getByRole("heading", { level: 1, name: "Accueil" })).toBeVisible();
+});
+
+test("landing page switches to English", async ({ page }) => {
+  await page.goto("/");
+  await page.getByRole("button", { name: "en" }).click();
+  await expect(page.getByRole("heading", { level: 1, name: "Your money, your community." })).toBeVisible();
 });
 
 test("bottom navigation reaches every tab", async ({ page }) => {

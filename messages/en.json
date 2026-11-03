@@ -39,5 +39,150 @@
   "common": {
     "comingSoon": "Coming soon",
     "sandboxNotice": "Demo mode: no real money moves."
+  },
+  "landing": {
+    "nav": {
+      "tontines": "Tontines",
+      "payFor": "Pay for",
+      "score": "Score",
+      "faq": "Questions",
+      "open": "Open the app",
+      "menu": "Site menu",
+      "language": "Language"
+    },
+    "badge": "Coming soon to Abidjan · in preparation",
+    "hero": {
+      "title": "Your money, your community.",
+      "lead": "AduPay brings your tontines, diaspora payments and savings history into one app, whatever mobile wallet you use.",
+      "primary": "Start my tontine",
+      "secondary": "I live abroad",
+      "wallets": "Works with Orange Money, MTN MoMo, Moov Money, Wave and banks"
+    },
+    "pillars": {
+      "eyebrow": "Three services, one app",
+      "tontine": {
+        "title": "Tontine OS",
+        "lead": "Your tontine, without the notebook or the cash.",
+        "points": [
+          "Contributions collected from each member’s own wallet",
+          "One ledger every member can see",
+          "Payout order fixed, by lottery or by vote"
+        ]
+      },
+      "payFor": {
+        "title": "Pay for",
+        "lead": "Pay the school, not just the family.",
+        "points": [
+          "The school, pharmacy or utility receives the money directly",
+          "Receipt and proof of payment for you and your family",
+          "Total cost shown before you pay"
+        ]
+      },
+      "score": {
+        "title": "Community Score",
+        "lead": "Saving regularly becomes an asset.",
+        "points": [
+          "A 0–100 score built from your contributions",
+          "Private by default, shared only with your consent",
+          "Access to credit offers from licensed partners"
+        ]
+      }
+    },
+    "how": {
+      "eyebrow": "Pay for, step by step",
+      "title": "From Paris to Abobo in three steps",
+      "steps": [
+        {
+          "title": "Choose",
+          "body": "School, health, bills, rent or a tontine, from verified payees."
+        },
+        {
+          "title": "Pay",
+          "body": "By card in euros, US dollars or Canadian dollars, with the rate and fees shown."
+        },
+        {
+          "title": "Get proof",
+          "body": "The payee confirms receipt. You and your family get the receipt."
+        }
+      ]
+    },
+    "fees": {
+      "eyebrow": "Fees",
+      "title": "Sending $200 to sub-Saharan Africa",
+      "caption": "Average total cost, as a share of the amount sent.",
+      "market": "Sub-Saharan Africa average",
+      "waemu": "WAEMU corridors average",
+      "adupay": "AduPay target",
+      "below": "under",
+      "note": "Market averages: Q1 2025, from a paper presented at the South African Reserve Bank. The AduPay figure is a target, not a current price."
+    },
+    "trust": {
+      "eyebrow": "Trust",
+      "title": "Built for trust",
+      "items": [
+        {
+          "title": "Funds at a licensed institution",
+          "body": "AduPay does not keep your money: it will be held by an e-money institution or bank licensed by the BCEAO."
+        },
+        {
+          "title": "A transparent ledger",
+          "body": "Every contribution and payout is recorded in a ledger that members can view and nobody can edit."
+        },
+        {
+          "title": "Verified identity",
+          "body": "Tiered identity checks and fraud screening on every payment."
+        },
+        {
+          "title": "Your data protected",
+          "body": "Data encrypted and handled under Ivorian data-protection rules (ARTCI)."
+        }
+      ]
+    },
+    "faq": {
+      "title": "Frequently asked questions",
+      "items": [
+        {
+          "q": "Is AduPay available yet?",
+          "a": "Not yet. AduPay is in preparation, with a pilot planned in Abidjan. The demo app works without real money."
+        },
+        {
+          "q": "Do I have to change my mobile wallet?",
+          "a": "No. Every member pays from their own wallet or bank account: Orange Money, MTN MoMo, Moov Money, Wave or a bank."
+        },
+        {
+          "q": "Who holds the tontine money?",
+          "a": "An institution licensed by the BCEAO holds the funds. AduPay keeps the ledger, sends reminders and runs the payouts."
+        },
+        {
+          "q": "How much does Pay for cost?",
+          "a": "Our target is a total cost under 3%, shown before every payment. Final prices will be published at launch."
+        },
+        {
+          "q": "Who can see my Community Score?",
+          "a": "Only you, by default. It is shared with a licensed credit partner only if you agree, and you can withdraw consent at any time."
+        }
+      ]
+    },
+    "cta": {
+      "title": "Ready to get your tontine going?",
+      "body": "Try the demo app: no real money moves.",
+      "button": "Open the demo app"
+    },
+    "footer": {
+      "tagline": "Family and community money, at home and abroad.",
+      "terms": "Terms of use",
+      "privacy": "Privacy",
+      "complaints": "Complaints",
+      "legal": "AduPay is a project in preparation. This site is not an offer of financial services.",
+      "rights": "© 2026 AduPay",
+      "legalNav": "Legal links"
+    }
+  },
+  "legal": {
+    "back": "Back to home",
+    "draft": "This document is being prepared and will be published before launch.",
+    "terms": "Terms of use",
+    "privacy": "Privacy policy",
+    "complaints": "Complaints"
   }
 }

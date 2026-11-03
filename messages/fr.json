@@ -39,5 +39,150 @@
   "common": {
     "comingSoon": "Bientôt disponible",
     "sandboxNotice": "Mode démo : aucun argent réel ne circule."
+  },
+  "landing": {
+    "nav": {
+      "tontines": "Tontines",
+      "payFor": "Payer pour",
+      "score": "Score",
+      "faq": "Questions",
+      "open": "Ouvrir l’app",
+      "menu": "Menu du site",
+      "language": "Langue"
+    },
+    "badge": "Bientôt à Abidjan · en préparation",
+    "hero": {
+      "title": "Votre argent, votre communauté.",
+      "lead": "AduPay réunit vos tontines, les paiements de la diaspora et votre historique d’épargne dans une seule app, quel que soit votre portefeuille mobile.",
+      "primary": "Créer ma tontine",
+      "secondary": "Je vis à l’étranger",
+      "wallets": "Fonctionne avec Orange Money, MTN MoMo, Moov Money, Wave et les banques"
+    },
+    "pillars": {
+      "eyebrow": "Trois services, une seule app",
+      "tontine": {
+        "title": "Tontine OS",
+        "lead": "Votre tontine, sans cahier ni cash.",
+        "points": [
+          "Cotisations prélevées sur le portefeuille de chacun",
+          "Un registre que tous les membres voient",
+          "Ordre de passage fixe, tiré au sort ou voté"
+        ]
+      },
+      "payFor": {
+        "title": "Payer pour",
+        "lead": "Payez l’école, pas seulement la famille.",
+        "points": [
+          "L’école, la pharmacie ou la facture reçoit l’argent directement",
+          "Reçu et preuve de paiement pour vous et votre famille",
+          "Coût total affiché avant de payer"
+        ]
+      },
+      "score": {
+        "title": "Score Communauté",
+        "lead": "Votre régularité devient un atout.",
+        "points": [
+          "Un score de 0 à 100 bâti sur vos cotisations",
+          "Privé par défaut, partagé seulement avec votre accord",
+          "Accès à des offres de crédit de partenaires agréés"
+        ]
+      }
+    },
+    "how": {
+      "eyebrow": "Payer pour, étape par étape",
+      "title": "De Paris à Abobo en trois étapes",
+      "steps": [
+        {
+          "title": "Choisissez",
+          "body": "École, santé, factures, loyer ou tontine, parmi des bénéficiaires vérifiés."
+        },
+        {
+          "title": "Payez",
+          "body": "Par carte en euros, dollars US ou dollars canadiens, avec le taux et les frais affichés."
+        },
+        {
+          "title": "Recevez la preuve",
+          "body": "Le bénéficiaire confirme la réception. Vous et votre famille recevez le reçu."
+        }
+      ]
+    },
+    "fees": {
+      "eyebrow": "Frais",
+      "title": "Envoyer 200 $ vers l’Afrique subsaharienne",
+      "caption": "Coût moyen total, en pourcentage du montant envoyé.",
+      "market": "Moyenne Afrique subsaharienne",
+      "waemu": "Moyenne des corridors UEMOA",
+      "adupay": "Objectif AduPay",
+      "below": "moins de",
+      "note": "Moyennes du marché : premier trimestre 2025, d’après une étude présentée à la Banque de réserve d’Afrique du Sud. Le chiffre AduPay est un objectif, pas un tarif en vigueur."
+    },
+    "trust": {
+      "eyebrow": "Confiance",
+      "title": "Construit pour la confiance",
+      "items": [
+        {
+          "title": "Fonds chez un établissement agréé",
+          "body": "AduPay ne garde pas votre argent : il sera détenu par un établissement de monnaie électronique ou une banque agréé par la BCEAO."
+        },
+        {
+          "title": "Un registre transparent",
+          "body": "Chaque cotisation et chaque versement sont inscrits dans un registre que les membres peuvent consulter et que personne ne peut modifier."
+        },
+        {
+          "title": "Identité vérifiée",
+          "body": "Vérification d’identité par niveaux et contrôles anti-fraude sur chaque paiement."
+        },
+        {
+          "title": "Vos données protégées",
+          "body": "Données chiffrées et gérées selon les règles ivoiriennes de protection des données (ARTCI)."
+        }
+      ]
+    },
+    "faq": {
+      "title": "Questions fréquentes",
+      "items": [
+        {
+          "q": "AduPay est-il déjà disponible ?",
+          "a": "Pas encore. AduPay est en préparation et un pilote est prévu à Abidjan. L’app de démonstration fonctionne sans argent réel."
+        },
+        {
+          "q": "Dois-je changer de portefeuille mobile ?",
+          "a": "Non. Chaque membre paie depuis son propre portefeuille ou compte bancaire : Orange Money, MTN MoMo, Moov Money, Wave ou banque."
+        },
+        {
+          "q": "Qui garde l’argent de la tontine ?",
+          "a": "Un établissement agréé par la BCEAO détient les fonds. AduPay tient le registre, envoie les rappels et organise les versements."
+        },
+        {
+          "q": "Combien coûte Payer pour ?",
+          "a": "Notre objectif est un coût total inférieur à 3 %, affiché avant chaque paiement. Les tarifs définitifs seront publiés au lancement."
+        },
+        {
+          "q": "Qui voit mon Score Communauté ?",
+          "a": "Vous seul, par défaut. Il n’est partagé avec un partenaire de crédit agréé que si vous l’acceptez, et vous pouvez retirer votre accord à tout moment."
+        }
+      ]
+    },
+    "cta": {
+      "title": "Prêt à faire tourner votre tontine ?",
+      "body": "Essayez l’app de démonstration : aucun argent réel ne circule.",
+      "button": "Ouvrir l’app de démo"
+    },
+    "footer": {
+      "tagline": "L’argent de la famille et de la communauté, ici et à l’étranger.",
+      "terms": "Conditions d’utilisation",
+      "privacy": "Confidentialité",
+      "complaints": "Réclamations",
+      "legal": "AduPay est un projet en préparation. Ce site ne constitue pas une offre de services financiers.",
+      "rights": "© 2026 AduPay",
+      "legalNav": "Liens juridiques"
+    }
+  },
+  "legal": {
+    "back": "Retour à l’accueil",
+    "draft": "Ce document est en préparation et sera publié avant le lancement.",
+    "terms": "Conditions d’utilisation",
+    "privacy": "Politique de confidentialité",
+    "complaints": "Réclamations"
   }
 }
