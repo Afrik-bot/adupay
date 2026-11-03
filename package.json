@@ -15,7 +15,8 @@
     "test:db": "vitest run supabase/tests/concurrency.pg.test.ts",
     "test:e2e": "playwright test",
     "db:types": "node scripts/gen-types.mjs",
-    "db:types:remote": "npx supabase gen types typescript --remote --schema public > src/types/database.ts"
+    "db:types:remote": "npx supabase gen types typescript --remote --schema public > src/types/database.ts",
+    "cron": "node scripts/run-cron.mjs"
   },
   "dependencies": {
     "@radix-ui/react-slot": "^1.5.0",

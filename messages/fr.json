@@ -257,7 +257,8 @@
       "railRef": "Réf. opérateur",
       "sandbox": "Mode démo : paiement simulé, aucun argent réel."
     },
-    "createLabel": "Créer"
+    "createLabel": "Créer",
+    "managerSpace": "Espace gestionnaire"
   },
   "payFor": {
     "title": "Payer pour",
@@ -596,5 +597,60 @@
   "send": {
     "title": "Envoyer",
     "placeholder": "Bientôt : envoyez gratuitement vers tout portefeuille ou compte de l’UEMOA."
+  },
+  "manager": {
+    "title": "Espace gestionnaire",
+    "lead": "Suivez vos tontines, relancez les retardataires et téléchargez vos relevés.",
+    "commissionTotal": "Commissions gagnées",
+    "commissionHint": "0,5 % de chaque cagnotte versée, payé par AduPay. Jamais pris sur la cagnotte.",
+    "empty": "Vous ne gérez pas encore de tontine.",
+    "certified": "Certifiée AduPay",
+    "collectionRate": "Taux de collecte",
+    "rounds": "Tours",
+    "commission": "Commission",
+    "currentRound": "Tour {number} : {paid} sur {total} ont payé, échéance le {date}.",
+    "unpaidTitle": "{count, plural, one {# membre n’a pas encore payé} other {# membres n’ont pas encore payé}}",
+    "daysLate": "{days, plural, one {# jour de retard} other {# jours de retard}}",
+    "notYetDue": "Pas encore en retard",
+    "lastReminder": "Dernier rappel le {date}",
+    "penaltyProposed": "Pénalité de retard proposée : {amount}",
+    "penaltyConfirmed": "Pénalité confirmée : {amount}, ajoutée à son prochain paiement",
+    "confirmPenalty": "Confirmer",
+    "waivePenalty": "Annuler",
+    "remindWhatsApp": "Relancer sur WhatsApp",
+    "remindSms": "Relancer par SMS",
+    "remindersSent": "{count, plural, one {# rappel envoyé} other {# rappels envoyés}}.",
+    "remindersAlready": "Déjà relancés aujourd’hui sur ce canal.",
+    "reminderError": "Les rappels n’ont pas pu être envoyés.",
+    "simulated": "Mode démo : les messages sont simulés et enregistrés, rien n’est envoyé.",
+    "exportCsv": "Relevé CSV",
+    "exportPdf": "Relevé PDF"
+  },
+  "statement": {
+    "title": "Relevé · {name}",
+    "manager": "Gestionnaire : {name}",
+    "issued": "Édité le {date}",
+    "footer": "AduPay — mode démo, aucun argent réel",
+    "date": "Date",
+    "round": "Tour",
+    "type": "Type",
+    "member": "Membre",
+    "amount": "Montant",
+    "status": "Statut",
+    "reference": "Réf.",
+    "types": {
+      "contribution": "Cotisation",
+      "payout": "Versement",
+      "penalty": "Pénalité"
+    },
+    "statuses": {
+      "succeeded": "Réussi",
+      "failed": "Échoué",
+      "pending": "En attente",
+      "proposed": "Proposée",
+      "confirmed": "Confirmée",
+      "waived": "Annulée",
+      "charged": "Payée"
+    }
   }
 }

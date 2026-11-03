@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { getLocale, getTranslations } from "next-intl/server";
-import { ChevronRight, Plus, Users } from "lucide-react";
+import { ChevronRight, LayoutDashboard, Plus, Users } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { formatMoney, type Currency, type Locale } from "@/lib/money";
 import { createClient } from "@/lib/supabase/server";
@@ -27,6 +27,19 @@ export default async function TontinesPage() {
           </Link>
         </Button>
       </div>
+
+      {groups?.some((g) => g.my_role === "manager") && (
+        <Link
+          href="/tontines/gestion"
+          className="flex min-h-14 items-center justify-between gap-3 rounded-xl border-2 border-accent bg-card px-4 font-semibold hover:bg-muted"
+        >
+          <span className="flex items-center gap-3">
+            <LayoutDashboard aria-hidden className="size-5" />
+            {t("managerSpace")}
+          </span>
+          <ChevronRight aria-hidden className="size-5" />
+        </Link>
+      )}
 
       {groups?.length ? (
         <ul className="flex flex-col gap-3">

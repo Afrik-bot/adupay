@@ -257,7 +257,8 @@
       "railRef": "Operator ref.",
       "sandbox": "Demo mode: simulated payment, no real money."
     },
-    "createLabel": "Create"
+    "createLabel": "Create",
+    "managerSpace": "Manager space"
   },
   "payFor": {
     "title": "Pay for",
@@ -596,5 +597,60 @@
   "send": {
     "title": "Send",
     "placeholder": "Coming soon: send for free to any wallet or bank account in the WAEMU."
+  },
+  "manager": {
+    "title": "Manager space",
+    "lead": "Follow your tontines, chase late payers and download statements.",
+    "commissionTotal": "Commission earned",
+    "commissionHint": "0.5% of every pot paid out, paid by AduPay. Never taken from the pot.",
+    "empty": "You don’t manage a tontine yet.",
+    "certified": "AduPay certified",
+    "collectionRate": "Collection rate",
+    "rounds": "Rounds",
+    "commission": "Commission",
+    "currentRound": "Round {number}: {paid} of {total} have paid, due {date}.",
+    "unpaidTitle": "{count, plural, one {# member hasn’t paid yet} other {# members haven’t paid yet}}",
+    "daysLate": "{days, plural, one {# day late} other {# days late}}",
+    "notYetDue": "Not late yet",
+    "lastReminder": "Last reminder {date}",
+    "penaltyProposed": "Late penalty proposed: {amount}",
+    "penaltyConfirmed": "Penalty confirmed: {amount}, added to their next payment",
+    "confirmPenalty": "Confirm",
+    "waivePenalty": "Waive",
+    "remindWhatsApp": "Remind on WhatsApp",
+    "remindSms": "Remind by SMS",
+    "remindersSent": "{count, plural, one {# reminder sent} other {# reminders sent}}.",
+    "remindersAlready": "Already reminded today on this channel.",
+    "reminderError": "The reminders couldn’t be sent.",
+    "simulated": "Demo mode: messages are simulated and logged, nothing is sent.",
+    "exportCsv": "CSV statement",
+    "exportPdf": "PDF statement"
+  },
+  "statement": {
+    "title": "Statement · {name}",
+    "manager": "Manager: {name}",
+    "issued": "Issued {date}",
+    "footer": "AduPay — demo mode, no real money",
+    "date": "Date",
+    "round": "Round",
+    "type": "Type",
+    "member": "Member",
+    "amount": "Amount",
+    "status": "Status",
+    "reference": "Ref.",
+    "types": {
+      "contribution": "Contribution",
+      "payout": "Payout",
+      "penalty": "Penalty"
+    },
+    "statuses": {
+      "succeeded": "Succeeded",
+      "failed": "Failed",
+      "pending": "Pending",
+      "proposed": "Proposed",
+      "confirmed": "Confirmed",
+      "waived": "Waived",
+      "charged": "Paid"
+    }
   }
 }
