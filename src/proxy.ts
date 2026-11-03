@@ -3,7 +3,7 @@ import { createServerClient } from "@supabase/ssr";
 
 // App sections that need a signed-in user. The layout re-checks on the server;
 // this is only the fast, cookie-based first pass.
-const PROTECTED = ["/accueil", "/tontines", "/payer-pour", "/epargne", "/profil", "/envoyer", "/bienvenue"];
+const PROTECTED = ["/accueil", "/tontines", "/payer-pour", "/epargne", "/profil", "/envoyer", "/rejoindre", "/bienvenue"];
 
 export async function proxy(request: NextRequest) {
   let response = NextResponse.next({ request });
@@ -29,6 +29,8 @@ export async function proxy(request: NextRequest) {
     const url = request.nextUrl.clone();
     url.pathname = "/connexion";
     url.search = "";
+    // Bring people back to an invite link after they sign in.
+    if (path.startsWith("/rejoindre/")) url.searchParams.set("next", path);
     return NextResponse.redirect(url);
   }
   if (signedIn && path === "/connexion") {

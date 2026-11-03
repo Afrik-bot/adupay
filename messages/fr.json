@@ -50,7 +50,214 @@
   },
   "tontines": {
     "title": "Tontines",
-    "placeholder": "Créez une tontine ou rejoignez celle de votre groupe. Chacun voit le même registre."
+    "placeholder": "Créez une tontine ou rejoignez celle de votre groupe. Chacun voit le même registre.",
+    "create": {
+      "title": "Nouvelle tontine",
+      "step": "Étape {current} sur {total}",
+      "steps": {
+        "basics": "Nom et montant",
+        "rhythm": "Rythme et date de début",
+        "order": "Ordre de passage",
+        "rules": "Règles"
+      },
+      "name": "Nom de la tontine",
+      "nameHint": "Par exemple « Tontine des commerçantes d’Adjamé ».",
+      "amount": "Cotisation par membre",
+      "amountHint": "Montant que chaque membre verse à chaque tour.",
+      "frequency": "Fréquence",
+      "startDate": "Date de début",
+      "memberLimit": "Nombre maximum de membres",
+      "memberLimitHint": "C’est aussi le nombre de tours : chaque membre reçoit la cagnotte une fois.",
+      "orderHint": {
+        "fixed": "Dans l’ordre d’inscription.",
+        "lottery": "Tiré au sort au démarrage, de façon transparente.",
+        "vote": "Décidé ensemble par le groupe."
+      },
+      "graceDays": "Délai de grâce (jours)",
+      "graceDaysHint": "Jours de retard tolérés après l’échéance.",
+      "penalty": "Pénalité de retard",
+      "penaltyHint": "Montant ajouté si un membre paie après le délai de grâce. 0 pour aucune pénalité.",
+      "summary": {
+        "title": "Résumé",
+        "contributions": "{frequency} à partir du {date}, jusqu’à {members} membres versent chacun {amount}.",
+        "pot": "À chaque tour, un membre reçoit la cagnotte : jusqu’à {pot} ({order}).",
+        "penalty": "Un paiement en retard de plus de {days, plural, one {# jour} other {# jours}} entraîne une pénalité de {penalty}.",
+        "noPenalty": "Délai de grâce de {days, plural, one {# jour} other {# jours}}, sans pénalité.",
+        "afterStart": "Une fois la tontine démarrée, ces règles ne changent que par un vote à la majorité des membres."
+      },
+      "back": "Retour",
+      "next": "Continuer",
+      "review": "Voir le résumé",
+      "save": "Créer la tontine",
+      "errors": {
+        "name": "Entrez un nom (2 caractères minimum).",
+        "amount": "La cotisation doit être comprise entre 500 et 2 000 000 FCFA.",
+        "startDate": "Choisissez une date à partir d’aujourd’hui.",
+        "limit": "Entre 2 et 100 membres.",
+        "penalty": "La pénalité doit être comprise entre 0 et le montant de la cotisation.",
+        "generic": "La tontine n’a pas pu être créée. Réessayez."
+      }
+    },
+    "empty": "Vous n’avez pas encore de tontine. Créez-en une ou rejoignez celle de votre groupe.",
+    "status": {
+      "draft": "En préparation",
+      "active": "En cours",
+      "completed": "Terminée",
+      "cancelled": "Annulée"
+    },
+    "frequency": {
+      "weekly": "Hebdomadaire",
+      "biweekly": "Toutes les 2 semaines",
+      "monthly": "Mensuelle"
+    },
+    "frequencyAdverb": {
+      "weekly": "Chaque semaine",
+      "biweekly": "Toutes les deux semaines",
+      "monthly": "Chaque mois"
+    },
+    "order": {
+      "fixed": "Ordre fixe",
+      "lottery": "Tirage au sort",
+      "vote": "Ordre voté par le groupe"
+    },
+    "list": {
+      "draft": "{count, plural, one {# membre inscrit} other {# membres inscrits}}",
+      "position": "Votre tour : {position} sur {total}",
+      "sponsor": "Vous parrainez un membre",
+      "nextDue": "échéance le {date}"
+    },
+    "join": {
+      "title": "Rejoindre une tontine",
+      "lead": "Collez le lien d’invitation ou tapez le code reçu.",
+      "label": "Lien ou code d’invitation",
+      "placeholder": "adjame2026",
+      "submit": "Voir"
+    },
+    "invite": {
+      "eyebrow": "{manager} vous invite",
+      "members": "{count} sur {limit} membres",
+      "potUpTo": "Cagnotte jusqu’à {pot}",
+      "started": "Cette tontine a déjà commencé : il n’est plus possible de la rejoindre.",
+      "join": "Rejoindre la tontine",
+      "notFoundTitle": "Invitation introuvable",
+      "notFound": "Ce lien n’est plus valable. Demandez un nouveau lien au gestionnaire.",
+      "errors": {
+        "notFound": "Invitation introuvable.",
+        "started": "Cette tontine a déjà commencé.",
+        "full": "Cette tontine est complète.",
+        "generic": "Une erreur s’est produite. Réessayez."
+      }
+    },
+    "group": {
+      "created": "Tontine créée. Invitez vos membres avec le lien ci-dessous.",
+      "inviteMessage": "Rejoins ma tontine « {name} » sur AduPay ({amount}) : {url}",
+      "inviteTitle": "Inviter des membres",
+      "inviteLead": "Chaque membre rejoint avec son numéro et paie depuis son propre portefeuille.",
+      "inviteCode": "Code : {code}",
+      "shareWhatsApp": "Partager sur WhatsApp",
+      "share": "Partager",
+      "copy": "Copier le lien",
+      "copied": "Lien copié",
+      "waitingTitle": "{count} sur {limit} membres",
+      "startsOn": "Début prévu le {date}.",
+      "waitForManager": "Le gestionnaire démarrera la tontine quand tout le monde aura rejoint.",
+      "start": "Démarrer la tontine",
+      "startHint": "L’ordre de passage sera fixé et le premier tour ouvert. Les inscriptions seront fermées.",
+      "startNeedsTwo": "Il faut au moins 2 membres pour démarrer.",
+      "startError": "Impossible de démarrer pour l’instant. Réessayez.",
+      "round": "Tour {number} sur {total}",
+      "roundShort": "tour {number}",
+      "dueBy": "avant le {date}",
+      "paidCount": "{paid} sur {total} ont payé",
+      "recipient": "Ce tour, la cagnotte revient à {name}.",
+      "recipientMe": "Ce tour, la cagnotte est pour vous.",
+      "youPaid": "Vous avez payé votre part pour ce tour.",
+      "sponsorPaid": "Part de {name} payée pour ce tour.",
+      "payMyShare": "Payer ma part · {amount}",
+      "payFor": "Payer la part de {name} · {amount}",
+      "members": "Membres",
+      "you": "vous",
+      "manager": "Gestionnaire",
+      "paid": "Payé",
+      "unpaid": "À payer",
+      "ledger": "Registre du groupe",
+      "ledgerHint": "Chaque mouvement de la cagnotte, visible par tous les membres. Personne ne peut le modifier.",
+      "ledgerEmpty": "Aucun mouvement pour l’instant.",
+      "reference": "réf."
+    },
+    "ledgerKind": {
+      "collect": "Cotisation de {name}",
+      "payout_hold": "Versement de la cagnotte",
+      "payout_release": "Versement annulé",
+      "payout": "Versement envoyé",
+      "p2p": "Transfert",
+      "raw": "Mouvement",
+      "test": "Mouvement"
+    },
+    "pay": {
+      "paying": "Paiement en cours…",
+      "errors": {
+        "notMember": "Vous n’êtes pas membre de cette tontine.",
+        "notStarted": "La tontine n’a pas encore démarré.",
+        "alreadyPaid": "Cette part est déjà payée.",
+        "noAccount": "Liez d’abord un portefeuille mobile ou un compte.",
+        "relinkAccount": "Votre compte par défaut doit être relié à nouveau.",
+        "kycRequired": "Vérifiez votre identité pour effectuer des paiements.",
+        "kycLimit": "Ce paiement dépasse votre plafond du jour.",
+        "generic": "Le paiement n’a pas pu être lancé. Réessayez."
+      },
+      "fix": {
+        "noAccount": "Lier un compte",
+        "relinkAccount": "Relier mon compte",
+        "kycRequired": "Vérifier mon identité"
+      }
+    },
+    "rules": {
+      "title": "Règles du groupe",
+      "grace": "Délai de grâce : {days, plural, one {# jour} other {# jours}}",
+      "penalty": "Pénalité de retard : {penalty}",
+      "noPenalty": "Pas de pénalité de retard",
+      "voteNeeded": "Depuis le démarrage, tout changement de règle doit être approuvé par la majorité des membres.",
+      "managerEdits": "Avant le démarrage, le gestionnaire peut modifier les règles.",
+      "proposalTitle": "Changement proposé par {name}",
+      "tally": "Pour : {yes} · Contre : {no} · Il faut {needed} voix pour l’adopter",
+      "approve": "Pour",
+      "reject": "Contre",
+      "graceLabel": "Délai de grâce (jours)",
+      "penaltyLabel": "Pénalité de retard (FCFA)",
+      "cancel": "Annuler",
+      "propose": "Proposer au vote",
+      "save": "Enregistrer",
+      "proposeChange": "Proposer un changement",
+      "edit": "Modifier les règles",
+      "result": {
+        "applied": "Règles mises à jour.",
+        "open": "Proposition envoyée. Les membres peuvent voter.",
+        "approved": "Proposition adoptée : les nouvelles règles s’appliquent.",
+        "rejected": "Proposition rejetée."
+      },
+      "errors": {
+        "proposalOpen": "Un changement est déjà en cours de vote.",
+        "penalty": "La pénalité doit être comprise entre 0 et le montant de la cotisation.",
+        "notAllowed": "Vous ne pouvez pas modifier les règles de cette tontine.",
+        "generic": "Une erreur s’est produite. Réessayez."
+      }
+    },
+    "receipt": {
+      "title": {
+        "pending": "Paiement en cours",
+        "succeeded": "Paiement réussi",
+        "failed": "Paiement échoué"
+      },
+      "for": "Cotisation · {name}",
+      "pendingHint": "Nous attendons la confirmation de l’opérateur. Cette page se met à jour toute seule.",
+      "failedHint": "L’opérateur a refusé le paiement ({code}). Aucun montant n’a été prélevé. Vous pouvez réessayer.",
+      "date": "Date",
+      "receiptNo": "N° de reçu",
+      "railRef": "Réf. opérateur",
+      "sandbox": "Mode démo : paiement simulé, aucun argent réel."
+    },
+    "createLabel": "Créer"
   },
   "payFor": {
     "title": "Payer pour",

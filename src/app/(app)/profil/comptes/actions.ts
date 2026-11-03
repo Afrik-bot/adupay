@@ -54,7 +54,7 @@ export async function linkAccount(input: {
 
   const { error: verifyError } = await createAdminClient()
     .from("linked_accounts")
-    .update({ verified_at: new Date().toISOString() })
+    .update({ verified_at: new Date().toISOString(), account_token: check.token })
     .eq("id", inserted.id)
     .eq("user_id", user.id);
   if (verifyError) return { error: "generic" };

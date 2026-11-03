@@ -1,0 +1,58 @@
+import { expect, type Page } from "@playwright/test";
+
+/**
+ * Test users come from Supabase "Test Phone Numbers and OTPs" (no SMS sent).
+ * Format: COUNTRY:NATIONAL_NUMBER:CODE, e.g. E2E_USER_A="CI:0700000099:123456".
+ */
+export interface TestUser {
+  country: string;
+  number: string;
+  code: string;
+}
+
+export function testUser(name: "E2E_USER_A" | "E2E_USER_B"): TestUser | null {
+  const raw = process.env[name];
+  if (!raw) return null;
+  const [country, number, code] = raw.split(":");
+  return { country, number, code };
+}
+
+export async function signIn(page: Page, user: TestUser, next?: string) {
+  await page.goto(next ? `/connexion?next=${encodeURIComponent(next)}` : "/connexion");
+  await page.locator("#country").selectOption(user.country);
+  await page.locator("#phone").fill(user.number);
+  await page.getByRole("button", { name: "Recevoir le code" }).click();
+  await page.locator("#code").fill(user.code);
+  await page.getByRole("button", { name: "Valider" }).click();
+  await page.waitForURL((url) => !url.pathname.startsWith("/connexion"), { timeout: 120_000 });
+  if (new URL(page.url()).pathname === "/bienvenue") await completeOnboarding(page);
+}
+
+async function completeOnboarding(page: Page) {
+  await page.getByRole("button", { name: "Continuer" }).click();
+  await page.getByRole("button", { name: /Je vis en Côte d’Ivoire/ }).click();
+  await page.getByRole("button", { name: "Continuer" }).click();
+  await page.locator("#fullName").fill("Membre E2E");
+  await page.locator("#city").fill("Abidjan");
+  await page.getByRole("button", { name: "Terminer" }).click();
+  await page.waitForURL(/\/accueil$/, { timeout: 120_000 });
+}
+
+/**
+ * Makes a Wave sandbox wallet the default. Linking always runs (a duplicate is
+ * fine) because accounts linked before Phase 6 have no payment token.
+ */
+export async function ensureWallet(page: Page, number: string) {
+  await page.goto("/profil/comptes");
+  await page.getByRole("button", { name: "Wave", exact: true }).click();
+  await page.locator("#accountNumber").fill(number);
+  await page.getByRole("button", { name: "Vérifier et lier" }).click();
+  await expect(page.getByText(/Compte vérifié et lié|déjà lié/)).toBeVisible({ timeout: 60_000 });
+  await page.reload();
+  const wave = page.locator("main ul li", { hasText: `•••• ${number.replace(/\D/g, "").slice(-4)}` });
+  const makeDefault = wave.getByRole("button", { name: "Choisir par défaut" });
+  if (await makeDefault.count()) {
+    await makeDefault.click();
+    await expect(wave.getByText("Par défaut")).toBeVisible({ timeout: 60_000 });
+  }
+}

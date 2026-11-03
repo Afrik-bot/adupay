@@ -54,7 +54,7 @@ export async function UpcomingDues() {
           {dues.map((due) => (
             <li key={`${due.cycle_id}:${due.member_id}`}>
               <Link
-                href="/tontines"
+                href={`/tontines/${due.group_id}`}
                 className="flex min-h-16 items-center gap-3 rounded-xl border bg-card p-4 hover:bg-muted"
               >
                 <span

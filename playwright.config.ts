@@ -9,7 +9,13 @@ export default defineConfig({
     trace: "on-first-retry",
   },
   // Low-end Android phone at 360px, the main target.
-  projects: [{ name: "mobile", use: { ...devices["Galaxy S9+"], viewport: { width: 360, height: 740 } } }],
+  // Uses the installed Microsoft Edge (no browser download); set PW_CHANNEL=chromium on CI.
+  projects: [
+    {
+      name: "mobile",
+      use: { ...devices["Galaxy S9+"], viewport: { width: 360, height: 740 }, channel: process.env.PW_CHANNEL ?? "msedge" },
+    },
+  ],
   webServer: {
     command: "npm run dev",
     url: "http://localhost:3000/accueil",

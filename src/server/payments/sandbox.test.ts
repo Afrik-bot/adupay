@@ -126,7 +126,10 @@ describe("SandboxProvider", () => {
       ok: false,
       reason: "ACCOUNT_NOT_FOUND",
     });
-    await expect(provider.verifyAccount({ provider: "wave", ref: "+2250700000001" })).resolves.toEqual({ ok: true });
+    await expect(provider.verifyAccount({ provider: "wave", ref: "+2250700009991" })).resolves.toEqual({
+      ok: true,
+      token: expect.stringMatching(/^sbxacct_[0-9a-f]{8}_9991$/),
+    });
   });
 
   it("refuses a weak secret", () => {

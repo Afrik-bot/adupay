@@ -66,8 +66,10 @@ export function SignInForm() {
       setBusy(false);
       return setError(errorKey(error));
     }
-    // The app layout sends first-time users on to onboarding.
-    router.replace("/accueil");
+    // The app layout sends first-time users on to onboarding. Only same-site
+    // paths are followed, so the link cannot send anyone elsewhere.
+    const next = new URLSearchParams(window.location.search).get("next");
+    router.replace(next && /^\/(?!\/)[a-z0-9/_-]*$/i.test(next) ? next : "/accueil");
     router.refresh();
   }
 

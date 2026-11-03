@@ -109,11 +109,14 @@ export class SandboxProvider implements PaymentProvider {
     return this.start(request);
   }
 
-  async verifyAccount(account: RailRequest["account"]): Promise<{ ok: true } | { ok: false; reason: string }> {
+  async verifyAccount(
+    account: RailRequest["account"],
+  ): Promise<{ ok: true; token: string } | { ok: false; reason: string }> {
     // Same demo convention as payments: an account ending 9992 does not exist.
-    return SANDBOX_TEST_ACCOUNTS[account.ref.slice(-4)] === "failure"
-      ? { ok: false, reason: "ACCOUNT_NOT_FOUND" }
-      : { ok: true };
+    const last4 = account.ref.slice(-4);
+    if (SANDBOX_TEST_ACCOUNTS[last4] === "failure") return { ok: false, reason: "ACCOUNT_NOT_FOUND" };
+    // The token ends with the same 4 digits so test outcomes (9990/9991) carry over.
+    return { ok: true, token: `sbxacct_${randomUUID().slice(0, 8)}_${last4}` };
   }
 
   async getStatus(providerRef: string): Promise<Omit<RailResult, "providerRef">> {

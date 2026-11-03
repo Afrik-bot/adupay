@@ -50,7 +50,214 @@
   },
   "tontines": {
     "title": "Tontines",
-    "placeholder": "Create a tontine or join your group's. Everyone sees the same ledger."
+    "placeholder": "Create a tontine or join your group's. Everyone sees the same ledger.",
+    "create": {
+      "title": "New tontine",
+      "step": "Step {current} of {total}",
+      "steps": {
+        "basics": "Name and amount",
+        "rhythm": "Rhythm and start date",
+        "order": "Payout order",
+        "rules": "Rules"
+      },
+      "name": "Tontine name",
+      "nameHint": "For example “Adjamé market traders”.",
+      "amount": "Contribution per member",
+      "amountHint": "What each member pays every round.",
+      "frequency": "Frequency",
+      "startDate": "Start date",
+      "memberLimit": "Maximum number of members",
+      "memberLimitHint": "This is also the number of rounds: each member receives the pot once.",
+      "orderHint": {
+        "fixed": "In the order people join.",
+        "lottery": "Drawn at random at the start, openly.",
+        "vote": "Agreed together by the group."
+      },
+      "graceDays": "Grace period (days)",
+      "graceDaysHint": "Days of lateness allowed after the due date.",
+      "penalty": "Late penalty",
+      "penaltyHint": "Added if a member pays after the grace period. 0 for none.",
+      "summary": {
+        "title": "Summary",
+        "contributions": "{frequency} from {date}, up to {members} members each pay {amount}.",
+        "pot": "Each round, one member receives the pot: up to {pot} ({order}).",
+        "penalty": "Paying more than {days, plural, one {# day} other {# days}} late adds a penalty of {penalty}.",
+        "noPenalty": "A grace period of {days, plural, one {# day} other {# days}}, with no penalty.",
+        "afterStart": "Once the tontine starts, these rules only change by a majority vote of members."
+      },
+      "back": "Back",
+      "next": "Continue",
+      "review": "See summary",
+      "save": "Create the tontine",
+      "errors": {
+        "name": "Enter a name (at least 2 characters).",
+        "amount": "The contribution must be between 500 and 2,000,000 FCFA.",
+        "startDate": "Choose a date from today onwards.",
+        "limit": "Between 2 and 100 members.",
+        "penalty": "The penalty must be between 0 and the contribution amount.",
+        "generic": "The tontine couldn’t be created. Please try again."
+      }
+    },
+    "empty": "You don’t have a tontine yet. Start one or join your group’s.",
+    "status": {
+      "draft": "Getting ready",
+      "active": "Running",
+      "completed": "Finished",
+      "cancelled": "Cancelled"
+    },
+    "frequency": {
+      "weekly": "Weekly",
+      "biweekly": "Every 2 weeks",
+      "monthly": "Monthly"
+    },
+    "frequencyAdverb": {
+      "weekly": "Every week",
+      "biweekly": "Every two weeks",
+      "monthly": "Every month"
+    },
+    "order": {
+      "fixed": "Fixed order",
+      "lottery": "Lottery",
+      "vote": "Order voted by the group"
+    },
+    "list": {
+      "draft": "{count, plural, one {# member joined} other {# members joined}}",
+      "position": "Your turn: {position} of {total}",
+      "sponsor": "You sponsor a member",
+      "nextDue": "due {date}"
+    },
+    "join": {
+      "title": "Join a tontine",
+      "lead": "Paste the invite link or type the code you received.",
+      "label": "Invite link or code",
+      "placeholder": "adjame2026",
+      "submit": "View"
+    },
+    "invite": {
+      "eyebrow": "{manager} invites you",
+      "members": "{count} of {limit} members",
+      "potUpTo": "Pot of up to {pot}",
+      "started": "This tontine has already started, so it can’t be joined any more.",
+      "join": "Join the tontine",
+      "notFoundTitle": "Invite not found",
+      "notFound": "This link is no longer valid. Ask the manager for a new one.",
+      "errors": {
+        "notFound": "Invite not found.",
+        "started": "This tontine has already started.",
+        "full": "This tontine is full.",
+        "generic": "Something went wrong. Please try again."
+      }
+    },
+    "group": {
+      "created": "Tontine created. Invite your members with the link below.",
+      "inviteMessage": "Join my tontine “{name}” on AduPay ({amount}): {url}",
+      "inviteTitle": "Invite members",
+      "inviteLead": "Each member joins with their phone number and pays from their own wallet.",
+      "inviteCode": "Code: {code}",
+      "shareWhatsApp": "Share on WhatsApp",
+      "share": "Share",
+      "copy": "Copy link",
+      "copied": "Link copied",
+      "waitingTitle": "{count} of {limit} members",
+      "startsOn": "Planned start: {date}.",
+      "waitForManager": "The manager will start the tontine once everyone has joined.",
+      "start": "Start the tontine",
+      "startHint": "The payout order will be fixed and round 1 opened. Joining will close.",
+      "startNeedsTwo": "At least 2 members are needed to start.",
+      "startError": "Couldn’t start right now. Please try again.",
+      "round": "Round {number} of {total}",
+      "roundShort": "round {number}",
+      "dueBy": "due {date}",
+      "paidCount": "{paid} of {total} have paid",
+      "recipient": "This round, the pot goes to {name}.",
+      "recipientMe": "This round, the pot is yours.",
+      "youPaid": "You’ve paid your share for this round.",
+      "sponsorPaid": "{name}’s share is paid for this round.",
+      "payMyShare": "Pay my share · {amount}",
+      "payFor": "Pay {name}’s share · {amount}",
+      "members": "Members",
+      "you": "you",
+      "manager": "Manager",
+      "paid": "Paid",
+      "unpaid": "To pay",
+      "ledger": "Group ledger",
+      "ledgerHint": "Every movement of the pot, visible to all members. Nobody can edit it.",
+      "ledgerEmpty": "No movements yet.",
+      "reference": "ref."
+    },
+    "ledgerKind": {
+      "collect": "Contribution from {name}",
+      "payout_hold": "Pot payout",
+      "payout_release": "Payout cancelled",
+      "payout": "Payout sent",
+      "p2p": "Transfer",
+      "raw": "Movement",
+      "test": "Movement"
+    },
+    "pay": {
+      "paying": "Paying…",
+      "errors": {
+        "notMember": "You’re not a member of this tontine.",
+        "notStarted": "The tontine hasn’t started yet.",
+        "alreadyPaid": "This share is already paid.",
+        "noAccount": "Link a mobile wallet or account first.",
+        "relinkAccount": "Your default account needs to be linked again.",
+        "kycRequired": "Verify your identity to make payments.",
+        "kycLimit": "This payment is over your daily limit.",
+        "generic": "The payment couldn’t be started. Please try again."
+      },
+      "fix": {
+        "noAccount": "Link an account",
+        "relinkAccount": "Link my account again",
+        "kycRequired": "Verify my identity"
+      }
+    },
+    "rules": {
+      "title": "Group rules",
+      "grace": "Grace period: {days, plural, one {# day} other {# days}}",
+      "penalty": "Late penalty: {penalty}",
+      "noPenalty": "No late penalty",
+      "voteNeeded": "Since the start, any rule change needs a majority of members to approve it.",
+      "managerEdits": "Before the start, the manager can edit the rules.",
+      "proposalTitle": "Change proposed by {name}",
+      "tally": "For: {yes} · Against: {no} · {needed} votes needed to pass",
+      "approve": "For",
+      "reject": "Against",
+      "graceLabel": "Grace period (days)",
+      "penaltyLabel": "Late penalty (FCFA)",
+      "cancel": "Cancel",
+      "propose": "Put to a vote",
+      "save": "Save",
+      "proposeChange": "Propose a change",
+      "edit": "Edit the rules",
+      "result": {
+        "applied": "Rules updated.",
+        "open": "Proposal sent. Members can now vote.",
+        "approved": "Proposal passed: the new rules apply.",
+        "rejected": "Proposal rejected."
+      },
+      "errors": {
+        "proposalOpen": "A change is already being voted on.",
+        "penalty": "The penalty must be between 0 and the contribution amount.",
+        "notAllowed": "You can’t change this tontine’s rules.",
+        "generic": "Something went wrong. Please try again."
+      }
+    },
+    "receipt": {
+      "title": {
+        "pending": "Payment in progress",
+        "succeeded": "Payment succeeded",
+        "failed": "Payment failed"
+      },
+      "for": "Contribution · {name}",
+      "pendingHint": "Waiting for the operator to confirm. This page updates by itself.",
+      "failedHint": "The operator declined the payment ({code}). Nothing was taken. You can try again.",
+      "date": "Date",
+      "receiptNo": "Receipt no.",
+      "railRef": "Operator ref.",
+      "sandbox": "Demo mode: simulated payment, no real money."
+    },
+    "createLabel": "Create"
   },
   "payFor": {
     "title": "Pay for",

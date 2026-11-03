@@ -44,8 +44,12 @@ export interface PaymentProvider {
   collect(request: RailRequest): Promise<RailResult>;
   payout(request: RailRequest): Promise<RailResult>;
   getStatus(providerRef: string): Promise<Omit<RailResult, "providerRef">>;
-  /** Checks an external wallet or bank account exists and can be debited/credited. */
-  verifyAccount(account: RailRequest["account"]): Promise<{ ok: true } | { ok: false; reason: string }>;
+  /**
+   * Checks an external wallet or bank account exists and can be debited/credited.
+   * Returns a provider token that later collect/payout calls use as the account
+   * ref, so AduPay never has to keep the account number itself.
+   */
+  verifyAccount(account: RailRequest["account"]): Promise<{ ok: true; token: string } | { ok: false; reason: string }>;
   /** Verifies the signature and parses the body. Throws InvalidWebhookError. */
   handleWebhook(rawBody: string, headers: Headers): Promise<WebhookEvent>;
 }
