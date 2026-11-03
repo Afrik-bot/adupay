@@ -192,7 +192,8 @@
       "payout": "Versement envoyé",
       "p2p": "Transfert",
       "raw": "Mouvement",
-      "test": "Mouvement"
+      "test": "Mouvement",
+      "directed_fx": "Paiement depuis l’étranger de {name}"
     },
     "pay": {
       "paying": "Paiement en cours…",
@@ -258,11 +259,187 @@
       "sandbox": "Mode démo : paiement simulé, aucun argent réel."
     },
     "createLabel": "Créer",
-    "managerSpace": "Espace gestionnaire"
+    "managerSpace": "Espace gestionnaire",
+    "sponsor": {
+      "title": "Je parraine un membre",
+      "lead": "Vous vivez à l’étranger ? Payez la part d’un proche depuis votre carte, sans prendre de tour.",
+      "member": "Membre que je parraine",
+      "submit": "Parrainer et payer sa part",
+      "errors": {
+        "notFound": "Cette tontine ou ce membre est introuvable.",
+        "alreadyMember": "Vous faites déjà partie de cette tontine.",
+        "alreadySponsored": "Ce membre a déjà un parrain.",
+        "generic": "Une erreur s’est produite. Réessayez."
+      }
+    }
   },
   "payFor": {
     "title": "Payer pour",
-    "placeholder": "Payez directement une école, une pharmacie, une facture ou une tontine, avec preuve de paiement."
+    "placeholder": "Payez directement une école, une pharmacie, une facture ou une tontine, avec preuve de paiement.",
+    "new": "Nouveau paiement",
+    "newShort": "Payer",
+    "lead": "Payez directement l’école, la santé, les factures, le loyer ou la tontine de vos proches, avec preuve de paiement.",
+    "step": "Étape {current} sur {total}",
+    "steps": {
+      "purpose": "Que voulez-vous payer ?",
+      "payee": "Choisissez le bénéficiaire vérifié",
+      "tontine": "Choisissez la tontine",
+      "details": "Pour qui, et combien ?",
+      "review": "Vérifiez le coût",
+      "pay": "Payer par carte"
+    },
+    "purposes": {
+      "school": "École",
+      "health": "Santé",
+      "bills": "Factures",
+      "rent": "Loyer",
+      "tontine": "Tontine"
+    },
+    "purposeHints": {
+      "school": "Frais de scolarité, cantine, fournitures.",
+      "health": "Clinique, pharmacie, consultation.",
+      "bills": "Électricité CIE, eau SODECI.",
+      "rent": "Loyer versé au propriétaire.",
+      "tontine": "La part d’un proche que vous parrainez."
+    },
+    "categories": {
+      "school": "École",
+      "clinic": "Clinique",
+      "pharmacy": "Pharmacie",
+      "utility": "Facture",
+      "landlord": "Propriétaire"
+    },
+    "city": "Ville",
+    "search": "Rechercher",
+    "verifiedOnly": "Seuls les établissements vérifiés par AduPay peuvent recevoir un paiement.",
+    "noPayees": "Aucun établissement vérifié ne correspond. Essayez une autre ville ou un autre nom.",
+    "noSponsorships": "Vous ne parrainez encore personne. Demandez à votre proche le lien d’invitation de sa tontine et choisissez « Je parraine un membre ».",
+    "shareOf": "Part de {name} · {amount}",
+    "alreadyPaid": "déjà payée ce tour",
+    "beneficiary": "Nom du bénéficiaire",
+    "beneficiaryHint": "La personne pour qui vous payez (élève, patient, titulaire du compteur…).",
+    "referenceLabel": {
+      "school": "Élève et classe",
+      "health": "Patient ou n° de dossier",
+      "bills": "N° de compteur ou de contrat",
+      "rent": "Logement ou référence du bail"
+    },
+    "referenceHint": {
+      "school": "Par exemple « Fatou Traoré, CM2 B ». Aide l’école à rapprocher le paiement.",
+      "health": "Le nom du patient ou le numéro communiqué par l’établissement.",
+      "bills": "Le numéro inscrit sur la facture.",
+      "rent": "L’adresse ou la référence donnée par le propriétaire."
+    },
+    "amount": "Montant à payer",
+    "amountHint": "En FCFA, entre 1 000 et 2 000 000.",
+    "tontineAmount": "Montant de la part : {amount}",
+    "payIn": "Payer en",
+    "to": "Pour {name}",
+    "rate": "Taux de change",
+    "converted": "Montant converti",
+    "fee": "Frais AduPay ({pct} %)",
+    "total": "Total débité",
+    "allIn": "Coût total",
+    "deliveryLabel": "Délai",
+    "delivery": {
+      "wallet": "en quelques minutes",
+      "bank": "sous 24 h ouvrées",
+      "tontine": "immédiat dans la cagnotte"
+    },
+    "quoting": "Calcul du coût…",
+    "recurring": "Répéter chaque mois",
+    "recurringHint": "Même montant, même bénéficiaire, à suspendre ou annuler quand vous voulez.",
+    "sandboxCard": "Mode démo : aucune vraie carte. Utilisez {ok} (accepté) ou {declined} (refusé), date future et 3 chiffres.",
+    "cardNumber": "Numéro de carte",
+    "expiry": "Expiration",
+    "cvc": "Cryptogramme",
+    "cardPrivacy": "Le numéro est remplacé par un jeton dans votre téléphone. AduPay ne voit et ne garde que les 4 derniers chiffres.",
+    "paying": "Paiement en cours…",
+    "payTotal": "Payer {total}",
+    "back": "Retour",
+    "next": "Continuer",
+    "toPayment": "Passer au paiement",
+    "errors": {
+      "purpose": "Choisissez ce que vous payez.",
+      "payee": "Choisissez un bénéficiaire.",
+      "beneficiary": "Entrez le nom du bénéficiaire.",
+      "amount": "Le montant doit être compris entre 1 000 et 2 000 000 FCFA."
+    },
+    "cardErrors": {
+      "number": "Numéro de carte invalide.",
+      "expiry": "Date d’expiration invalide ou dépassée.",
+      "cvc": "Cryptogramme invalide."
+    },
+    "startErrors": {
+      "payeeNotVerified": "Ce bénéficiaire n’est pas vérifié : le paiement est refusé.",
+      "notSponsor": "Vous ne parrainez pas de membre dans cette tontine.",
+      "alreadyPaid": "Cette part est déjà payée pour ce tour.",
+      "kycRequired": "Vérifiez votre identité pour effectuer des paiements.",
+      "kycLimit": "Ce paiement dépasse votre plafond du jour.",
+      "amount": "Le montant doit être compris entre 1 000 et 2 000 000 FCFA.",
+      "generic": "Le paiement n’a pas pu être lancé. Réessayez.",
+      "card": "La carte n’a pas pu être lue. Vérifiez les informations."
+    },
+    "forBeneficiary": "Pour {name}",
+    "timeline": {
+      "paid": "Payé",
+      "paidWaiting": "En attente de la banque de la carte…",
+      "received": "Reçu",
+      "receivedHint": "L’argent arrive chez le bénéficiaire.",
+      "confirmed": "Confirmé",
+      "confirmedHint": "Le bénéficiaire confirmera la réception.",
+      "failed": "Paiement refusé ({code}). Rien n’a été débité."
+    },
+    "charged": "Débité",
+    "feeIncluded": "Dont frais",
+    "card": "Carte",
+    "date": "Date",
+    "downloadReceipt": "Télécharger le reçu (PDF)",
+    "shareTitle": "Prévenir la famille",
+    "shareLead": "Envoyez le lien de suivi : vos proches voient l’avancement, sans compte ni montant en euros.",
+    "shareWhatsApp": "Envoyer sur WhatsApp",
+    "copyLink": "Copier le lien",
+    "copied": "Lien copié",
+    "shareMessage": "J’ai payé {amount} à {payee} avec AduPay. Suivez la réception ici : {url}",
+    "sponsorDue": "Parts de tontine à payer",
+    "schedules": "Paiements réguliers",
+    "frequency": {
+      "monthly": "chaque mois",
+      "weekly": "chaque semaine"
+    },
+    "schedulePaused": "Suspendu",
+    "nextRun": "Prochain paiement le {date}",
+    "history": "Historique",
+    "empty": "Aucun paiement pour l’instant.",
+    "status": {
+      "initiated": "En cours",
+      "paid": "Payé",
+      "received": "Reçu",
+      "confirmed": "Confirmé",
+      "failed": "Refusé"
+    },
+    "pause": "Suspendre",
+    "resume": "Reprendre",
+    "cancelSchedule": "Annuler",
+    "cancelConfirm": "Annuler définitivement ce paiement régulier ?",
+    "receipt": {
+      "title": "Reçu AduPay · Payer pour",
+      "number": "N° de reçu",
+      "sender": "Payé par",
+      "purpose": "Objet",
+      "payee": "Bénéficiaire vérifié",
+      "reference": "Référence",
+      "delivered": "Montant versé",
+      "status": "Statut",
+      "footer": "AduPay — mode démo, paiement simulé"
+    },
+    "track": {
+      "notFound": "Ce lien de suivi n’est pas valable.",
+      "from": "Paiement envoyé par {name}",
+      "reference": "réf. {hint}",
+      "failed": "Ce paiement n’a pas abouti.",
+      "privacy": "Vous voyez ce suivi parce qu’on vous a partagé le lien. Il ne montre ni la carte ni le montant en devises."
+    }
   },
   "savings": {
     "title": "Épargne",

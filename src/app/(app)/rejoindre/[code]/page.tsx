@@ -7,6 +7,7 @@ import { formatMoney, type Currency, type Locale } from "@/lib/money";
 import { createClient } from "@/lib/supabase/server";
 import { requireProfile } from "@/server/auth";
 import { JoinButton } from "./join-button";
+import { SponsorForm } from "./sponsor-form";
 
 export default async function RejoindrePage({ params }: { params: Promise<{ code: string }> }) {
   await requireProfile();
@@ -51,6 +52,9 @@ export default async function RejoindrePage({ params }: { params: Promise<{ code
         <JoinButton code={code} />
       ) : (
         <p className="rounded-xl border bg-card p-4">{t("invite.started")}</p>
+      )}
+      {(group.status === "draft" || group.status === "active") && (
+        <SponsorForm code={code} members={(await supabase.rpc("group_invite_members", { p_invite_code: code })).data ?? []} />
       )}
     </div>
   );

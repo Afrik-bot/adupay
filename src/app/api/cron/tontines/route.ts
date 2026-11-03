@@ -3,6 +3,7 @@ import { NextResponse } from "next/server";
 import { adminDb } from "@/lib/supabase/admin";
 import { serverEnv } from "@/server/env";
 import { getPaymentService } from "@/server/payments";
+import { deliverDirectedPayments, runSchedules } from "@/server/directed-payments";
 import { runTontineEngine } from "@/server/tontine-engine";
 
 export const runtime = "nodejs";
@@ -21,6 +22,11 @@ export async function GET(request: Request) {
     requested && process.env.NODE_ENV !== "production" && /^\d{4}-\d{2}-\d{2}$/.test(requested)
       ? requested
       : new Date().toISOString().slice(0, 10); // Abidjan is UTC
-  const report = await runTontineEngine(adminDb(), getPaymentService(), today);
-  return NextResponse.json({ ok: report.errors.length === 0, today, report });
+  const db = adminDb();
+  const service = getPaymentService();
+  // Recurring Payer pour first: a scheduled tontine share lands before the round is judged.
+  const schedules = await runSchedules(db, service, today);
+  const report = await runTontineEngine(db, service, today);
+  const delivered = await deliverDirectedPayments(db, service);
+  return NextResponse.json({ ok: report.errors.length === 0, today, report, schedules, delivered });
 }

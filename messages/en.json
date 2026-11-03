@@ -192,7 +192,8 @@
       "payout": "Payout sent",
       "p2p": "Transfer",
       "raw": "Movement",
-      "test": "Movement"
+      "test": "Movement",
+      "directed_fx": "Payment from abroad by {name}"
     },
     "pay": {
       "paying": "Paying…",
@@ -258,11 +259,187 @@
       "sandbox": "Demo mode: simulated payment, no real money."
     },
     "createLabel": "Create",
-    "managerSpace": "Manager space"
+    "managerSpace": "Manager space",
+    "sponsor": {
+      "title": "Sponsor a member",
+      "lead": "Live abroad? Pay a relative’s share from your card, without taking a turn yourself.",
+      "member": "Member I sponsor",
+      "submit": "Sponsor and pay their share",
+      "errors": {
+        "notFound": "This tontine or member can’t be found.",
+        "alreadyMember": "You’re already part of this tontine.",
+        "alreadySponsored": "This member already has a sponsor.",
+        "generic": "Something went wrong. Please try again."
+      }
+    }
   },
   "payFor": {
     "title": "Pay for",
-    "placeholder": "Pay a school, pharmacy, bill or tontine directly, with proof of payment."
+    "placeholder": "Pay a school, pharmacy, bill or tontine directly, with proof of payment.",
+    "new": "New payment",
+    "newShort": "Pay",
+    "lead": "Pay the school, health costs, bills, rent or a relative’s tontine directly, with proof of payment.",
+    "step": "Step {current} of {total}",
+    "steps": {
+      "purpose": "What are you paying for?",
+      "payee": "Choose the verified payee",
+      "tontine": "Choose the tontine",
+      "details": "Who is it for, and how much?",
+      "review": "Check the cost",
+      "pay": "Pay by card"
+    },
+    "purposes": {
+      "school": "School",
+      "health": "Health",
+      "bills": "Bills",
+      "rent": "Rent",
+      "tontine": "Tontine"
+    },
+    "purposeHints": {
+      "school": "School fees, canteen, supplies.",
+      "health": "Clinic, pharmacy, consultation.",
+      "bills": "CIE electricity, SODECI water.",
+      "rent": "Rent paid to the landlord.",
+      "tontine": "A relative’s share that you sponsor."
+    },
+    "categories": {
+      "school": "School",
+      "clinic": "Clinic",
+      "pharmacy": "Pharmacy",
+      "utility": "Utility",
+      "landlord": "Landlord"
+    },
+    "city": "City",
+    "search": "Search",
+    "verifiedOnly": "Only payees verified by AduPay can receive a payment.",
+    "noPayees": "No verified payee matches. Try another city or name.",
+    "noSponsorships": "You don’t sponsor anyone yet. Ask your relative for their tontine’s invite link and choose “Sponsor a member”.",
+    "shareOf": "{name}’s share · {amount}",
+    "alreadyPaid": "already paid this round",
+    "beneficiary": "Beneficiary name",
+    "beneficiaryHint": "The person you are paying for (pupil, patient, meter holder…).",
+    "referenceLabel": {
+      "school": "Pupil and class",
+      "health": "Patient or file number",
+      "bills": "Meter or contract number",
+      "rent": "Home or lease reference"
+    },
+    "referenceHint": {
+      "school": "For example “Fatou Traoré, CM2 B”. Helps the school match the payment.",
+      "health": "The patient’s name or the number the clinic gave you.",
+      "bills": "The number printed on the bill.",
+      "rent": "The address or reference the landlord gave you."
+    },
+    "amount": "Amount to pay",
+    "amountHint": "In FCFA, between 1,000 and 2,000,000.",
+    "tontineAmount": "Share amount: {amount}",
+    "payIn": "Pay in",
+    "to": "To {name}",
+    "rate": "Exchange rate",
+    "converted": "Converted amount",
+    "fee": "AduPay fee ({pct}%)",
+    "total": "Total charged",
+    "allIn": "All-in cost",
+    "deliveryLabel": "Delivery",
+    "delivery": {
+      "wallet": "within minutes",
+      "bank": "within 1 business day",
+      "tontine": "straight into the pot"
+    },
+    "quoting": "Working out the cost…",
+    "recurring": "Repeat every month",
+    "recurringHint": "Same amount, same payee; pause or cancel any time.",
+    "sandboxCard": "Demo mode: no real card. Use {ok} (accepted) or {declined} (declined), a future date and 3 digits.",
+    "cardNumber": "Card number",
+    "expiry": "Expiry",
+    "cvc": "Security code",
+    "cardPrivacy": "Your number is swapped for a token on your phone. AduPay only sees and keeps the last 4 digits.",
+    "paying": "Paying…",
+    "payTotal": "Pay {total}",
+    "back": "Back",
+    "next": "Continue",
+    "toPayment": "Go to payment",
+    "errors": {
+      "purpose": "Choose what you are paying for.",
+      "payee": "Choose a payee.",
+      "beneficiary": "Enter the beneficiary’s name.",
+      "amount": "The amount must be between 1,000 and 2,000,000 FCFA."
+    },
+    "cardErrors": {
+      "number": "Invalid card number.",
+      "expiry": "Invalid or past expiry date.",
+      "cvc": "Invalid security code."
+    },
+    "startErrors": {
+      "payeeNotVerified": "This payee isn’t verified, so the payment was refused.",
+      "notSponsor": "You don’t sponsor a member in this tontine.",
+      "alreadyPaid": "This share is already paid for this round.",
+      "kycRequired": "Verify your identity to make payments.",
+      "kycLimit": "This payment is over your daily limit.",
+      "amount": "The amount must be between 1,000 and 2,000,000 FCFA.",
+      "generic": "The payment couldn’t be started. Please try again.",
+      "card": "The card couldn’t be read. Check the details."
+    },
+    "forBeneficiary": "For {name}",
+    "timeline": {
+      "paid": "Paid",
+      "paidWaiting": "Waiting for the card’s bank…",
+      "received": "Received",
+      "receivedHint": "The money is on its way to the payee.",
+      "confirmed": "Confirmed",
+      "confirmedHint": "The payee will confirm receipt.",
+      "failed": "Payment declined ({code}). Nothing was charged."
+    },
+    "charged": "Charged",
+    "feeIncluded": "Of which fee",
+    "card": "Card",
+    "date": "Date",
+    "downloadReceipt": "Download receipt (PDF)",
+    "shareTitle": "Let the family know",
+    "shareLead": "Send the tracking link: your relatives see the progress, with no account and no amount in euros.",
+    "shareWhatsApp": "Send on WhatsApp",
+    "copyLink": "Copy link",
+    "copied": "Link copied",
+    "shareMessage": "I paid {amount} to {payee} with AduPay. Follow it here: {url}",
+    "sponsorDue": "Tontine shares to pay",
+    "schedules": "Regular payments",
+    "frequency": {
+      "monthly": "every month",
+      "weekly": "every week"
+    },
+    "schedulePaused": "Paused",
+    "nextRun": "Next payment on {date}",
+    "history": "History",
+    "empty": "No payments yet.",
+    "status": {
+      "initiated": "In progress",
+      "paid": "Paid",
+      "received": "Received",
+      "confirmed": "Confirmed",
+      "failed": "Declined"
+    },
+    "pause": "Pause",
+    "resume": "Resume",
+    "cancelSchedule": "Cancel",
+    "cancelConfirm": "Cancel this regular payment for good?",
+    "receipt": {
+      "title": "AduPay receipt · Pay for",
+      "number": "Receipt no.",
+      "sender": "Paid by",
+      "purpose": "Purpose",
+      "payee": "Verified payee",
+      "reference": "Reference",
+      "delivered": "Amount delivered",
+      "status": "Status",
+      "footer": "AduPay — demo mode, simulated payment"
+    },
+    "track": {
+      "notFound": "This tracking link isn’t valid.",
+      "from": "Payment sent by {name}",
+      "reference": "ref. {hint}",
+      "failed": "This payment didn’t go through.",
+      "privacy": "You can see this because someone shared the link with you. It shows neither the card nor the foreign-currency amount."
+    }
   },
   "savings": {
     "title": "Savings",

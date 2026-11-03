@@ -72,6 +72,23 @@ export async function joinTontine(code: string): Promise<{ error: JoinError } | 
   redirect(`/tontines/${id}`);
 }
 
+export type SponsorError = "notFound" | "alreadyMember" | "alreadySponsored" | "generic";
+
+/** A diaspora relative joins to pay a member's share; they take no turn in the rotation. */
+export async function joinAsSponsor(code: string, memberId: string): Promise<{ error: SponsorError } | void> {
+  await requireUser();
+  const supabase = await createClient();
+  const { data: id, error } = await supabase.rpc("join_group_as_sponsor", { p_invite_code: code, p_member_id: memberId });
+  if (error || !id) {
+    const m = error?.message ?? "";
+    return {
+      error: m.includes("already_member") ? "alreadyMember" : m.includes("already_sponsored") ? "alreadySponsored" : m.includes("not_found") ? "notFound" : "generic",
+    };
+  }
+  revalidatePath("/payer-pour");
+  redirect(`/payer-pour/nouveau?tontine=${id}`);
+}
+
 export async function startTontine(groupId: string): Promise<{ error: "notEnough" | "generic" } | void> {
   await requireUser();
   const supabase = await createClient();

@@ -51,3 +51,8 @@ insert into public.payees (name, category, city, address, rccm_number, contact_p
   ('Centre médical de Marcory (démo)',     'clinic',   'Abidjan', 'Marcory',    'CI-ABJ-DEMO-0006', '2250700001006', 'approved', 'mtn_momo',     '•••• 4406'),
   ('CIE — électricité',                    'utility',  'Abidjan', null,         null,               null,            'approved', 'bank',         '•••• 4407'),
   ('SODECI — eau',                         'utility',  'Abidjan', null,         null,               null,            'approved', 'bank',         '•••• 4408');
+
+-- Sandbox payout tokens for the verified payees (a real partner issues these at KYB).
+update public.payees
+   set payout_account_token = 'sbxacct_' || left(replace(id::text, '-', ''), 8) || '_9990'
+ where kyb_status = 'approved' and payout_account_token is null;

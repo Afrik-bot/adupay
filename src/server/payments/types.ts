@@ -3,6 +3,8 @@ import type { Currency } from "@/lib/money";
 export type PaymentStatus = "pending" | "succeeded" | "failed";
 export type PaymentDirection = "collect" | "payout";
 export type WalletProvider = "orange_money" | "mtn_momo" | "moov_money" | "wave" | "bank";
+/** Where a rail pulls from or pays into: a linked wallet/bank, or a tokenized card. */
+export type AccountKind = WalletProvider | "card";
 
 export interface RailRequest {
   /** AduPay payment id. */
@@ -12,7 +14,7 @@ export interface RailRequest {
   amount: number;
   currency: Currency;
   /** The external wallet or bank account being debited (collect) or credited (payout). */
-  account: { provider: WalletProvider; ref: string };
+  account: { provider: AccountKind; ref: string };
 }
 
 export interface RailResult {
