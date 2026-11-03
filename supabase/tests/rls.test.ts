@@ -5,6 +5,8 @@ let db: TestDb;
 
 beforeAll(async () => {
   db = await TestDb.create();
+  // These tests are about the ledger, not KYC limits (see kyc.test.ts).
+  await db.pg.query("update public.profiles set kyc_tier = 2");
   const svc = db.serviceDb();
   // Give Awa and Koffi a wallet with money so there is ledger data to hide.
   for (const user of [DEMO.awa, DEMO.koffi]) {

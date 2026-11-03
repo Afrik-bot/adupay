@@ -47,6 +47,8 @@ async function netPerCurrency() {
 
 beforeAll(async () => {
   db = await TestDb.create();
+  // These tests are about the ledger, not KYC limits (see kyc.test.ts).
+  await db.pg.query("update public.profiles set kyc_tier = 2");
   svc = db.serviceDb();
   const ensure = (type: string, id: string) =>
     svc.rpc<string>("ensure_ledger_account", { p_owner_type: type, p_owner_id: id, p_currency: "XOF" });

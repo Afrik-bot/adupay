@@ -1,13 +1,54 @@
 import { getLocale, getTranslations } from "next-intl/server";
-import { PlaceholderPage } from "@/components/placeholder-page";
+import { LogOut } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { Card } from "@/components/ui/card";
+import { formatE164 } from "@/lib/phone";
+import { createClient } from "@/lib/supabase/server";
+import { getSessionUser, requireProfile } from "@/server/auth";
+import { signOut } from "./actions";
+import { KycCard } from "./kyc-card";
 import { Preferences } from "./preferences";
 
 export default async function ProfilPage() {
+  const profile = await requireProfile();
+  const user = await getSessionUser();
   const t = await getTranslations("profile");
+  const auth = await getTranslations("auth");
   const locale = await getLocale();
+  const supabase = await createClient();
+
+  const [{ data: status }, { data: records }] = await Promise.all([
+    supabase.rpc("my_kyc_status").single(),
+    supabase
+      .from("kyc_records")
+      .select("id, document_type, status, rejection_reason, created_at")
+      .eq("user_id", profile.id)
+      .order("created_at", { ascending: false }),
+  ]);
+
+  const phone = user?.phone ? formatE164(user.phone.startsWith("+") ? user.phone : `+${user.phone}`) : null;
+
   return (
     <div className="flex flex-col gap-6">
-      <PlaceholderPage section="profile" />
+      <h1 className="text-2xl font-bold">{t("title")}</h1>
+      <Card>
+        <div>
+          <p className="text-xl font-semibold">{profile.full_name}</p>
+          {profile.city && <p className="text-muted-foreground">{profile.city}</p>}
+        </div>
+        {phone && (
+          <p>
+            <span className="text-sm text-muted-foreground">{t("phone")} · </span>
+            <span className="tabular-nums">{phone}</span>
+          </p>
+        )}
+      </Card>
+      <KycCard
+        tier={status?.kyc_tier ?? profile.kyc_tier}
+        limit={status?.daily_limit_xof ?? 0}
+        used={status?.used_today_xof ?? 0}
+        records={records ?? []}
+      />
       <Preferences
         locale={locale}
         labels={{
@@ -18,6 +59,12 @@ export default async function ProfilPage() {
           system: t("themeSystem"),
         }}
       />
+      <form action={signOut}>
+        <Button type="submit" variant="outline" className="w-full">
+          <LogOut aria-hidden />
+          {auth("signOut")}
+        </Button>
+      </form>
     </div>
   );
 }

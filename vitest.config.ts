@@ -12,7 +12,9 @@ export default defineConfig({
   test: {
     environment: "node",
     include: ["src/**/*.test.ts", "supabase/tests/**/*.test.ts"],
-    // Each PGlite instance boots Postgres in WASM; give it time on slow machines.
+    // Each PGlite instance boots Postgres in WASM; give it time on slow machines,
+    // and cap parallel workers so several instances don't exhaust memory.
+    maxWorkers: 2,
     testTimeout: 30_000,
     hookTimeout: 120_000,
   },

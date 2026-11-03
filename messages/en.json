@@ -34,7 +34,8 @@
     "theme": "Appearance",
     "themeLight": "Light",
     "themeDark": "Dark",
-    "themeSystem": "System"
+    "themeSystem": "System",
+    "phone": "Phone"
   },
   "common": {
     "comingSoon": "Coming soon",
@@ -184,5 +185,130 @@
     "terms": "Terms of use",
     "privacy": "Privacy policy",
     "complaints": "Complaints"
+  },
+  "auth": {
+    "title": "Sign in",
+    "lead": "Enter your phone number. We’ll send you a code by SMS.",
+    "country": "Country",
+    "phone": "Phone number",
+    "phoneHint": "Example: {example}",
+    "sendCode": "Send me a code",
+    "codeTitle": "Enter the code",
+    "codeLead": "Code sent to {phone}.",
+    "code": "6-digit code",
+    "verify": "Confirm",
+    "resend": "Resend the code",
+    "resendIn": "Resend in {seconds} s",
+    "changeNumber": "Change number",
+    "signOut": "Sign out",
+    "errors": {
+      "invalidPhone": "This number isn’t valid for the selected country.",
+      "invalidCode": "Wrong or expired code.",
+      "rateLimited": "Too many attempts. Try again in a few minutes.",
+      "providerDisabled": "SMS sign-in isn’t switched on yet.",
+      "generic": "Something went wrong. Please try again."
+    },
+    "countries": {
+      "CI": "Côte d’Ivoire",
+      "SN": "Senegal",
+      "ML": "Mali",
+      "BF": "Burkina Faso",
+      "NE": "Niger",
+      "TG": "Togo",
+      "BJ": "Benin",
+      "GW": "Guinea-Bissau",
+      "FR": "France",
+      "US": "United States",
+      "CA": "Canada"
+    }
+  },
+  "onboarding": {
+    "step": "Step {current} of {total}",
+    "next": "Continue",
+    "back": "Back",
+    "finish": "Finish",
+    "language": {
+      "title": "Choose your language"
+    },
+    "type": {
+      "title": "Where do you live?",
+      "resident": "I live in Côte d’Ivoire",
+      "residentHint": "Tontines, payments and savings at home.",
+      "diaspora": "I live abroad",
+      "diasporaHint": "Pay school fees, health costs or your family’s tontine."
+    },
+    "details": {
+      "title": "Let’s get to know you",
+      "name": "Full name",
+      "city": "City or district",
+      "country": "Country of residence",
+      "otherCountry": "Another country"
+    },
+    "errors": {
+      "name": "Enter your name (at least 2 characters).",
+      "city": "Enter your city.",
+      "type": "Choose where you live.",
+      "generic": "Something went wrong. Please try again."
+    }
+  },
+  "kyc": {
+    "title": "Identity verification",
+    "tier": "Level {tier}",
+    "tierNames": {
+      "t0": "Phone verified",
+      "t1": "Identity verified",
+      "t2": "Address verified"
+    },
+    "noPayments": "You can join a tontine. Verify your identity to make payments.",
+    "limit": "Limit: {limit} per day",
+    "used": "Used today: {used}",
+    "nextId": "Verify my identity",
+    "nextIdHint": "ID document and selfie: up to 200,000 FCFA per day.",
+    "nextAddress": "Add proof of address",
+    "nextAddressHint": "Up to 2,000,000 FCFA per day.",
+    "done": "You have the highest level.",
+    "pendingNotice": "Our team is reviewing your documents. The status stays “under review” until they are approved.",
+    "documents": "Documents sent",
+    "view": "View",
+    "rejectedReason": "Reason: {reason}",
+    "status": {
+      "pending": "Under review",
+      "approved": "Approved",
+      "rejected": "Rejected"
+    },
+    "docTypes": {
+      "cni": "National ID card",
+      "passport": "Passport",
+      "residence_permit": "Residence permit",
+      "selfie": "Selfie",
+      "proof_of_address": "Proof of address"
+    },
+    "form": {
+      "titleId": "ID document and selfie",
+      "titleAddress": "Proof of address",
+      "idType": "Document type",
+      "idNumber": "Document number",
+      "idNumberHint": "We only keep the last 4 characters readable.",
+      "idPhoto": "Photo of the document",
+      "selfie": "Selfie",
+      "selfieHint": "Face well lit, no sunglasses or hat.",
+      "address": "Proof of address",
+      "addressHint": "CIE or SODECI bill, rent receipt or certificate of residence (photo or PDF).",
+      "takePhoto": "Take or choose a photo",
+      "chooseFile": "Choose a file",
+      "chosen": "File ready: {name}",
+      "submit": "Send for verification",
+      "sending": "Sending…",
+      "sent": "Documents sent. We’ll let you know once they’re reviewed.",
+      "back": "Back to profile",
+      "alreadyPending": "Your documents are already under review.",
+      "errors": {
+        "missing": "Add all the requested documents.",
+        "tooLarge": "File too large (5 MB maximum).",
+        "type": "Format not accepted (JPEG, PNG, WebP or PDF).",
+        "idNumber": "Enter the document number.",
+        "generic": "Upload failed. Check your connection and try again."
+      }
+    }
   }
 }

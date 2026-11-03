@@ -58,6 +58,8 @@ const collect = (service: PaymentService, accountRef: string, amount = 10_000, i
 
 beforeAll(async () => {
   db = await TestDb.create();
+  // These tests are about the ledger, not KYC limits (see kyc.test.ts).
+  await db.pg.query("update public.profiles set kyc_tier = 2");
   wallet = await db
     .serviceDb()
     .rpc<string>("ensure_ledger_account", { p_owner_type: "user", p_owner_id: DEMO.koffi, p_currency: "XOF" });

@@ -2,8 +2,10 @@ import Link from "next/link";
 import { getTranslations } from "next-intl/server";
 import { BottomNav } from "@/components/bottom-nav";
 import { Logo } from "@/components/logo";
+import { requireProfile } from "@/server/auth";
 
 export default async function AppLayout({ children }: { children: React.ReactNode }) {
+  await requireProfile();
   const t = await getTranslations("common");
   return (
     <div className="mx-auto flex min-h-dvh max-w-lg flex-col">

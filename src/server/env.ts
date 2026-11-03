@@ -12,6 +12,7 @@ export const serverEnv = {
   serviceRoleKey: () => required("SUPABASE_SERVICE_ROLE_KEY"),
   sandboxWebhookSecret: () => required("SANDBOX_WEBHOOK_SECRET"),
   cronSecret: () => required("CRON_SECRET"),
+  kycIdPepper: () => required("KYC_ID_PEPPER"),
   appUrl: () => process.env.APP_URL ?? "http://localhost:3000",
   paymentProvider: () => process.env.PAYMENT_PROVIDER ?? "sandbox",
 };

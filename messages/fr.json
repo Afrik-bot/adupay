@@ -34,7 +34,8 @@
     "theme": "Apparence",
     "themeLight": "Clair",
     "themeDark": "Sombre",
-    "themeSystem": "Système"
+    "themeSystem": "Système",
+    "phone": "Téléphone"
   },
   "common": {
     "comingSoon": "Bientôt disponible",
@@ -184,5 +185,130 @@
     "terms": "Conditions d’utilisation",
     "privacy": "Politique de confidentialité",
     "complaints": "Réclamations"
+  },
+  "auth": {
+    "title": "Connexion",
+    "lead": "Entrez votre numéro de téléphone. Nous vous enverrons un code par SMS.",
+    "country": "Pays",
+    "phone": "Numéro de téléphone",
+    "phoneHint": "Exemple : {example}",
+    "sendCode": "Recevoir le code",
+    "codeTitle": "Entrez le code",
+    "codeLead": "Code envoyé au {phone}.",
+    "code": "Code à 6 chiffres",
+    "verify": "Valider",
+    "resend": "Renvoyer le code",
+    "resendIn": "Renvoyer dans {seconds} s",
+    "changeNumber": "Changer de numéro",
+    "signOut": "Se déconnecter",
+    "errors": {
+      "invalidPhone": "Ce numéro n’est pas valide pour le pays choisi.",
+      "invalidCode": "Code incorrect ou expiré.",
+      "rateLimited": "Trop de tentatives. Réessayez dans quelques minutes.",
+      "providerDisabled": "La connexion par SMS n’est pas encore activée.",
+      "generic": "Une erreur s’est produite. Réessayez."
+    },
+    "countries": {
+      "CI": "Côte d’Ivoire",
+      "SN": "Sénégal",
+      "ML": "Mali",
+      "BF": "Burkina Faso",
+      "NE": "Niger",
+      "TG": "Togo",
+      "BJ": "Bénin",
+      "GW": "Guinée-Bissau",
+      "FR": "France",
+      "US": "États-Unis",
+      "CA": "Canada"
+    }
+  },
+  "onboarding": {
+    "step": "Étape {current} sur {total}",
+    "next": "Continuer",
+    "back": "Retour",
+    "finish": "Terminer",
+    "language": {
+      "title": "Choisissez votre langue"
+    },
+    "type": {
+      "title": "Où vivez-vous ?",
+      "resident": "Je vis en Côte d’Ivoire",
+      "residentHint": "Tontines, paiements et épargne au pays.",
+      "diaspora": "Je vis à l’étranger",
+      "diasporaHint": "Payez l’école, la santé ou la tontine de vos proches."
+    },
+    "details": {
+      "title": "Faisons connaissance",
+      "name": "Nom complet",
+      "city": "Ville ou commune",
+      "country": "Pays de résidence",
+      "otherCountry": "Autre pays"
+    },
+    "errors": {
+      "name": "Entrez votre nom (2 caractères minimum).",
+      "city": "Entrez votre ville.",
+      "type": "Choisissez où vous vivez.",
+      "generic": "Une erreur s’est produite. Réessayez."
+    }
+  },
+  "kyc": {
+    "title": "Vérification d’identité",
+    "tier": "Niveau {tier}",
+    "tierNames": {
+      "t0": "Numéro vérifié",
+      "t1": "Identité vérifiée",
+      "t2": "Adresse vérifiée"
+    },
+    "noPayments": "Vous pouvez rejoindre une tontine. Vérifiez votre identité pour effectuer des paiements.",
+    "limit": "Plafond : {limit} par jour",
+    "used": "Utilisé aujourd’hui : {used}",
+    "nextId": "Vérifier mon identité",
+    "nextIdHint": "Pièce d’identité et selfie : jusqu’à 200 000 FCFA par jour.",
+    "nextAddress": "Ajouter un justificatif de domicile",
+    "nextAddressHint": "Jusqu’à 2 000 000 FCFA par jour.",
+    "done": "Vous avez atteint le niveau maximal.",
+    "pendingNotice": "Nos équipes examinent vos documents. Le statut reste « en cours d’examen » jusqu’à leur validation.",
+    "documents": "Documents envoyés",
+    "view": "Voir",
+    "rejectedReason": "Motif : {reason}",
+    "status": {
+      "pending": "En cours d’examen",
+      "approved": "Validé",
+      "rejected": "Refusé"
+    },
+    "docTypes": {
+      "cni": "Carte nationale d’identité",
+      "passport": "Passeport",
+      "residence_permit": "Titre de séjour",
+      "selfie": "Selfie",
+      "proof_of_address": "Justificatif de domicile"
+    },
+    "form": {
+      "titleId": "Pièce d’identité et selfie",
+      "titleAddress": "Justificatif de domicile",
+      "idType": "Type de pièce",
+      "idNumber": "Numéro de la pièce",
+      "idNumberHint": "Nous ne conservons que les 4 derniers caractères en clair.",
+      "idPhoto": "Photo de la pièce",
+      "selfie": "Selfie",
+      "selfieHint": "Visage bien éclairé, sans lunettes de soleil ni chapeau.",
+      "address": "Justificatif de domicile",
+      "addressHint": "Facture CIE ou SODECI, quittance de loyer ou attestation de résidence (photo ou PDF).",
+      "takePhoto": "Prendre ou choisir une photo",
+      "chooseFile": "Choisir un fichier",
+      "chosen": "Fichier prêt : {name}",
+      "submit": "Envoyer pour vérification",
+      "sending": "Envoi en cours…",
+      "sent": "Documents envoyés. Nous vous préviendrons après l’examen.",
+      "back": "Retour au profil",
+      "alreadyPending": "Vos documents sont déjà en cours d’examen.",
+      "errors": {
+        "missing": "Ajoutez tous les documents demandés.",
+        "tooLarge": "Fichier trop lourd (5 Mo maximum).",
+        "type": "Format non accepté (JPEG, PNG, WebP ou PDF).",
+        "idNumber": "Entrez le numéro de la pièce.",
+        "generic": "L’envoi a échoué. Vérifiez votre connexion et réessayez."
+      }
+    }
   }
 }
