@@ -34,7 +34,6 @@ export default async function SuiviPage({ params }: { params: Promise<{ token: s
             <p className="text-3xl font-extrabold tabular-nums">{formatMoney(dp.amount ?? 0, "XOF", locale)}</p>
             <p className="text-muted-foreground">
               {t("forBeneficiary", { name: dp.beneficiary_name ?? "" })}
-              {dp.reference_hint ? ` · ${t("track.reference", { hint: dp.reference_hint })}` : ""}
             </p>
           </Card>
           <Card>
