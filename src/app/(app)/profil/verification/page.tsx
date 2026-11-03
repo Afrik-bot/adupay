@@ -27,7 +27,7 @@ export default async function VerificationPage() {
       {step === "done" ? (
         <p>{t("done")}</p>
       ) : waiting ? (
-        <p className="rounded-xl border bg-card p-5">{t("form.alreadyPending")}</p>
+        <p className="rounded-xl border bg-card p-5">{t("pendingNotice")}</p>
       ) : (
         <VerificationForm userId={profile.id} step={step} residentAbroad={profile.user_type === "diaspora"} />
       )}
