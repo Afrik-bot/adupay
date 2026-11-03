@@ -44,6 +44,8 @@ export interface PaymentProvider {
   collect(request: RailRequest): Promise<RailResult>;
   payout(request: RailRequest): Promise<RailResult>;
   getStatus(providerRef: string): Promise<Omit<RailResult, "providerRef">>;
+  /** Checks an external wallet or bank account exists and can be debited/credited. */
+  verifyAccount(account: RailRequest["account"]): Promise<{ ok: true } | { ok: false; reason: string }>;
   /** Verifies the signature and parses the body. Throws InvalidWebhookError. */
   handleWebhook(rawBody: string, headers: Headers): Promise<WebhookEvent>;
 }

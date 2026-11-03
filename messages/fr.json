@@ -13,7 +13,40 @@
   },
   "home": {
     "title": "Accueil",
-    "placeholder": "Votre solde, vos échéances de tontine et vos dernières opérations apparaîtront ici."
+    "placeholder": "Votre solde, vos échéances de tontine et vos dernières opérations apparaîtront ici.",
+    "greeting": {
+      "morning": "Bonjour {name}",
+      "evening": "Bonsoir {name}"
+    },
+    "balance": "Solde AduPay",
+    "quickActions": "Actions rapides",
+    "actions": {
+      "payTontine": "Payer ma tontine",
+      "payFor": "Payer pour",
+      "send": "Envoyer",
+      "save": "Épargner"
+    },
+    "linkWallet": "Liez votre portefeuille mobile",
+    "linkWalletHint": "Orange Money, MTN MoMo, Moov Money, Wave ou banque.",
+    "dues": "Prochaines cotisations",
+    "noDues": "Aucune cotisation à venir. Rejoignez ou créez une tontine.",
+    "dueOn": "Tour {cycle} · à payer avant le {date}",
+    "duePaid": "Tour {cycle} · payé",
+    "transactions": "Dernières opérations",
+    "noTransactions": "Vos opérations apparaîtront ici.",
+    "tx": {
+      "contribution": "Cotisation tontine",
+      "topup": "Rechargement",
+      "payFor": "Payer pour",
+      "potReceived": "Cagnotte reçue",
+      "received": "Argent reçu",
+      "paid": "Paiement"
+    },
+    "status": {
+      "succeeded": "Réussi",
+      "pending": "En attente",
+      "failed": "Échoué"
+    }
   },
   "tontines": {
     "title": "Tontines",
@@ -310,5 +343,51 @@
         "generic": "L’envoi a échoué. Vérifiez votre connexion et réessayez."
       }
     }
+  },
+  "accounts": {
+    "title": "Comptes liés",
+    "lead": "Les portefeuilles et comptes depuis lesquels vous payez et recevez.",
+    "back": "Retour au profil",
+    "empty": "Aucun compte lié pour l’instant.",
+    "default": "Par défaut",
+    "verified": "Compte vérifié",
+    "makeDefault": "Choisir par défaut",
+    "remove": "Retirer",
+    "add": "Lier un compte",
+    "provider": "Type de compte",
+    "providers": {
+      "orange_money": "Orange Money",
+      "mtn_momo": "MTN MoMo",
+      "moov_money": "Moov Money",
+      "wave": "Wave",
+      "bank": "Compte bancaire"
+    },
+    "number": "Numéro du portefeuille",
+    "numberHint": {
+      "orange_money": "Numéro Orange, commençant par 07.",
+      "mtn_momo": "Numéro MTN, commençant par 05.",
+      "moov_money": "Numéro Moov, commençant par 01.",
+      "wave": "Le numéro associé à votre compte Wave."
+    },
+    "iban": "IBAN",
+    "ibanHint": "28 caractères, par exemple CI93 CI00 8011 ….",
+    "label": "Nom du compte (facultatif)",
+    "labelHint": "Par exemple « Mon Orange perso » ou « Boutique ».",
+    "submit": "Vérifier et lier",
+    "verifying": "Vérification…",
+    "linked": "Compte vérifié et lié.",
+    "errors": {
+      "invalidNumber": "Ce numéro n’est pas un numéro mobile ivoirien valide.",
+      "wrongNetwork": "Ce numéro appartient à un autre opérateur.",
+      "invalidIban": "IBAN invalide. Vérifiez les 28 caractères.",
+      "duplicate": "Ce compte est déjà lié.",
+      "verificationFailed": "Compte introuvable chez l’opérateur. Vérifiez le numéro.",
+      "label": "Nom trop long (40 caractères maximum).",
+      "generic": "Une erreur s’est produite. Réessayez."
+    }
+  },
+  "send": {
+    "title": "Envoyer",
+    "placeholder": "Bientôt : envoyez gratuitement vers tout portefeuille ou compte de l’UEMOA."
   }
 }

@@ -1,5 +1,6 @@
+import Link from "next/link";
 import { getLocale, getTranslations } from "next-intl/server";
-import { LogOut } from "lucide-react";
+import { ChevronRight, LogOut, Wallet } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { formatE164 } from "@/lib/phone";
@@ -14,6 +15,7 @@ export default async function ProfilPage() {
   const user = await getSessionUser();
   const t = await getTranslations("profile");
   const auth = await getTranslations("auth");
+  const accountsT = await getTranslations("accounts");
   const locale = await getLocale();
   const supabase = await createClient();
 
@@ -43,6 +45,16 @@ export default async function ProfilPage() {
           </p>
         )}
       </Card>
+      <Link
+        href="/profil/comptes"
+        className="flex min-h-16 items-center justify-between gap-3 rounded-xl border bg-card p-5 font-semibold hover:bg-muted"
+      >
+        <span className="flex items-center gap-3">
+          <Wallet aria-hidden className="size-6" />
+          {accountsT("title")}
+        </span>
+        <ChevronRight aria-hidden className="size-5" />
+      </Link>
       <KycCard
         tier={status?.kyc_tier ?? profile.kyc_tier}
         limit={status?.daily_limit_xof ?? 0}

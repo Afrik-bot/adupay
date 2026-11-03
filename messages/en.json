@@ -13,7 +13,40 @@
   },
   "home": {
     "title": "Home",
-    "placeholder": "Your balance, upcoming tontine dues and latest transactions will appear here."
+    "placeholder": "Your balance, upcoming tontine dues and latest transactions will appear here.",
+    "greeting": {
+      "morning": "Hello {name}",
+      "evening": "Good evening {name}"
+    },
+    "balance": "AduPay balance",
+    "quickActions": "Quick actions",
+    "actions": {
+      "payTontine": "Pay my tontine",
+      "payFor": "Pay for",
+      "send": "Send",
+      "save": "Save"
+    },
+    "linkWallet": "Link your mobile wallet",
+    "linkWalletHint": "Orange Money, MTN MoMo, Moov Money, Wave or a bank.",
+    "dues": "Upcoming contributions",
+    "noDues": "No contributions due. Join or start a tontine.",
+    "dueOn": "Round {cycle} · due by {date}",
+    "duePaid": "Round {cycle} · paid",
+    "transactions": "Recent activity",
+    "noTransactions": "Your transactions will appear here.",
+    "tx": {
+      "contribution": "Tontine contribution",
+      "topup": "Top-up",
+      "payFor": "Pay for",
+      "potReceived": "Pot received",
+      "received": "Money received",
+      "paid": "Payment"
+    },
+    "status": {
+      "succeeded": "Succeeded",
+      "pending": "Pending",
+      "failed": "Failed"
+    }
   },
   "tontines": {
     "title": "Tontines",
@@ -310,5 +343,51 @@
         "generic": "Upload failed. Check your connection and try again."
       }
     }
+  },
+  "accounts": {
+    "title": "Linked accounts",
+    "lead": "The wallets and accounts you pay from and receive into.",
+    "back": "Back to profile",
+    "empty": "No linked accounts yet.",
+    "default": "Default",
+    "verified": "Account verified",
+    "makeDefault": "Make default",
+    "remove": "Remove",
+    "add": "Link an account",
+    "provider": "Account type",
+    "providers": {
+      "orange_money": "Orange Money",
+      "mtn_momo": "MTN MoMo",
+      "moov_money": "Moov Money",
+      "wave": "Wave",
+      "bank": "Bank account"
+    },
+    "number": "Wallet number",
+    "numberHint": {
+      "orange_money": "Orange number, starting with 07.",
+      "mtn_momo": "MTN number, starting with 05.",
+      "moov_money": "Moov number, starting with 01.",
+      "wave": "The number linked to your Wave account."
+    },
+    "iban": "IBAN",
+    "ibanHint": "28 characters, for example CI93 CI00 8011 ….",
+    "label": "Account name (optional)",
+    "labelHint": "For example “My Orange” or “Shop”.",
+    "submit": "Verify and link",
+    "verifying": "Verifying…",
+    "linked": "Account verified and linked.",
+    "errors": {
+      "invalidNumber": "This isn’t a valid Ivorian mobile number.",
+      "wrongNetwork": "This number belongs to a different network.",
+      "invalidIban": "Invalid IBAN. Check all 28 characters.",
+      "duplicate": "This account is already linked.",
+      "verificationFailed": "The operator couldn’t find this account. Check the number.",
+      "label": "Name too long (40 characters maximum).",
+      "generic": "Something went wrong. Please try again."
+    }
+  },
+  "send": {
+    "title": "Send",
+    "placeholder": "Coming soon: send for free to any wallet or bank account in the WAEMU."
   }
 }

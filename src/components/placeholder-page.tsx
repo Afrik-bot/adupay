@@ -2,7 +2,7 @@ import { getTranslations } from "next-intl/server";
 import { Card, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 
 /** Shared body for tabs whose real screens arrive in later phases. */
-export async function PlaceholderPage({ section }: { section: "home" | "tontines" | "payFor" | "savings" | "profile" }) {
+export async function PlaceholderPage({ section }: { section: "home" | "tontines" | "payFor" | "savings" | "profile" | "send" }) {
   const t = await getTranslations(section);
   const common = await getTranslations("common");
   return (

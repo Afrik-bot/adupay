@@ -3,7 +3,7 @@ import { createServerClient } from "@supabase/ssr";
 
 // App sections that need a signed-in user. The layout re-checks on the server;
 // this is only the fast, cookie-based first pass.
-const PROTECTED = ["/accueil", "/tontines", "/payer-pour", "/epargne", "/profil", "/bienvenue"];
+const PROTECTED = ["/accueil", "/tontines", "/payer-pour", "/epargne", "/profil", "/envoyer", "/bienvenue"];
 
 export async function proxy(request: NextRequest) {
   let response = NextResponse.next({ request });

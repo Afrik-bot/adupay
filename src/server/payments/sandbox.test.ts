@@ -120,6 +120,15 @@ describe("SandboxProvider", () => {
     await expect(provider.handleWebhook(body, sign(SECRET, body))).resolves.toMatchObject({ status: "succeeded" });
   });
 
+  it("verifyAccount rejects the 9992 demo account and accepts others", async () => {
+    const provider = new SandboxProvider({ secret: SECRET });
+    await expect(provider.verifyAccount({ provider: "wave", ref: "+2250700009992" })).resolves.toEqual({
+      ok: false,
+      reason: "ACCOUNT_NOT_FOUND",
+    });
+    await expect(provider.verifyAccount({ provider: "wave", ref: "+2250700000001" })).resolves.toEqual({ ok: true });
+  });
+
   it("refuses a weak secret", () => {
     expect(() => new SandboxProvider({ secret: "short" })).toThrow(/16 characters/);
   });

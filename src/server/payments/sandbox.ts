@@ -109,6 +109,13 @@ export class SandboxProvider implements PaymentProvider {
     return this.start(request);
   }
 
+  async verifyAccount(account: RailRequest["account"]): Promise<{ ok: true } | { ok: false; reason: string }> {
+    // Same demo convention as payments: an account ending 9992 does not exist.
+    return SANDBOX_TEST_ACCOUNTS[account.ref.slice(-4)] === "failure"
+      ? { ok: false, reason: "ACCOUNT_NOT_FOUND" }
+      : { ok: true };
+  }
+
   async getStatus(providerRef: string): Promise<Omit<RailResult, "providerRef">> {
     return statusAt(decodeRef(providerRef), this.now());
   }
