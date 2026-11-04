@@ -1097,5 +1097,133 @@
       "payoutAudit": "Chaque changement de compte de versement est enregistré dans le journal d’audit d’AduPay.",
       "error": "Une erreur s’est produite. Réessayez."
     }
+  },
+  "admin": {
+    "badge": "Admin",
+    "nav": {
+      "label": "Navigation admin",
+      "dashboard": "Tableau de bord",
+      "kyc": "KYC",
+      "kyb": "KYB bénéficiaires",
+      "transactions": "Transactions",
+      "risks": "Risques",
+      "fx": "Taux et frais",
+      "audit": "Journal d’audit"
+    },
+    "kpis": {
+      "title": "Tableau de bord",
+      "activeTontines": "Tontines actives",
+      "members": "{count, plural, =0 {aucun membre} one {# membre} other {# membres}}",
+      "onTimeRate": "Cotisations à l’heure",
+      "onTimeHint": "sur {paid} cotisations payées",
+      "avgAllIn": "Coût total moyen",
+      "avgAllInHint": "Payer pour, frais + marge de change",
+      "openCases": "Cas de risque ouverts",
+      "pendingKyc": "KYC en attente",
+      "pendingKyb": "KYB en attente",
+      "corridors": "Volume Payer pour par corridor",
+      "corridor": "Corridor",
+      "count": "Paiements",
+      "volume": "Volume",
+      "noCorridors": "Aucun paiement Payer pour pour le moment."
+    },
+    "decision": {
+      "reasonLabel": "Motif (obligatoire pour un refus)",
+      "reasonPlaceholder": "Expliquez votre décision",
+      "approve": "Approuver",
+      "reject": "Refuser",
+      "confirmReject": "Confirmer le refus",
+      "cancel": "Annuler"
+    },
+    "kyc": {
+      "title": "Vérifications d’identité",
+      "lead": "{count, plural, =0 {Aucun dossier en attente} one {# dossier en attente} other {# dossiers en attente}}",
+      "empty": "Rien à vérifier pour le moment.",
+      "tier": "Niveau {tier}",
+      "forTier": "pour le niveau {tier}",
+      "idLast4": "n° se terminant par {last4}",
+      "view": "Voir le document",
+      "sanctionsWarning": "Attention : ce nom correspond à la liste de sanctions. Vérifiez le cas dans Risques avant d’approuver."
+    },
+    "kyb": {
+      "title": "Vérification des bénéficiaires",
+      "lead": "{count, plural, =0 {Aucun dossier en attente} one {# dossier en attente} other {# dossiers en attente}}",
+      "empty": "Aucun bénéficiaire à vérifier.",
+      "submitted": "Soumis le {date}",
+      "sanctionsWarning": "Attention : ce nom correspond à la liste de sanctions. Les versements sont bloqués.",
+      "docs": {
+        "rccm": "Registre du commerce (RCCM)",
+        "manager_id": "Pièce d’identité du gérant",
+        "other": "Autre document"
+      }
+    },
+    "transactions": {
+      "title": "Recherche de transactions",
+      "search": "Rechercher",
+      "placeholder": "Référence, nom ou téléphone",
+      "status": "Statut",
+      "allStatuses": "Tous les statuts",
+      "submit": "Rechercher",
+      "count": "{count, plural, =0 {Aucun résultat} one {# résultat} other {# résultats}}",
+      "date": "Date",
+      "who": "Client",
+      "what": "Type",
+      "amount": "Montant",
+      "reference": "Référence",
+      "system": "Système",
+      "directions": {
+        "collect": "Encaissement",
+        "payout": "Versement"
+      }
+    },
+    "risks": {
+      "title": "Cas de risque",
+      "filter": "Filtrer par statut",
+      "toHandle": "À traiter",
+      "empty": "Aucun cas dans cette vue.",
+      "statuses": {
+        "open": "Ouvert",
+        "reviewing": "En examen",
+        "escalated": "Escaladé",
+        "closed": "Clos"
+      },
+      "severity": {
+        "high": "Élevé",
+        "medium": "Moyen",
+        "low": "Faible"
+      },
+      "kinds": {
+        "velocity_1h": "Plus de 5 paiements en 1 heure",
+        "kyc_limit_exceeded": "Paiement au-dessus de la limite du niveau",
+        "new_payees_day": "Beaucoup de nouveaux bénéficiaires en un jour",
+        "sanctions_hit": "Correspondance liste de sanctions"
+      },
+      "subject": "Client : {name}",
+      "newStatus": "Nouveau statut",
+      "note": "Note",
+      "notePlaceholder": "Note obligatoire (ce que vous avez vérifié)",
+      "save": "Enregistrer",
+      "saved": "Enregistré.",
+      "falsePositive": "Faux positif : lever le blocage sanctions"
+    },
+    "fx": {
+      "title": "Taux de change et frais",
+      "lead": "Ces valeurs s’appliquent aux nouveaux paiements Payer pour. Chaque modification est inscrite au journal d’audit.",
+      "updated": "Mis à jour le {date}",
+      "rate": "FCFA pour 1 {currency}",
+      "fee": "Frais (%)",
+      "margin": "Marge de change (%)",
+      "save": "Enregistrer",
+      "saved": "Taux enregistré.",
+      "note": "Taux de bac à sable. En production, le taux vient du partenaire agréé."
+    },
+    "audit": {
+      "title": "Journal d’audit",
+      "lead": "Lecture seule. Chaque action admin y est inscrite et ne peut être ni modifiée ni supprimée.",
+      "filter": "Filtrer par action",
+      "submit": "Filtrer",
+      "system": "Système",
+      "empty": "Aucune entrée."
+    }
   }
 }

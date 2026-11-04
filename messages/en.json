@@ -1097,5 +1097,133 @@
       "payoutAudit": "Every payout account change is recorded in AduPay’s audit log.",
       "error": "Something went wrong. Please try again."
     }
+  },
+  "admin": {
+    "badge": "Admin",
+    "nav": {
+      "label": "Admin navigation",
+      "dashboard": "Dashboard",
+      "kyc": "KYC",
+      "kyb": "Payee KYB",
+      "transactions": "Transactions",
+      "risks": "Risk",
+      "fx": "Rates and fees",
+      "audit": "Audit log"
+    },
+    "kpis": {
+      "title": "Dashboard",
+      "activeTontines": "Active tontines",
+      "members": "{count, plural, =0 {no members} one {# member} other {# members}}",
+      "onTimeRate": "On-time contributions",
+      "onTimeHint": "of {paid} paid contributions",
+      "avgAllIn": "Average all-in cost",
+      "avgAllInHint": "Payer pour, fees + FX margin",
+      "openCases": "Open risk cases",
+      "pendingKyc": "Pending KYC",
+      "pendingKyb": "Pending KYB",
+      "corridors": "Payer pour volume by corridor",
+      "corridor": "Corridor",
+      "count": "Payments",
+      "volume": "Volume",
+      "noCorridors": "No Payer pour payments yet."
+    },
+    "decision": {
+      "reasonLabel": "Reason (required to reject)",
+      "reasonPlaceholder": "Explain your decision",
+      "approve": "Approve",
+      "reject": "Reject",
+      "confirmReject": "Confirm rejection",
+      "cancel": "Cancel"
+    },
+    "kyc": {
+      "title": "Identity checks",
+      "lead": "{count, plural, =0 {No pending files} one {# pending file} other {# pending files}}",
+      "empty": "Nothing to review right now.",
+      "tier": "Tier {tier}",
+      "forTier": "for tier {tier}",
+      "idLast4": "no. ending {last4}",
+      "view": "View document",
+      "sanctionsWarning": "Warning: this name matches the sanctions list. Check the case under Risk before approving."
+    },
+    "kyb": {
+      "title": "Payee verification",
+      "lead": "{count, plural, =0 {No pending files} one {# pending file} other {# pending files}}",
+      "empty": "No payees to review.",
+      "submitted": "Submitted {date}",
+      "sanctionsWarning": "Warning: this name matches the sanctions list. Payouts are blocked.",
+      "docs": {
+        "rccm": "Trade register (RCCM)",
+        "manager_id": "Manager’s ID",
+        "other": "Other document"
+      }
+    },
+    "transactions": {
+      "title": "Transaction search",
+      "search": "Search",
+      "placeholder": "Reference, name or phone",
+      "status": "Status",
+      "allStatuses": "All statuses",
+      "submit": "Search",
+      "count": "{count, plural, =0 {No results} one {# result} other {# results}}",
+      "date": "Date",
+      "who": "Customer",
+      "what": "Type",
+      "amount": "Amount",
+      "reference": "Reference",
+      "system": "System",
+      "directions": {
+        "collect": "Collection",
+        "payout": "Payout"
+      }
+    },
+    "risks": {
+      "title": "Risk cases",
+      "filter": "Filter by status",
+      "toHandle": "To handle",
+      "empty": "No cases in this view.",
+      "statuses": {
+        "open": "Open",
+        "reviewing": "Reviewing",
+        "escalated": "Escalated",
+        "closed": "Closed"
+      },
+      "severity": {
+        "high": "High",
+        "medium": "Medium",
+        "low": "Low"
+      },
+      "kinds": {
+        "velocity_1h": "More than 5 payments in 1 hour",
+        "kyc_limit_exceeded": "Payment above tier limit",
+        "new_payees_day": "Many new payees in one day",
+        "sanctions_hit": "Sanctions list match"
+      },
+      "subject": "Customer: {name}",
+      "newStatus": "New status",
+      "note": "Note",
+      "notePlaceholder": "Required note (what you checked)",
+      "save": "Save",
+      "saved": "Saved.",
+      "falsePositive": "False positive: lift the sanctions hold"
+    },
+    "fx": {
+      "title": "Exchange rates and fees",
+      "lead": "These values apply to new Payer pour payments. Every change is written to the audit log.",
+      "updated": "Updated {date}",
+      "rate": "FCFA per 1 {currency}",
+      "fee": "Fee (%)",
+      "margin": "FX margin (%)",
+      "save": "Save",
+      "saved": "Rate saved.",
+      "note": "Sandbox rates. In production, the rate comes from the licensed partner."
+    },
+    "audit": {
+      "title": "Audit log",
+      "lead": "Read-only. Every admin action is recorded here and cannot be edited or deleted.",
+      "filter": "Filter by action",
+      "submit": "Filter",
+      "system": "System",
+      "empty": "No entries."
+    }
   }
 }

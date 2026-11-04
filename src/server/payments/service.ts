@@ -49,17 +49,34 @@ export class PaymentService {
       throw new RangeError("amount must be a positive integer in minor units");
     }
 
-    const payment = await this.db.rpc<PaymentRow>("create_payment", {
-      p_idempotency_key: input.idempotencyKey,
-      p_user_id: input.userId,
-      p_direction: input.direction,
-      p_provider: this.provider.name,
-      p_amount: input.amount,
-      p_currency: input.currency,
-      p_ledger_account_id: input.ledgerAccountId,
-      p_purpose_type: input.purposeType ?? null,
-      p_purpose_id: input.purposeId ?? null,
-    });
+    let payment: PaymentRow;
+    try {
+      payment = await this.db.rpc<PaymentRow>("create_payment", {
+        p_idempotency_key: input.idempotencyKey,
+        p_user_id: input.userId,
+        p_direction: input.direction,
+        p_provider: this.provider.name,
+        p_amount: input.amount,
+        p_currency: input.currency,
+        p_ledger_account_id: input.ledgerAccountId,
+        p_purpose_type: input.purposeType ?? null,
+        p_purpose_id: input.purposeId ?? null,
+      });
+    } catch (error) {
+      // Monitoring rule: payments above the KYC limit. The refusal rolled its own
+      // transaction back, so the attempt is recorded here, separately.
+      if (input.userId && error instanceof Error && error.message.includes("kyc_daily_limit")) {
+        await this.db
+          .rpc("record_limit_breach", {
+            p_user_id: input.userId,
+            p_amount: input.amount,
+            p_currency: input.currency,
+            p_context: input.purposeType ?? input.direction,
+          })
+          .catch((recordError) => console.error("could not record limit breach", recordError));
+      }
+      throw error;
+    }
 
     // A retry of a request that already reached the rail: do not call it again.
     if (payment.provider_ref) return payment;
