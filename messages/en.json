@@ -1425,7 +1425,7 @@
       "awaiting_payment": "Payment",
       "queued": "Queued",
       "sending": "Sending",
-      "pending": "Sending",
+      "pending": "With the network",
       "succeeded": "Received",
       "failed": "Failed"
     },

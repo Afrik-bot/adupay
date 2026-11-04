@@ -35,7 +35,9 @@ export async function buyTopup(input: {
 }): Promise<{ error: TopupError | "tooMany" } | void> {
   const user = await requireUser();
   if (!(await allow("payment", user.id))) return { error: "tooMany" };
-  const e164 = toE164(input.number, "CI");
+  // The wizard sends 225 + 10 digits; typed numbers may also come as "07 …".
+  const raw = digits(input.number);
+  const e164 = /^225\d{10}$/.test(raw) ? `+${raw}` : toE164(input.number, "CI");
   if (!e164 || !/^225\d{10}$/.test(digits(e164))) return { error: "invalidNumber" };
   if (!OPERATORS.includes(input.operator as Operator) || !["balance", "mobile_money", "card"].includes(input.payWith)) return { error: "generic" };
   if (!isCurrency(input.currency) || !/^[0-9a-f-]{36}$/.test(input.productId) || !/^[0-9a-f-]{36}$/.test(input.requestKey)) return { error: "generic" };

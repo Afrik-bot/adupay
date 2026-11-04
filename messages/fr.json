@@ -1425,7 +1425,7 @@
       "awaiting_payment": "Paiement",
       "queued": "En file",
       "sending": "Envoi",
-      "pending": "Envoi",
+      "pending": "Chez l’opérateur",
       "succeeded": "Reçu",
       "failed": "Échec"
     },
