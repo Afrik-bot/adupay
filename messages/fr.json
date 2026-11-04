@@ -1225,5 +1225,85 @@
       "system": "Système",
       "empty": "Aucune entrée."
     }
+  },
+  "notifications": {
+    "title": "Notifications",
+    "lead": "Vos rappels et confirmations, tels qu’envoyés par WhatsApp ou SMS.",
+    "simulated": "Simulation : ces messages ne partent pas encore vraiment par WhatsApp ou SMS. Ils s’affichent ici.",
+    "empty": "Aucun message pour le moment.",
+    "markRead": "Tout marquer comme lu",
+    "bell": "{count, plural, =0 {Notifications} one {Notifications, # non lue} other {Notifications, # non lues}}",
+    "unread": "Nouveau",
+    "filters": {
+      "label": "Canal",
+      "all": "Tous",
+      "whatsapp": "WhatsApp",
+      "sms": "SMS"
+    },
+    "channels": {
+      "whatsapp": "WhatsApp",
+      "sms": "SMS",
+      "in_app": "AduPay",
+      "ussd": "USSD"
+    },
+    "delivery": {
+      "queued": "En attente d’envoi",
+      "sending": "Envoi en cours",
+      "sent": "Envoyé",
+      "failed": "Échec d’envoi",
+      "in_app": "Dans l’app"
+    },
+    "templates": {
+      "contribution_due": "AduPay : rappel, votre cotisation de {amount} pour « {group} » (tour {cycle}) est due le {date}. Payez dans l’app ou composez *123#.",
+      "contribution_late": "AduPay : votre cotisation pour « {group} » (tour {cycle}) est en retard. Vous avez jusqu’au {date} avant la pénalité.",
+      "contribution_received": "AduPay : nous avons bien reçu {amount} pour « {group} » (tour {cycle}). Merci !",
+      "manual_reminder": "AduPay : votre gestionnaire vous rappelle la cotisation de {amount} pour « {group} » (tour {cycle}), due le {date}.",
+      "pot_paid_out": "AduPay : la cagnotte de « {group} » (tour {cycle}) a été versée : {amount} sur votre compte.",
+      "payout_needs_account": "AduPay : votre cagnotte « {group} » de {amount} vous attend. Ajoutez un compte de réception vérifié dans l’app.",
+      "payer_pour_delivered": "AduPay : votre paiement de {amount} pour {beneficiary} est arrivé chez {payee}. Nous vous préviendrons dès leur confirmation.",
+      "payee_confirmed": "AduPay : {payee} confirme avoir reçu {amount} pour {beneficiary}.",
+      "fallback": "AduPay : vous avez un nouveau message dans l’app."
+    }
+  },
+  "ussd": {
+    "main": "AduPay\n1. Solde\n2. Payer ma tontine\n3. Mes tontines\n4. Langue",
+    "balance": "Votre solde : {amount}",
+    "nothingDue": "Aucune cotisation à payer. Merci !",
+    "chooseDue": "Quelle cotisation ?",
+    "confirm": "Payer {amount} pour {group} (tour {cycle}) depuis votre compte par défaut ?\n1. Confirmer\n2. Annuler",
+    "paid": "Paiement de {amount} pour {group} lancé. Vous recevrez une confirmation par message.",
+    "cancelled": "Paiement annulé.",
+    "tontinesTitle": "Mes tontines :",
+    "tontineDue": "{group} : {amount} avant le {date}",
+    "tontinePaid": "{group} : payé (tour {cycle})",
+    "tontineIdle": "{group} : pas de tour en cours",
+    "noTontines": "Vous n’êtes dans aucune tontine.",
+    "language": "Langue / Language\n1. Français\n2. English",
+    "languageSet": "Langue : français.",
+    "back": "0. Retour",
+    "invalid": "Choix invalide. Recomposez *123#.",
+    "errors": {
+      "notMember": "Vous n’êtes pas membre de cette tontine.",
+      "notStarted": "Aucun tour en cours pour cette tontine.",
+      "alreadyPaid": "Cette cotisation est déjà payée.",
+      "noAccount": "Ajoutez d’abord un compte Mobile Money dans l’app.",
+      "relinkAccount": "Reliez à nouveau votre compte Mobile Money dans l’app.",
+      "kycRequired": "Vérifiez votre identité dans l’app pour payer.",
+      "kycLimit": "Limite du jour atteinte pour votre niveau.",
+      "generic": "Une erreur s’est produite. Réessayez plus tard."
+    }
+  },
+  "ussdSim": {
+    "title": "Simulateur USSD",
+    "lead": "Ce menu fonctionne sur tout téléphone, sans internet, en composant *123#. Ici, il utilise votre vrai compte AduPay (bac à sable).",
+    "dial": "Composer *123#",
+    "answer": "Votre réponse",
+    "send": "Envoyer",
+    "hangUp": "Raccrocher",
+    "ended": "Session terminée.",
+    "redial": "Recomposer",
+    "hint": "Tapez le numéro du choix. 0 = retour, 00 = menu principal.",
+    "link": "Simulateur USSD *123#",
+    "error": "Le réseau ne répond pas. Réessayez."
   }
 }

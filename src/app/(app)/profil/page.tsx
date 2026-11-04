@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { getLocale, getTranslations } from "next-intl/server";
-import { ChevronRight, LogOut, Wallet } from "lucide-react";
+import { ChevronRight, LogOut, Phone, Wallet } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { formatE164 } from "@/lib/phone";
@@ -16,6 +16,7 @@ export default async function ProfilPage() {
   const t = await getTranslations("profile");
   const auth = await getTranslations("auth");
   const accountsT = await getTranslations("accounts");
+  const ussdT = await getTranslations("ussdSim");
   const locale = await getLocale();
   const supabase = await createClient();
 
@@ -52,6 +53,16 @@ export default async function ProfilPage() {
         <span className="flex items-center gap-3">
           <Wallet aria-hidden className="size-6" />
           {accountsT("title")}
+        </span>
+        <ChevronRight aria-hidden className="size-5" />
+      </Link>
+      <Link
+        href="/ussd"
+        className="flex min-h-16 items-center justify-between gap-3 rounded-xl border bg-card p-5 font-semibold hover:bg-muted"
+      >
+        <span className="flex items-center gap-3">
+          <Phone aria-hidden className="size-6" />
+          {ussdT("link")}
         </span>
         <ChevronRight aria-hidden className="size-5" />
       </Link>

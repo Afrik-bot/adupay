@@ -15,4 +15,5 @@ export const serverEnv = {
   kycIdPepper: () => required("KYC_ID_PEPPER"),
   appUrl: () => process.env.APP_URL ?? "http://localhost:3000",
   paymentProvider: () => process.env.PAYMENT_PROVIDER ?? "sandbox",
+  notificationProvider: () => process.env.NOTIFICATION_PROVIDER ?? "simulated",
 };

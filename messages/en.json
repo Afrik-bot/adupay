@@ -1225,5 +1225,85 @@
       "system": "System",
       "empty": "No entries."
     }
+  },
+  "notifications": {
+    "title": "Notifications",
+    "lead": "Your reminders and confirmations, as sent by WhatsApp or SMS.",
+    "simulated": "Simulation: these messages are not really sent by WhatsApp or SMS yet. They appear here.",
+    "empty": "No messages yet.",
+    "markRead": "Mark all as read",
+    "bell": "{count, plural, =0 {Notifications} one {Notifications, # unread} other {Notifications, # unread}}",
+    "unread": "New",
+    "filters": {
+      "label": "Channel",
+      "all": "All",
+      "whatsapp": "WhatsApp",
+      "sms": "SMS"
+    },
+    "channels": {
+      "whatsapp": "WhatsApp",
+      "sms": "SMS",
+      "in_app": "AduPay",
+      "ussd": "USSD"
+    },
+    "delivery": {
+      "queued": "Waiting to send",
+      "sending": "Sending",
+      "sent": "Sent",
+      "failed": "Not delivered",
+      "in_app": "In the app"
+    },
+    "templates": {
+      "contribution_due": "AduPay: reminder, your {amount} contribution to “{group}” (round {cycle}) is due on {date}. Pay in the app or dial *123#.",
+      "contribution_late": "AduPay: your contribution to “{group}” (round {cycle}) is late. You have until {date} before the penalty.",
+      "contribution_received": "AduPay: we received {amount} for “{group}” (round {cycle}). Thank you!",
+      "manual_reminder": "AduPay: your manager reminds you that the {amount} contribution to “{group}” (round {cycle}) is due on {date}.",
+      "pot_paid_out": "AduPay: the “{group}” pot (round {cycle}) has been paid out: {amount} to your account.",
+      "payout_needs_account": "AduPay: your {amount} pot from “{group}” is waiting. Add a verified payout account in the app.",
+      "payer_pour_delivered": "AduPay: your {amount} payment for {beneficiary} has reached {payee}. We will tell you as soon as they confirm.",
+      "payee_confirmed": "AduPay: {payee} confirms receiving {amount} for {beneficiary}.",
+      "fallback": "AduPay: you have a new message in the app."
+    }
+  },
+  "ussd": {
+    "main": "AduPay\n1. Balance\n2. Pay my tontine\n3. My tontines\n4. Language",
+    "balance": "Your balance: {amount}",
+    "nothingDue": "No contributions to pay. Thank you!",
+    "chooseDue": "Which contribution?",
+    "confirm": "Pay {amount} to {group} (round {cycle}) from your default account?\n1. Confirm\n2. Cancel",
+    "paid": "Payment of {amount} to {group} started. You will get a confirmation message.",
+    "cancelled": "Payment cancelled.",
+    "tontinesTitle": "My tontines:",
+    "tontineDue": "{group}: {amount} by {date}",
+    "tontinePaid": "{group}: paid (round {cycle})",
+    "tontineIdle": "{group}: no round running",
+    "noTontines": "You are not in any tontine.",
+    "language": "Langue / Language\n1. Français\n2. English",
+    "languageSet": "Language: English.",
+    "back": "0. Back",
+    "invalid": "Invalid choice. Dial *123# again.",
+    "errors": {
+      "notMember": "You are not a member of this tontine.",
+      "notStarted": "No round is running for this tontine.",
+      "alreadyPaid": "This contribution is already paid.",
+      "noAccount": "First add a Mobile Money account in the app.",
+      "relinkAccount": "Link your Mobile Money account again in the app.",
+      "kycRequired": "Verify your identity in the app to pay.",
+      "kycLimit": "Daily limit reached for your tier.",
+      "generic": "Something went wrong. Try again later."
+    }
+  },
+  "ussdSim": {
+    "title": "USSD simulator",
+    "lead": "This menu works on any phone, without internet, by dialling *123#. Here it uses your real AduPay account (sandbox).",
+    "dial": "Dial *123#",
+    "answer": "Your answer",
+    "send": "Send",
+    "hangUp": "Hang up",
+    "ended": "Session ended.",
+    "redial": "Dial again",
+    "hint": "Type the number of your choice. 0 = back, 00 = main menu.",
+    "link": "USSD simulator *123#",
+    "error": "The network is not answering. Try again."
   }
 }

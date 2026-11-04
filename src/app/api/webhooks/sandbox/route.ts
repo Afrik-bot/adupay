@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
 import { adminDb } from "@/lib/supabase/admin";
 import { deliverDirectedPayments } from "@/server/directed-payments";
+import { sendNotificationsSoon } from "@/server/notifications";
 import { getPaymentService } from "@/server/payments";
 import { InvalidWebhookError } from "@/server/payments/types";
 
@@ -17,6 +18,8 @@ export async function POST(request: Request) {
     if (payment.purpose_type === "directed_payment" && payment.status === "succeeded") {
       await deliverDirectedPayments(adminDb(), service).catch((error) => console.error("directed delivery failed", error));
     }
+    // "Contribution received", "Payer pour delivered"... go out after the response.
+    sendNotificationsSoon();
     return NextResponse.json({ ok: true, status: payment.status });
   } catch (error) {
     if (error instanceof InvalidWebhookError) {

@@ -7,6 +7,7 @@ import { toE164 } from "@/lib/phone";
 import { createAdminClient } from "@/lib/supabase/admin";
 import { createClient } from "@/lib/supabase/server";
 import { getSessionUser } from "@/server/auth";
+import { sendNotificationsSoon } from "@/server/notifications";
 import { getPaymentProvider } from "@/server/payments";
 
 const CATEGORIES = ["school", "clinic", "pharmacy", "utility", "landlord"] as const;
@@ -106,6 +107,7 @@ export async function confirmReceipt(directedPaymentId: string): Promise<{ error
   const supabase = await createClient();
   const { error } = await supabase.rpc("confirm_directed_payment", { p_directed_payment_id: directedPaymentId });
   if (error) return { error: error.message.includes("not_received_yet") ? "notReceived" : "generic" };
+  sendNotificationsSoon();
   revalidatePath("/payee");
 }
 

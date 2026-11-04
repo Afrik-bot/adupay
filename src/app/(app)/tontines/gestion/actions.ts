@@ -4,6 +4,7 @@ import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
 import { createClient } from "@/lib/supabase/server";
 import { getSessionUser } from "@/server/auth";
+import { sendNotificationsSoon } from "@/server/notifications";
 
 async function managerClient() {
   if (!(await getSessionUser())) redirect("/connexion");
@@ -15,6 +16,7 @@ export async function sendReminders(groupId: string, channel: "whatsapp" | "sms"
   const supabase = await managerClient();
   const { data, error } = await supabase.rpc("send_group_reminders", { p_group_id: groupId, p_channel: channel });
   if (error) return { error: true };
+  sendNotificationsSoon();
   revalidatePath("/tontines/gestion");
   return { sent: data ?? 0 };
 }
