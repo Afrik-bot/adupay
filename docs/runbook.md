@@ -64,6 +64,7 @@ First time only:
    | `APP_URL` | the production URL, e.g. `https://adupay.vercel.app` (webhooks call it) |
    | `PAYMENT_PROVIDER` | `sandbox` |
    | `NOTIFICATION_PROVIDER` | `simulated` |
+   | `AIRTIME_PROVIDER` | `sandbox` |
    | `SANDBOX_WEBHOOK_SECRET` | a **new** random 32-character string for production |
    | `CRON_SECRET` | a **new** random 32-character string |
    | `KYC_ID_PEPPER` | random 32+ characters. **Never change it once real documents exist.** |
