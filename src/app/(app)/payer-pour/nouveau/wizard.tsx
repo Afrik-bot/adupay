@@ -3,7 +3,7 @@
 import { useEffect, useMemo, useState, useTransition } from "react";
 import Link from "next/link";
 import { useTranslations } from "next-intl";
-import { ArrowLeft, Building2, CreditCard, GraduationCap, HeartPulse, Home, Lock, Receipt, Search, Users } from "lucide-react";
+import { ArrowLeft, Building2, CreditCard, GraduationCap, HeartPulse, Home, Lock, Receipt, Search, Smartphone, Users } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Field, inputClass } from "@/components/ui/field";
@@ -60,6 +60,7 @@ export function PayForWizard({
   preselectGroupId: string | null;
 }) {
   const t = useTranslations("payFor");
+  const credit = useTranslations("credit");
   const preselected = sponsorships.find((s) => s.group_id === preselectGroupId) ?? null;
   const [step, setStep] = useState(preselected ? 3 : 1);
   const [purpose, setPurpose] = useState<Purpose | null>(preselected ? "tontine" : null);
@@ -181,6 +182,17 @@ export function PayForWizard({
               </span>
             </Choice>
           ))}
+          {/* Data & crédit: the AduPay Connect top-up flow, for a relative. */}
+          <Link
+            href="/credit?pour=proche"
+            className="flex min-h-14 w-full items-center gap-3 rounded-xl border-2 border-border bg-card px-4 py-3 text-left hover:border-muted-foreground"
+          >
+            <Smartphone aria-hidden className="size-6 shrink-0" />
+            <span>
+              <span className="block font-semibold">{credit("payFor")}</span>
+              <span className="block text-sm text-muted-foreground">{credit("payForHint")}</span>
+            </span>
+          </Link>
         </section>
       )}
 

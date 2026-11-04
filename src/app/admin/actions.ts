@@ -54,3 +54,25 @@ export async function setFxRate(currency: "EUR" | "USD" | "CAD", rate: number, f
   const { error } = await supabase.rpc("set_fx_rate", { p_currency: currency, p_xof_per_unit: rate, p_fee_bps: feeBps, p_fx_margin_bps: marginBps });
   return done(error, "/admin/taux");
 }
+
+type Trigger = "on_time_contribution" | "clean_cycle" | "manager_member_on_time";
+
+export async function setRewardRule(trigger: Trigger, productId: string, active: boolean): Promise<Result> {
+  const supabase = await staffClient();
+  const { error } = await supabase.rpc("admin_set_reward_rule", { p_trigger: trigger, p_product_id: productId, p_active: active });
+  return done(error, "/admin/connect");
+}
+
+export async function setRewardSettings(capXof: number, budgetXof: number): Promise<Result> {
+  if (!Number.isSafeInteger(capXof) || !Number.isSafeInteger(budgetXof) || capXof < 0 || budgetXof < 0) return { error: "invalid" };
+  const supabase = await staffClient();
+  const { error } = await supabase.rpc("admin_set_reward_settings", { p_per_user_cap_xof: capXof, p_month_budget_xof: budgetXof });
+  return done(error, "/admin/connect");
+}
+
+export async function setAirtimeProduct(productId: string, priceXof: number, active: boolean): Promise<Result> {
+  if (!Number.isSafeInteger(priceXof) || priceXof <= 0) return { error: "invalid" };
+  const supabase = await staffClient();
+  const { error } = await supabase.rpc("admin_set_airtime_product", { p_product_id: productId, p_price_xof: priceXof, p_active: active });
+  return done(error, "/admin/connect");
+}

@@ -1,6 +1,7 @@
 // Turns a stored notification (template + payload) into the text a member reads,
 // in their language. Used by the dispatcher (WhatsApp/SMS) and the notifications centre,
 // so both show exactly the same words.
+import { formatVolume } from "./airtime";
 import { formatMoney, isCurrency, type Locale } from "./money";
 
 export const TEMPLATES = [
@@ -12,6 +13,11 @@ export const TEMPLATES = [
   "payout_needs_account",
   "payer_pour_delivered",
   "payee_confirmed",
+  "reward_on_time_contribution",
+  "reward_clean_cycle",
+  "reward_manager_member_on_time",
+  "topup_delivered",
+  "topup_failed",
 ] as const;
 export type Template = (typeof TEMPLATES)[number];
 
@@ -38,6 +44,8 @@ export function notificationValues(payload: Record<string, unknown>, locale: Loc
     date: formatDate(payload.due_date ?? payload.grace_until, locale),
     payee: str(payload.payee_name),
     beneficiary: str(payload.beneficiary_name),
+    product: str(payload.product),
+    volume: typeof payload.data_mb === "number" ? formatVolume(payload.data_mb, locale) : "",
   };
 }
 

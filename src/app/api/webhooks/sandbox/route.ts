@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
 import { adminDb } from "@/lib/supabase/admin";
 import { deliverDirectedPayments } from "@/server/directed-payments";
+import { sendTopupsSoon } from "@/server/airtime";
 import { sendNotificationsSoon } from "@/server/notifications";
 import { getPaymentService } from "@/server/payments";
 import { InvalidWebhookError } from "@/server/payments/types";
@@ -20,6 +21,8 @@ export async function POST(request: Request) {
     }
     // "Contribution received", "Payer pour delivered"... go out after the response.
     sendNotificationsSoon();
+    // A paid top-up, or a Data offerte reward granted by an on-time share, is delivered next.
+    sendTopupsSoon();
     return NextResponse.json({ ok: true, status: payment.status });
   } catch (error) {
     if (error instanceof InvalidWebhookError) {

@@ -1,7 +1,7 @@
 import { Suspense } from "react";
 import Link from "next/link";
 import { getTranslations } from "next-intl/server";
-import { HandCoins, PiggyBank, Send, Users } from "lucide-react";
+import { HandCoins, PiggyBank, Send, Smartphone, Users } from "lucide-react";
 import { requireProfile } from "@/server/auth";
 import {
   BalanceCard,
@@ -15,6 +15,7 @@ import {
 const ACTIONS = [
   { href: "/tontines", key: "payTontine", icon: Users },
   { href: "/payer-pour", key: "payFor", icon: HandCoins },
+  { href: "/credit", key: "credit", icon: Smartphone },
   { href: "/envoyer", key: "send", icon: Send },
   { href: "/epargne", key: "save", icon: PiggyBank },
 ] as const;
@@ -38,12 +39,12 @@ export default async function AccueilPage() {
       </Suspense>
 
       <nav aria-label={t("quickActions")}>
-        <ul className="grid grid-cols-4 gap-2">
+        <ul className="grid grid-cols-5 gap-1.5">
           {ACTIONS.map(({ href, key, icon: Icon }) => (
             <li key={key}>
               <Link
                 href={href}
-                className="flex min-h-24 flex-col items-center justify-center gap-2 rounded-xl border bg-card p-2 text-center text-xs font-semibold hover:bg-muted"
+                className="flex min-h-24 flex-col items-center justify-center gap-2 rounded-xl border bg-card p-1 text-center text-xs font-semibold hover:bg-muted"
               >
                 <span className="flex size-10 items-center justify-center rounded-full bg-accent text-accent-foreground">
                   <Icon aria-hidden className="size-5" />

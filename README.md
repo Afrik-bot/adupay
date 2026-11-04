@@ -3,8 +3,23 @@
 Community money app for Côte d'Ivoire and its diaspora: Tontine OS, Payer pour, Score Communauté.
 See [CLAUDE.md](CLAUDE.md) for the rules every change must follow.
 
-**Status:** phases 1–3 of 14 (app shell, database schema with RLS, ledger core with sandbox payments).
-No real money moves: all payments go through `SandboxProvider`.
+**Status:** all 15 phases built, sandbox only. No real money moves: payments go through `SandboxProvider`,
+WhatsApp/SMS through a simulated `NotificationProvider`, airtime through `SandboxAirtimeProvider`.
+
+## Features
+
+- **Tontine OS**: create a group with a 4-step wizard, invite by WhatsApp link, pay a share from any linked wallet,
+  automatic rounds, payouts, penalties and votes on rules, manager dashboard with statements (CSV/PDF).
+- **Payer pour**: diaspora senders pay verified schools, clinics, pharmacies, utilities or a relative's tontine share
+  by card in EUR/USD/CAD, with a live timeline and a public tracking link; the payee confirms receipt in its portal.
+- **Épargne & Score Communauté**: savings goals with automatic top-ups, and a consent-based score from contribution history.
+- **AduPay Connect**: airtime and data top-ups on Orange, MTN and Moov for yourself or a relative (AduPay balance,
+  Mobile Money or diaspora card), favourites and "Répéter"; **Data offerte** rewards on-time tontine payments with data
+  bundles within a monthly budget and per-member cap ([rules](docs/features/data-offerte.md)).
+- **Channels**: `*123#` USSD simulator and a notifications centre for the simulated WhatsApp/SMS messages.
+- **Admin & compliance**: KYC/KYB queues, transaction search, risk cases, sanctions screening stub, FX and fee settings,
+  reward rules and budget, read-only audit log, KPIs.
+- French by default, English second; installable PWA with offline viewing of key screens; works at 360px.
 
 ## Setup on Windows (PowerShell)
 

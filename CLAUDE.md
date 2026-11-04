@@ -5,6 +5,8 @@ AduPay is a community money app for Côte d'Ivoire (launch market) and its diasp
 2. Payer pour: diaspora senders pay verified payees (schools, clinics, pharmacies, utilities, tontines) directly, with proof.
 3. Community credit: consent-based score from contribution history, shared only with licensed lenders.
 
+AduPay Connect: airtime/data top-ups and data rewards, via a licensed distributor (sandbox until signed).
+
 AduPay never holds customer funds itself. A BCEAO-licensed partner (EME or bank) holds funds; AduPay is the software, ledger and distribution layer. Until partners are signed, ALL money movement goes through SandboxProvider.
 
 ## Stack

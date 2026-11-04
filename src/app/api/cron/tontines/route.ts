@@ -2,6 +2,7 @@ import { timingSafeEqual } from "node:crypto";
 import { NextResponse } from "next/server";
 import { adminDb } from "@/lib/supabase/admin";
 import { serverEnv } from "@/server/env";
+import { sendQueuedTopups } from "@/server/airtime";
 import { sendQueuedNotifications } from "@/server/notifications";
 import { getPaymentService } from "@/server/payments";
 import { deliverDirectedPayments, runSchedules } from "@/server/directed-payments";
@@ -31,7 +32,9 @@ export async function GET(request: Request) {
   const savings = await runSavingsTopups(db, service, today);
   const report = await runTontineEngine(db, service, today);
   const delivered = await deliverDirectedPayments(db, service);
+  // Data offerte rewards granted above, and any top-up still queued.
+  const topups = await sendQueuedTopups();
   // Reminders and receipts queued above go out last, in one batch.
   const notifications = await sendQueuedNotifications();
-  return NextResponse.json({ ok: report.errors.length === 0, today, report, schedules, savings, delivered, notifications });
+  return NextResponse.json({ ok: report.errors.length === 0, today, report, schedules, savings, delivered, topups, notifications });
 }

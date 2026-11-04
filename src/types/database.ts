@@ -4,6 +4,48 @@ export type Json = string | number | boolean | null | { [key: string]: Json | un
 export type Database = {
   public: {
     Tables: {
+      airtime_products: {
+        Row: {
+          id: string;
+          provider_product_id: string;
+          operator: Database["public"]["Enums"]["airtime_operator"];
+          type: Database["public"]["Enums"]["airtime_product_type"];
+          label: string;
+          data_mb: number | null;
+          price_xof: number;
+          validity_days: number | null;
+          active: boolean;
+          sample: boolean;
+          updated_at: string;
+        };
+        Insert: {
+          id?: string;
+          provider_product_id: string;
+          operator: Database["public"]["Enums"]["airtime_operator"];
+          type: Database["public"]["Enums"]["airtime_product_type"];
+          label: string;
+          data_mb?: number | null;
+          price_xof: number;
+          validity_days?: number | null;
+          active?: boolean;
+          sample?: boolean;
+          updated_at?: string;
+        };
+        Update: {
+          id?: string;
+          provider_product_id?: string;
+          operator?: Database["public"]["Enums"]["airtime_operator"];
+          type?: Database["public"]["Enums"]["airtime_product_type"];
+          label?: string;
+          data_mb?: number | null;
+          price_xof?: number;
+          validity_days?: number | null;
+          active?: boolean;
+          sample?: boolean;
+          updated_at?: string;
+        };
+        Relationships: [];
+      };
       audit_log: {
         Row: {
           id: number;
@@ -109,6 +151,7 @@ export type Database = {
           payment_id: string | null;
           status: Database["public"]["Enums"]["payment_status"];
           created_at: string;
+          paid_at: string | null;
         };
         Insert: {
           id?: string;
@@ -120,6 +163,7 @@ export type Database = {
           payment_id?: string | null;
           status?: Database["public"]["Enums"]["payment_status"];
           created_at?: string;
+          paid_at?: string | null;
         };
         Update: {
           id?: string;
@@ -131,6 +175,7 @@ export type Database = {
           payment_id?: string | null;
           status?: Database["public"]["Enums"]["payment_status"];
           created_at?: string;
+          paid_at?: string | null;
         };
         Relationships: [];
       };
@@ -975,6 +1020,111 @@ export type Database = {
         };
         Relationships: [];
       };
+      reward_budgets: {
+        Row: {
+          month: string;
+          budget_xof: number;
+          spent_xof: number;
+        };
+        Insert: {
+          month: string;
+          budget_xof: number;
+          spent_xof?: number;
+        };
+        Update: {
+          month?: string;
+          budget_xof?: number;
+          spent_xof?: number;
+        };
+        Relationships: [];
+      };
+      reward_grants: {
+        Row: {
+          id: string;
+          user_id: string;
+          rule_id: Database["public"]["Enums"]["reward_trigger"];
+          source_event_id: string;
+          group_id: string | null;
+          product_id: string;
+          cost_xof: number;
+          status: string;
+          skip_reason: string | null;
+          topup_id: string | null;
+          month: string;
+          created_at: string;
+        };
+        Insert: {
+          id?: string;
+          user_id: string;
+          rule_id: Database["public"]["Enums"]["reward_trigger"];
+          source_event_id: string;
+          group_id?: string | null;
+          product_id: string;
+          cost_xof: number;
+          status: string;
+          skip_reason?: string | null;
+          topup_id?: string | null;
+          month?: string;
+          created_at?: string;
+        };
+        Update: {
+          id?: string;
+          user_id?: string;
+          rule_id?: Database["public"]["Enums"]["reward_trigger"];
+          source_event_id?: string;
+          group_id?: string | null;
+          product_id?: string;
+          cost_xof?: number;
+          status?: string;
+          skip_reason?: string | null;
+          topup_id?: string | null;
+          month?: string;
+          created_at?: string;
+        };
+        Relationships: [];
+      };
+      reward_rules: {
+        Row: {
+          trigger: Database["public"]["Enums"]["reward_trigger"];
+          product_id: string;
+          active: boolean;
+          updated_at: string;
+        };
+        Insert: {
+          trigger: Database["public"]["Enums"]["reward_trigger"];
+          product_id: string;
+          active?: boolean;
+          updated_at?: string;
+        };
+        Update: {
+          trigger?: Database["public"]["Enums"]["reward_trigger"];
+          product_id?: string;
+          active?: boolean;
+          updated_at?: string;
+        };
+        Relationships: [];
+      };
+      reward_settings: {
+        Row: {
+          id: boolean;
+          per_user_monthly_cap_xof: number;
+          default_monthly_budget_xof: number;
+          updated_at: string;
+        };
+        Insert: {
+          id?: boolean;
+          per_user_monthly_cap_xof: number;
+          default_monthly_budget_xof: number;
+          updated_at?: string;
+        };
+        Update: {
+          id?: boolean;
+          per_user_monthly_cap_xof?: number;
+          default_monthly_budget_xof?: number;
+          updated_at?: string;
+        };
+        Relationships: [];
+      };
       risk_event_notes: {
         Row: {
           id: number;
@@ -1063,6 +1213,33 @@ export type Database = {
         };
         Relationships: [];
       };
+      saved_numbers: {
+        Row: {
+          id: string;
+          user_id: string;
+          msisdn: string;
+          name: string;
+          operator: Database["public"]["Enums"]["airtime_operator"];
+          created_at: string;
+        };
+        Insert: {
+          id?: string;
+          user_id: string;
+          msisdn: string;
+          name: string;
+          operator: Database["public"]["Enums"]["airtime_operator"];
+          created_at?: string;
+        };
+        Update: {
+          id?: string;
+          user_id?: string;
+          msisdn?: string;
+          name?: string;
+          operator?: Database["public"]["Enums"]["airtime_operator"];
+          created_at?: string;
+        };
+        Relationships: [];
+      };
       savings_goals: {
         Row: {
           id: string;
@@ -1111,6 +1288,81 @@ export type Database = {
         };
         Relationships: [];
       };
+      topups: {
+        Row: {
+          id: string;
+          buyer_id: string;
+          beneficiary_msisdn: string;
+          beneficiary_name: string | null;
+          operator: Database["public"]["Enums"]["airtime_operator"];
+          product_id: string;
+          amount_xof: number;
+          source: Database["public"]["Enums"]["topup_source"];
+          status: Database["public"]["Enums"]["topup_status"];
+          idempotency_key: string;
+          source_currency: Database["public"]["Enums"]["currency_code"];
+          source_amount: number;
+          fx_rate: number | null;
+          payment_id: string | null;
+          grant_id: string | null;
+          provider_ref: string | null;
+          attempts: number;
+          claimed_at: string | null;
+          failure_code: string | null;
+          delivered_at: string | null;
+          created_at: string;
+          updated_at: string;
+        };
+        Insert: {
+          id?: string;
+          buyer_id: string;
+          beneficiary_msisdn: string;
+          beneficiary_name?: string | null;
+          operator: Database["public"]["Enums"]["airtime_operator"];
+          product_id: string;
+          amount_xof: number;
+          source: Database["public"]["Enums"]["topup_source"];
+          status: Database["public"]["Enums"]["topup_status"];
+          idempotency_key: string;
+          source_currency?: Database["public"]["Enums"]["currency_code"];
+          source_amount: number;
+          fx_rate?: number | null;
+          payment_id?: string | null;
+          grant_id?: string | null;
+          provider_ref?: string | null;
+          attempts?: number;
+          claimed_at?: string | null;
+          failure_code?: string | null;
+          delivered_at?: string | null;
+          created_at?: string;
+          updated_at?: string;
+        };
+        Update: {
+          id?: string;
+          buyer_id?: string;
+          beneficiary_msisdn?: string;
+          beneficiary_name?: string | null;
+          operator?: Database["public"]["Enums"]["airtime_operator"];
+          product_id?: string;
+          amount_xof?: number;
+          source?: Database["public"]["Enums"]["topup_source"];
+          status?: Database["public"]["Enums"]["topup_status"];
+          idempotency_key?: string;
+          source_currency?: Database["public"]["Enums"]["currency_code"];
+          source_amount?: number;
+          fx_rate?: number | null;
+          payment_id?: string | null;
+          grant_id?: string | null;
+          provider_ref?: string | null;
+          attempts?: number;
+          claimed_at?: string | null;
+          failure_code?: string | null;
+          delivered_at?: string | null;
+          created_at?: string;
+          updated_at?: string;
+        };
+        Relationships: [];
+      };
       user_roles: {
         Row: {
           user_id: string;
@@ -1134,8 +1386,12 @@ export type Database = {
     Functions: {
       account_balance: { Args: { p_account_id: string }; Returns: number };
       admin_kpis: { Args: never; Returns: { active_tontines: number; members_in_active: number; contributions_paid: number; contributions_on_time: number; open_risk_cases: number; pending_kyc: number; pending_kyb: number; corridors: Json; avg_all_in_pct: number }[] };
+      admin_reward_burn: { Args: never; Returns: { day: string; granted_xof: number; grants: number; skipped: number }[] };
       admin_sanctions_flags: { Args: { p_profile_ids: string[]; p_payee_ids: string[] }; Returns: { subject: string; id: string; sanctions_status: string }[] };
       admin_search_payments: { Args: { p_query?: string; p_status?: string; p_limit?: number }; Returns: { id: string; created_at: string; direction: Database["public"]["Enums"]["payment_direction"]; amount: number; currency: Database["public"]["Enums"]["currency_code"]; status: Database["public"]["Enums"]["payment_status"]; purpose_type: string; provider_ref: string; failure_code: string; user_id: string; user_name: string; user_phone: string }[] };
+      admin_set_airtime_product: { Args: { p_product_id: string; p_price_xof: number; p_active: boolean }; Returns: undefined };
+      admin_set_reward_rule: { Args: { p_trigger: Database["public"]["Enums"]["reward_trigger"]; p_product_id: string; p_active: boolean }; Returns: undefined };
+      admin_set_reward_settings: { Args: { p_per_user_cap_xof: number; p_month_budget_xof: number }; Returns: undefined };
       advance_goal_topup: { Args: { p_goal_id: string; p_ran_on: string }; Returns: undefined };
       advance_schedule: { Args: { p_schedule_id: string; p_ran_on: string; p_directed_payment_id: string }; Returns: undefined };
       attach_provider_ref: { Args: { p_payment_id: string; p_provider_ref: string }; Returns: undefined };
@@ -1144,13 +1400,16 @@ export type Database = {
       check_goal_payment: { Args: { p_direction: Database["public"]["Enums"]["payment_direction"]; p_user_id: string; p_ledger_account_id: string }; Returns: undefined };
       check_payout_sanctions: { Args: { p_direction: Database["public"]["Enums"]["payment_direction"]; p_user_id: string; p_purpose_type: string; p_purpose_id: string }; Returns: undefined };
       claim_notifications: { Args: { p_limit?: number }; Returns: { id: string; user_id: string; channel: Database["public"]["Enums"]["notification_channel"]; template: string; payload: Json; attempts: number; phone: string; locale: string }[] };
+      claim_topups: { Args: { p_limit?: number }; Returns: { id: string; beneficiary_msisdn: string; operator: Database["public"]["Enums"]["airtime_operator"]; provider_product_id: string; idempotency_key: string; attempts: number }[] };
       clear_sanctions_hit: { Args: { p_subject: string; p_id: string; p_reason: string }; Returns: undefined };
       complete_notification: { Args: { p_id: string; p_ok: boolean; p_provider_ref?: string; p_error?: string }; Returns: undefined };
+      complete_topup: { Args: { p_provider_ref: string; p_status: Database["public"]["Enums"]["payment_status"]; p_failure_code?: string }; Returns: Database["public"]["Tables"]["topups"]["Row"] };
       confirm_directed_payment: { Args: { p_directed_payment_id: string }; Returns: undefined };
       create_contribution: { Args: { p_cycle_id: string; p_member_id: string; p_paid_by: string }; Returns: Database["public"]["Tables"]["contributions"]["Row"] };
       create_directed_payment: { Args: { p_sender_id: string; p_request_key: string; p_purpose: Database["public"]["Enums"]["payment_purpose"]; p_payee_id: string; p_group_id: string; p_beneficiary_name: string; p_reference: string; p_amount_xof: number; p_currency: Database["public"]["Enums"]["currency_code"]; p_card_brand: string; p_card_last4: string; p_schedule_id?: string; p_schedule_run_on?: string }; Returns: Database["public"]["Tables"]["directed_payments"]["Row"] };
       create_group: { Args: { p_name: string; p_contribution_amount: number; p_frequency: Database["public"]["Enums"]["group_frequency"]; p_start_date: string; p_member_limit: number; p_payout_order: Database["public"]["Enums"]["payout_order"]; p_grace_days: number; p_late_penalty_amount: number }; Returns: string };
       create_payment: { Args: { p_idempotency_key: string; p_user_id: string; p_direction: Database["public"]["Enums"]["payment_direction"]; p_provider: string; p_amount: number; p_currency: Database["public"]["Enums"]["currency_code"]; p_ledger_account_id: string; p_purpose_type?: string; p_purpose_id?: string }; Returns: Database["public"]["Tables"]["payments"]["Row"] };
+      create_topup: { Args: { p_buyer_id: string; p_msisdn: string; p_beneficiary_name: string; p_operator: Database["public"]["Enums"]["airtime_operator"]; p_product_id: string; p_pay_with: string; p_currency: Database["public"]["Enums"]["currency_code"]; p_idempotency_key: string }; Returns: Database["public"]["Tables"]["topups"]["Row"] };
       current_cycle: { Args: { p_group_id: string }; Returns: Database["public"]["Tables"]["cycles"]["Row"] };
       cycle_collected: { Args: { p_cycle_id: string }; Returns: number };
       cycle_interval: { Args: { p_frequency: Database["public"]["Enums"]["group_frequency"] }; Returns: string };
@@ -1165,6 +1424,7 @@ export type Database = {
       finalize_cycle: { Args: { p_cycle_id: string; p_payment_id: string; p_amount: number }; Returns: string };
       fx_quote: { Args: { p_amount_xof: number; p_currency: Database["public"]["Enums"]["currency_code"] }; Returns: { currency: Database["public"]["Enums"]["currency_code"]; xof_per_unit: number; customer_rate: number; fee_bps: number; fx_margin_bps: number; base_amount: number; fee_amount: number; total_amount: number; all_in_pct: number }[] };
       goals_due_topup: { Args: { p_today: string }; Returns: { goal_id: string; user_id: string; amount: number; currency: Database["public"]["Enums"]["currency_code"]; run_on: string }[] };
+      grant_reward: { Args: { p_rule: Database["public"]["Enums"]["reward_trigger"]; p_user_id: string; p_source_event_id: string; p_group_id: string }; Returns: Database["public"]["Tables"]["reward_grants"]["Row"] };
       group_invite_members: { Args: { p_invite_code: string }; Returns: { user_id: string; first_name: string }[] };
       group_invite_preview: { Args: { p_invite_code: string }; Returns: { group_id: string; name: string; contribution_amount: number; currency: Database["public"]["Enums"]["currency_code"]; frequency: Database["public"]["Enums"]["group_frequency"]; start_date: string; payout_order: Database["public"]["Enums"]["payout_order"]; status: Database["public"]["Enums"]["group_status"]; member_count: number; member_limit: number; manager_name: string; already_member: boolean }[] };
       group_ledger: { Args: { p_group_id: string; p_limit?: number }; Returns: { entry_id: number; created_at: string; kind: string; side: Database["public"]["Enums"]["ledger_side"]; amount: number; currency: Database["public"]["Enums"]["currency_code"]; member_name: string; cycle_number: number; rail_reference: string }[] };
@@ -1184,14 +1444,17 @@ export type Database = {
       manager_commission: { Args: { p_amount: number }; Returns: number };
       manager_groups: { Args: never; Returns: { group_id: string; name: string; status: Database["public"]["Enums"]["group_status"]; contribution_amount: number; currency: Database["public"]["Enums"]["currency_code"]; rotation: number; current_cycle: number; current_due: string; paid_current: number; cycles_done: number; collection_rate: number; late_count: number; proposed_penalties: number; commission_earned: number; certified: boolean }[] };
       mark_notifications_read: { Args: never; Returns: number };
+      mark_topup_sent: { Args: { p_topup_id: string; p_provider_ref: string; p_status: Database["public"]["Enums"]["payment_status"]; p_failure_code?: string }; Returns: undefined };
       my_balances: { Args: never; Returns: { currency: Database["public"]["Enums"]["currency_code"]; balance: number }[] };
       my_goals: { Args: never; Returns: { id: string; name: string; kind: string; target_amount: number; currency: Database["public"]["Enums"]["currency_code"]; lock_until: string; weekly_topup_amount: number; auto_topup: boolean; next_topup_on: string; balance: number; created_at: string }[] };
       my_groups: { Args: never; Returns: { group_id: string; name: string; contribution_amount: number; currency: Database["public"]["Enums"]["currency_code"]; frequency: Database["public"]["Enums"]["group_frequency"]; status: Database["public"]["Enums"]["group_status"]; my_role: Database["public"]["Enums"]["member_role"]; my_position: number; member_count: number; current_cycle: number; next_due_date: string }[] };
       my_kyc_status: { Args: never; Returns: { kyc_tier: number; daily_limit_xof: number; used_today_xof: number }[] };
       my_score_inputs: { Args: never; Returns: { contributions_total: number; contributions_on_time: number; cycles_completed: number; savings_weeks: number; account_age_days: number }[] };
       my_sponsorships: { Args: never; Returns: { group_id: string; group_name: string; member_id: string; member_name: string; contribution_amount: number; group_status: Database["public"]["Enums"]["group_status"]; cycle_number: number; due_date: string; paid: boolean }[] };
+      my_topups: { Args: { p_limit?: number }; Returns: { id: string; beneficiary_msisdn: string; beneficiary_name: string; operator: Database["public"]["Enums"]["airtime_operator"]; product_label: string; type: Database["public"]["Enums"]["airtime_product_type"]; amount_xof: number; source: Database["public"]["Enums"]["topup_source"]; status: Database["public"]["Enums"]["topup_status"]; source_currency: Database["public"]["Enums"]["currency_code"]; source_amount: number; created_at: string; delivered_at: string; product_id: string; failure_code: string }[] };
       my_upcoming_dues: { Args: never; Returns: { group_id: string; group_name: string; cycle_id: string; cycle_number: number; due_date: string; amount: number; currency: Database["public"]["Enums"]["currency_code"]; member_id: string; paid: boolean }[] };
       normalize_name: { Args: { p_name: string }; Returns: string };
+      operator_for_msisdn: { Args: { p_msisdn: string }; Returns: Database["public"]["Enums"]["airtime_operator"] };
       owns_payee: { Args: { p_payee_id: string }; Returns: boolean };
       payee_incoming: { Args: { p_status?: string; p_from?: string; p_to?: string; p_search?: string }; Returns: { id: string; created_at: string; received_at: string; confirmed_at: string; purpose: Database["public"]["Enums"]["payment_purpose"]; beneficiary_name: string; reference: string; amount: number; status: Database["public"]["Enums"]["directed_payment_status"]; sender_first_name: string; sender_country: string }[] };
       payments_to_reconcile: { Args: { p_provider: string; p_since: string; p_limit?: number }; Returns: Database["public"]["Tables"]["payments"]["Row"][] };
@@ -1226,6 +1489,8 @@ export type Database = {
       xof_equivalent: { Args: { p_amount: number; p_currency: Database["public"]["Enums"]["currency_code"] }; Returns: number };
     };
     Enums: {
+      airtime_operator: "orange" | "mtn" | "moov";
+      airtime_product_type: "airtime" | "data";
       app_role: "admin" | "compliance" | "payee";
       currency_code: "XOF" | "EUR" | "USD" | "CAD";
       cycle_status: "open" | "collecting" | "paid_out" | "closed";
@@ -1242,8 +1507,11 @@ export type Database = {
       payment_status: "pending" | "succeeded" | "failed";
       payout_order: "fixed" | "lottery" | "vote";
       review_status: "pending" | "approved" | "rejected";
+      reward_trigger: "on_time_contribution" | "clean_cycle" | "manager_member_on_time";
       risk_severity: "low" | "medium" | "high";
       risk_status: "open" | "reviewing" | "closed" | "escalated";
+      topup_source: "wallet" | "card" | "reward";
+      topup_status: "awaiting_payment" | "queued" | "sending" | "pending" | "succeeded" | "failed";
       user_type: "resident" | "diaspora";
       wallet_provider: "orange_money" | "mtn_momo" | "moov_money" | "wave" | "bank";
     };

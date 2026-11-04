@@ -24,7 +24,8 @@
       "payTontine": "Pay my tontine",
       "payFor": "Pay for",
       "send": "Send",
-      "save": "Save"
+      "save": "Save",
+      "credit": "Airtime & Data"
     },
     "linkWallet": "Link your mobile wallet",
     "linkWalletHint": "Orange Money, MTN MoMo, Moov Money, Wave or a bank.",
@@ -1115,7 +1116,8 @@
       "transactions": "Transactions",
       "risks": "Risk",
       "fx": "Rates and fees",
-      "audit": "Audit log"
+      "audit": "Audit log",
+      "connect": "Connect"
     },
     "kpis": {
       "title": "Dashboard",
@@ -1203,7 +1205,10 @@
         "velocity_1h": "More than 5 payments in 1 hour",
         "kyc_limit_exceeded": "Payment above tier limit",
         "new_payees_day": "Many new payees in one day",
-        "sanctions_hit": "Sanctions list match"
+        "sanctions_hit": "Sanctions list match",
+        "topup_many_numbers": "Top-ups to more than 10 numbers in 24 h",
+        "topup_failures": "Repeated failed top-ups",
+        "reward_new_account": "Reward for an account opened the day the tontine started"
       },
       "subject": "Customer: {name}",
       "newStatus": "New status",
@@ -1269,7 +1274,12 @@
       "payout_needs_account": "AduPay: your {amount} pot from “{group}” is waiting. Add a verified payout account in the app.",
       "payer_pour_delivered": "AduPay: your {amount} payment for {beneficiary} has reached {payee}. We will tell you as soon as they confirm.",
       "payee_confirmed": "AduPay: {payee} confirms receiving {amount} for {beneficiary}.",
-      "fallback": "AduPay: you have a new message in the app."
+      "fallback": "AduPay: you have a new message in the app.",
+      "reward_on_time_contribution": "AduPay: Well done! You won {volume} for your on-time contribution.",
+      "reward_clean_cycle": "AduPay: Well done! Everyone in “{group}” paid on time: you win {volume}.",
+      "reward_manager_member_on_time": "AduPay: Thank you! A member of “{group}” paid on time: you win {volume}.",
+      "topup_delivered": "AduPay: your “{product}” top-up for {beneficiary} has arrived.",
+      "topup_failed": "AduPay: your “{product}” top-up could not be delivered. {amount} is back on your AduPay balance."
     }
   },
   "ussd": {
@@ -1320,5 +1330,152 @@
     "lead": "This screen has not been saved on your phone yet. Reconnect to the internet, or open home: the screens you viewed last stay visible offline.",
     "retry": "Open home",
     "banner": "Offline: you are seeing the last saved version."
+  },
+  "credit": {
+    "title": "Airtime & Data",
+    "lead": "Top up airtime or a data bundle on Orange, MTN or Moov, for yourself or a relative.",
+    "sandbox": "Demo mode: no real top-up is sent. Prices are samples.",
+    "step": "Step {current} of {total}",
+    "who": {
+      "title": "Who is it for?",
+      "me": "For me",
+      "meHint": "On my number",
+      "other": "For a relative",
+      "otherHint": "A saved number or a new one"
+    },
+    "number": "Phone number",
+    "numberHint": "10-digit Ivorian number, for example 07 00 00 00 00.",
+    "name": "Relative’s name (optional)",
+    "saved": "Saved numbers",
+    "noPhone": "Your number is not an Ivorian number: choose “For a relative”.",
+    "operator": "Network",
+    "operatorHint": "Suggested from the number. Change it if the number was ported.",
+    "operators": {
+      "orange": "Orange",
+      "mtn": "MTN",
+      "moov": "Moov Africa"
+    },
+    "choose": {
+      "title": "What would you like to send?",
+      "airtime": "Airtime",
+      "data": "Data bundle"
+    },
+    "validity": "{days, plural, one {# day} other {# days}}",
+    "review": {
+      "title": "Check",
+      "product": "Product",
+      "price": "Price",
+      "fee": "Fee",
+      "feeValue": "0 FCFA",
+      "validity": "Valid for",
+      "noValidity": "Set by the network",
+      "total": "Total",
+      "charged": "Charged to your card",
+      "payWith": "Pay with",
+      "balance": "AduPay balance ({amount})",
+      "mobileMoney": "Mobile Money ({account})",
+      "card": "Bank card (EUR, USD, CAD)",
+      "noMobileMoney": "Add a Mobile Money account in Profile to pay this way.",
+      "lowBalance": "Balance too low",
+      "save": "Save this number to my favourites",
+      "recipient": "Recipient",
+      "cardNumber": "Card number",
+      "expiry": "Expiry (MM/YY)",
+      "cvc": "Security code (CVC)",
+      "testCard": "Demo mode: use card {card}, a future date and 3 digits."
+    },
+    "next": "Continue",
+    "back": "Back",
+    "pay": "Pay {total}",
+    "paying": "Paying…",
+    "errors": {
+      "number": "Enter a valid Ivorian number (10 digits).",
+      "product": "Choose a product.",
+      "invalidNumber": "This number is not valid.",
+      "insufficient": "Your AduPay balance is too low. Choose another way to pay.",
+      "kycRequired": "Verify your identity in Profile to buy airtime.",
+      "kycLimit": "You have reached today’s limit.",
+      "noAccount": "First add a Mobile Money account.",
+      "relinkAccount": "Link your Mobile Money account again.",
+      "card": "Check the card details.",
+      "tooMany": "Too many attempts in a short time. Wait a few minutes and try again.",
+      "generic": "Something went wrong. Try again."
+    },
+    "recent": "Recent top-ups",
+    "none": "No top-ups yet.",
+    "receipt": {
+      "title": "Top-up",
+      "for": "{product} for {name}",
+      "timeline": {
+        "paid": "Paid",
+        "paidWaiting": "Waiting for the payment…",
+        "sent": "Sent to the network",
+        "sentWaiting": "Sending…",
+        "delivered": "Received",
+        "deliveredWaiting": "The network confirms within seconds.",
+        "failed": "Top-up not delivered ({code}). The amount is back on your AduPay balance.",
+        "paymentFailed": "Payment declined ({code}). Nothing was charged."
+      },
+      "repeat": "Repeat",
+      "saveNumber": "Save the number",
+      "savedNumber": "Number saved",
+      "back": "Airtime & Data"
+    },
+    "status": {
+      "awaiting_payment": "Payment",
+      "queued": "Queued",
+      "sending": "Sending",
+      "pending": "Sending",
+      "succeeded": "Received",
+      "failed": "Failed"
+    },
+    "payFor": "Data & airtime",
+    "payForHint": "A data bundle or airtime for a relative"
+  },
+  "connectAdmin": {
+    "nav": "Connect",
+    "title": "AduPay Connect",
+    "lead": "“Data offerte” rewards, budget and top-ups (sandbox).",
+    "rules": "Reward rules",
+    "triggers": {
+      "on_time_contribution": "On-time contribution",
+      "clean_cycle": "Round with no late share (every member)",
+      "manager_member_on_time": "Manager, for each member on time"
+    },
+    "product": "Bundle given",
+    "active": "On",
+    "save": "Save",
+    "saved": "Saved.",
+    "budget": "This month’s budget",
+    "cap": "Cap per member per month (FCFA)",
+    "monthBudget": "This month’s budget (FCFA)",
+    "burn": "{spent} spent of {budget}",
+    "burnTitle": "Spending per day",
+    "grants": "{count, plural, =0 {no rewards} one {# reward} other {# rewards}}",
+    "skipped": "{count, plural, =0 {} one {# skipped} other {# skipped}}",
+    "noBurn": "No rewards this month.",
+    "catalogue": "Catalogue (sample prices)",
+    "price": "Price (FCFA)",
+    "topups": "Top-ups",
+    "filters": {
+      "status": "Status",
+      "source": "Source",
+      "operator": "Network",
+      "all": "All",
+      "apply": "Filter"
+    },
+    "sources": {
+      "wallet": "Balance / Mobile Money",
+      "card": "Card",
+      "reward": "Reward"
+    },
+    "columns": {
+      "date": "Date",
+      "buyer": "Customer",
+      "number": "Number",
+      "product": "Product",
+      "amount": "Amount",
+      "status": "Status"
+    }
   }
 }

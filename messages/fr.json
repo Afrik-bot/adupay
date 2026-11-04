@@ -24,7 +24,8 @@
       "payTontine": "Payer ma tontine",
       "payFor": "Payer pour",
       "send": "Envoyer",
-      "save": "Épargner"
+      "save": "Épargner",
+      "credit": "Crédit & Data"
     },
     "linkWallet": "Liez votre portefeuille mobile",
     "linkWalletHint": "Orange Money, MTN MoMo, Moov Money, Wave ou banque.",
@@ -1115,7 +1116,8 @@
       "transactions": "Transactions",
       "risks": "Risques",
       "fx": "Taux et frais",
-      "audit": "Journal d’audit"
+      "audit": "Journal d’audit",
+      "connect": "Connect"
     },
     "kpis": {
       "title": "Tableau de bord",
@@ -1203,7 +1205,10 @@
         "velocity_1h": "Plus de 5 paiements en 1 heure",
         "kyc_limit_exceeded": "Paiement au-dessus de la limite du niveau",
         "new_payees_day": "Beaucoup de nouveaux bénéficiaires en un jour",
-        "sanctions_hit": "Correspondance liste de sanctions"
+        "sanctions_hit": "Correspondance liste de sanctions",
+        "topup_many_numbers": "Recharges vers plus de 10 numéros en 24 h",
+        "topup_failures": "Recharges échouées à répétition",
+        "reward_new_account": "Récompense pour un compte créé le jour de la tontine"
       },
       "subject": "Client : {name}",
       "newStatus": "Nouveau statut",
@@ -1269,7 +1274,12 @@
       "payout_needs_account": "AduPay : votre cagnotte « {group} » de {amount} vous attend. Ajoutez un compte de réception vérifié dans l’app.",
       "payer_pour_delivered": "AduPay : votre paiement de {amount} pour {beneficiary} est arrivé chez {payee}. Nous vous préviendrons dès leur confirmation.",
       "payee_confirmed": "AduPay : {payee} confirme avoir reçu {amount} pour {beneficiary}.",
-      "fallback": "AduPay : vous avez un nouveau message dans l’app."
+      "fallback": "AduPay : vous avez un nouveau message dans l’app.",
+      "reward_on_time_contribution": "AduPay : Bravo ! Vous avez gagné {volume} pour votre cotisation à l’heure.",
+      "reward_clean_cycle": "AduPay : Bravo ! Tout le monde a payé à l’heure dans « {group} » : vous gagnez {volume}.",
+      "reward_manager_member_on_time": "AduPay : Merci ! Un membre de « {group} » a payé à l’heure : vous gagnez {volume}.",
+      "topup_delivered": "AduPay : votre recharge « {product} » pour {beneficiary} est arrivée.",
+      "topup_failed": "AduPay : votre recharge « {product} » n’a pas pu être livrée. {amount} ont été remis sur votre solde AduPay."
     }
   },
   "ussd": {
@@ -1320,5 +1330,152 @@
     "lead": "Cet écran n’a pas encore été enregistré sur votre téléphone. Reconnectez-vous à internet, ou ouvrez l’accueil : vos derniers écrans consultés restent visibles hors ligne.",
     "retry": "Ouvrir l’accueil",
     "banner": "Hors ligne : vous voyez la dernière version enregistrée."
+  },
+  "credit": {
+    "title": "Crédit & Data",
+    "lead": "Rechargez du crédit ou un pass internet sur Orange, MTN ou Moov, pour vous ou un proche.",
+    "sandbox": "Mode démo : aucune vraie recharge n’est envoyée. Les prix sont des exemples.",
+    "step": "Étape {current} sur {total}",
+    "who": {
+      "title": "Pour qui ?",
+      "me": "Pour moi",
+      "meHint": "Sur mon numéro",
+      "other": "Pour un proche",
+      "otherHint": "Un numéro enregistré ou un nouveau"
+    },
+    "number": "Numéro de téléphone",
+    "numberHint": "Numéro ivoirien à 10 chiffres, par exemple 07 00 00 00 00.",
+    "name": "Nom du proche (facultatif)",
+    "saved": "Numéros enregistrés",
+    "noPhone": "Votre numéro n’est pas un numéro ivoirien : choisissez « Pour un proche ».",
+    "operator": "Opérateur",
+    "operatorHint": "Suggéré d’après le numéro. Changez-le si le numéro a été porté.",
+    "operators": {
+      "orange": "Orange",
+      "mtn": "MTN",
+      "moov": "Moov Africa"
+    },
+    "choose": {
+      "title": "Que voulez-vous envoyer ?",
+      "airtime": "Crédit",
+      "data": "Pass internet"
+    },
+    "validity": "{days, plural, one {# jour} other {# jours}}",
+    "review": {
+      "title": "Vérifiez",
+      "product": "Produit",
+      "price": "Prix",
+      "fee": "Frais",
+      "feeValue": "0 FCFA",
+      "validity": "Validité",
+      "noValidity": "Selon l’opérateur",
+      "total": "Total",
+      "charged": "Débité sur votre carte",
+      "payWith": "Payer avec",
+      "balance": "Solde AduPay ({amount})",
+      "mobileMoney": "Mobile Money ({account})",
+      "card": "Carte bancaire (EUR, USD, CAD)",
+      "noMobileMoney": "Ajoutez un compte Mobile Money dans Profil pour payer ainsi.",
+      "lowBalance": "Solde insuffisant",
+      "save": "Enregistrer ce numéro dans mes favoris",
+      "recipient": "Bénéficiaire",
+      "cardNumber": "Numéro de carte",
+      "expiry": "Expiration (MM/AA)",
+      "cvc": "Code (CVC)",
+      "testCard": "Mode démo : utilisez la carte {card}, une date future et 3 chiffres."
+    },
+    "next": "Continuer",
+    "back": "Retour",
+    "pay": "Payer {total}",
+    "paying": "Paiement en cours…",
+    "errors": {
+      "number": "Entrez un numéro ivoirien valide (10 chiffres).",
+      "product": "Choisissez un produit.",
+      "invalidNumber": "Ce numéro n’est pas valide.",
+      "insufficient": "Votre solde AduPay est insuffisant. Choisissez un autre moyen de paiement.",
+      "kycRequired": "Vérifiez votre identité dans Profil pour acheter du crédit.",
+      "kycLimit": "Vous avez atteint votre plafond du jour.",
+      "noAccount": "Ajoutez d’abord un compte Mobile Money.",
+      "relinkAccount": "Reliez à nouveau votre compte Mobile Money.",
+      "card": "Vérifiez les informations de la carte.",
+      "tooMany": "Trop de tentatives en peu de temps. Patientez quelques minutes puis réessayez.",
+      "generic": "Une erreur s’est produite. Réessayez."
+    },
+    "recent": "Dernières recharges",
+    "none": "Aucune recharge pour le moment.",
+    "receipt": {
+      "title": "Recharge",
+      "for": "{product} pour {name}",
+      "timeline": {
+        "paid": "Payé",
+        "paidWaiting": "En attente du paiement…",
+        "sent": "Envoyé à l’opérateur",
+        "sentWaiting": "Envoi en cours…",
+        "delivered": "Reçu",
+        "deliveredWaiting": "L’opérateur confirme en quelques secondes.",
+        "failed": "Recharge non livrée ({code}). Le montant a été remis sur votre solde AduPay.",
+        "paymentFailed": "Paiement refusé ({code}). Rien n’a été débité."
+      },
+      "repeat": "Répéter",
+      "saveNumber": "Enregistrer le numéro",
+      "savedNumber": "Numéro enregistré",
+      "back": "Crédit & Data"
+    },
+    "status": {
+      "awaiting_payment": "Paiement",
+      "queued": "En file",
+      "sending": "Envoi",
+      "pending": "Envoi",
+      "succeeded": "Reçu",
+      "failed": "Échec"
+    },
+    "payFor": "Data & crédit",
+    "payForHint": "Un pass internet ou du crédit pour un proche"
+  },
+  "connectAdmin": {
+    "nav": "Connect",
+    "title": "AduPay Connect",
+    "lead": "Récompenses « Data offerte », budget et recharges (bac à sable).",
+    "rules": "Règles de récompense",
+    "triggers": {
+      "on_time_contribution": "Cotisation à l’heure",
+      "clean_cycle": "Tour sans retard (tous les membres)",
+      "manager_member_on_time": "Gestionnaire, pour chaque membre à l’heure"
+    },
+    "product": "Pass offert",
+    "active": "Active",
+    "save": "Enregistrer",
+    "saved": "Enregistré.",
+    "budget": "Budget du mois",
+    "cap": "Plafond par membre et par mois (FCFA)",
+    "monthBudget": "Budget de ce mois (FCFA)",
+    "burn": "{spent} dépensés sur {budget}",
+    "burnTitle": "Dépenses par jour",
+    "grants": "{count, plural, =0 {aucune récompense} one {# récompense} other {# récompenses}}",
+    "skipped": "{count, plural, =0 {} one {# ignorée} other {# ignorées}}",
+    "noBurn": "Aucune récompense ce mois-ci.",
+    "catalogue": "Catalogue (prix d’exemple)",
+    "price": "Prix (FCFA)",
+    "topups": "Recharges",
+    "filters": {
+      "status": "Statut",
+      "source": "Source",
+      "operator": "Opérateur",
+      "all": "Tous",
+      "apply": "Filtrer"
+    },
+    "sources": {
+      "wallet": "Solde / Mobile Money",
+      "card": "Carte",
+      "reward": "Récompense"
+    },
+    "columns": {
+      "date": "Date",
+      "buyer": "Client",
+      "number": "Numéro",
+      "product": "Produit",
+      "amount": "Montant",
+      "status": "Statut"
+    }
   }
 }

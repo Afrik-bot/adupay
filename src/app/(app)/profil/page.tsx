@@ -7,6 +7,7 @@ import { createClient } from "@/lib/supabase/server";
 import { getSessionUser, requireProfile } from "@/server/auth";
 import { KycCard } from "./kyc-card";
 import { Preferences } from "./preferences";
+import { Residence } from "./residence";
 import { SignOutButton } from "./sign-out-button";
 
 export default async function ProfilPage() {
@@ -70,6 +71,7 @@ export default async function ProfilPage() {
         used={status?.used_today_xof ?? 0}
         records={records ?? []}
       />
+      <Residence value={profile.user_type} />
       <Preferences
         locale={locale}
         labels={{

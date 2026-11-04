@@ -9,6 +9,8 @@ export const CLIENT_NAMESPACES = [
   "admin.nav",
   "admin.risks",
   "auth",
+  "connectAdmin",
+  "credit",
   "kyc",
   "manager",
   "nav",

@@ -88,6 +88,13 @@ test("the second member pays, the daily job pays the pot out and opens round 2",
   await page.getByRole("button", { name: /Payer ma part/ }).click();
   await page.waitForURL(/\/recu\//, { timeout: 120_000 });
   await expect(page.getByRole("heading", { name: "Paiement réussi" })).toBeVisible({ timeout: 90_000 });
+
+  // Paid before the due date: Data offerte sends a bundle to B's own number and tells them.
+  await expect(async () => {
+    await runCron(request, "tontines"); // delivers (and retries) queued rewards
+    await page.goto("/notifications");
+    await expect(page.getByText(/Bravo ! Vous avez gagné .+ pour votre cotisation à l’heure./).first()).toBeVisible({ timeout: 5_000 });
+  }).toPass({ timeout: 240_000, intervals: [5_000, 15_000, 30_000] });
   await context.close();
 
   // Everyone paid: the engine pays the pot to round 1's recipient (the manager,
