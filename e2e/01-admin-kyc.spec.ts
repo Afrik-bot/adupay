@@ -1,5 +1,5 @@
 import { expect, test } from "@playwright/test";
-import { copy, signIn, testImage, testUser } from "./support";
+import { copy, openAdmin, signIn, testImage, testUser } from "./support";
 
 // Journey 3: a member sends identity documents and an admin approves them.
 // A must have the admin role (README, "End-to-end tests"); B is the member.
@@ -40,7 +40,7 @@ test("a member submits documents for the next tier", async ({ page }) => {
 test("an admin approves them and the member moves up a tier", async ({ page, browser }) => {
   test.skip(step === "done");
   await signIn(page, A!);
-  await page.goto("/admin/kyc");
+  await openAdmin(page, "/admin/kyc");
   const card = page.locator("main > div > *").filter({ hasText: "Membre E2E" }).first();
   await expect(card).toBeVisible({ timeout: 60_000 });
   // One decision per document (ID + selfie, or proof of address).

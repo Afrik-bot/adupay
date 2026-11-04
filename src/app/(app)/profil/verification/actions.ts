@@ -5,9 +5,10 @@ import { redirect } from "next/navigation";
 import { createClient } from "@/lib/supabase/server";
 import { getSessionUser } from "@/server/auth";
 import { allow } from "@/server/rate-limit";
+import { verifyUploadedDocuments } from "@/server/uploads";
 import { ID_DOCUMENT_TYPES, KYC_DOCUMENT_TYPES, protectIdNumber, type KycDocumentType } from "@/server/kyc";
 
-export type SubmitKycError = "missing" | "idNumber" | "alreadyPending" | "tooMany" | "generic";
+export type SubmitKycError = "missing" | "idNumber" | "type" | "alreadyPending" | "tooMany" | "generic";
 
 /**
  * Records documents the browser has already uploaded to the user's own folder in
@@ -37,6 +38,7 @@ export async function submitKycDocuments(input: {
   if (hasId !== types.includes("selfie")) return { error: "missing" };
   const idNumber = hasId ? protectIdNumber(input.idNumber ?? "") : null;
   if (hasId && !idNumber) return { error: "idNumber" };
+  if (!(await verifyUploadedDocuments("kyc-documents", documents.map((d) => d.path)))) return { error: "type" };
 
   const supabase = await createClient();
   const { error } = await supabase.from("kyc_records").insert(

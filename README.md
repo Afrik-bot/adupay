@@ -97,9 +97,11 @@ and `03-payer-pour` (a school paid from abroad confirms receipt).
    (no SMS is sent), e.g. `2250700000099=123456` and `2250700000098=123456`.
 2. Give user A the admin role once (SQL Editor):
    `insert into public.user_roles (user_id, role) select id, 'admin' from public.profiles where phone = '2250700000099' on conflict do nothing;`
-3. Run, with the dev server on port 3000 (Playwright starts it if needed):
+3. Staff need two-factor sign-in. Sign in as A, open `/admin`, choose "Configurer l’application", add the
+   key to your authenticator app and enter its code. Keep the key shown under the QR code for the tests.
+4. Run, with the dev server on port 3000 (Playwright starts it if needed):
    ```powershell
-   $env:E2E_USER_A = "CI:0700000099:123456"; $env:E2E_USER_B = "CI:0700000098:123456"; npm run test:e2e
+   $env:E2E_USER_A = "CI:0700000099:123456"; $env:E2E_USER_B = "CI:0700000098:123456"; $env:E2E_USER_A_TOTP = "<the key>"; npm run test:e2e
    ```
 
 The journeys leave test data behind (a tontine, a payee, payments in the sandbox) and are written to be re-run.

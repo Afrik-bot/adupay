@@ -35,16 +35,31 @@ The database checks are now enforced by `supabase/tests/security.test.ts`.
 - **Sign-in redirect** (`next`) only accepts same-site paths.
 - **Invite codes**: 48 random bits.
 
-## Needs a human decision
+## Decided (November 2026)
 
-1. **Phone numbers inside a tontine.** Members can read each other's phone number (it helps the
-   manager chase payments). Keep, or show it to the manager only?
-2. **Lottery payout order** uses Postgres `random()`, which is not cryptographically secure. Switching to
-   `gen_random_uuid()` ordering changes a payout rule, so it needs your approval.
-3. **Admin accounts** sign in with phone OTP only. Turn on Supabase MFA for staff before real users.
-4. **Uploads** are checked by declared type and size, not by content. Add malware scanning and
-   magic-byte checks (or a KYC provider) before real documents.
-5. **Full Content-Security-Policy for scripts** needs per-request nonces (every page rendered
-   dynamically). Worth doing before launch; small performance cost.
-6. **Real OTP SMS** needs a paid provider and Supabase's own rate limits/captcha settings reviewed.
-7. **Independent penetration test** before real money or real ID documents.
+Migration `20261114000100_security_decisions.sql`; tests in `supabase/tests/security-decisions.test.ts`,
+`src/lib/csp.test.ts` and `src/lib/file-signature.test.ts`.
+
+1. **Phone numbers inside a tontine**: no longer readable through `profiles`. The manager sees unpaid
+   members' numbers (with a call link) on the management page; staff read numbers through `contact_phones()`;
+   people get their own number from their session.
+2. **Lottery payout order** is drawn with `gen_random_uuid()` (cryptographically secure), and every draw
+   (method and resulting order) is written to the audit log as `tontine.draw`. Orders drawn before this
+   change are kept.
+3. **Two-factor sign-in for staff**: the admin and compliance roles only count in a session that passed an
+   authenticator-app code (JWT `aal2`), enforced in the database (`has_role`), so staff RLS and admin
+   functions refuse an OTP-only session. `/admin` sends staff to `/securite-admin` to set up or enter
+   the code (Supabase TOTP, free).
+4. **Uploads (partial)**: the server now reads each KYC/KYB file's first bytes and refuses (and deletes)
+   anything that is not really a JPEG, PNG, WebP or PDF matching its name. Malware scanning is still open.
+5. **Script Content-Security-Policy**: every page gets a fresh nonce from `src/proxy.ts`; scripts without
+   it are blocked (`'strict-dynamic'`, no `'unsafe-inline'` scripts; `'unsafe-eval'` in development only).
+
+## Still open (paid; decide before launch)
+
+1. **Malware scanning and document checks**: a KYC provider (for example Smile ID, which covers West
+   African IDs and selfie liveness) instead of AduPay reviewing files itself.
+2. **Real OTP SMS** needs a paid provider (Twilio, Vonage or MessageBird; WhatsApp codes are worth
+   comparing). Turn on Supabase's captcha (Cloudflare Turnstile is free) and review its sign-in rate limits.
+3. **Independent penetration test** after the items above and before real money or real ID documents;
+   the licensed partner and the BCEAO are likely to ask for the report.

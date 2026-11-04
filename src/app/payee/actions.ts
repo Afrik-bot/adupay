@@ -9,6 +9,7 @@ import { createClient } from "@/lib/supabase/server";
 import { getSessionUser } from "@/server/auth";
 import { sendNotificationsSoon } from "@/server/notifications";
 import { getPaymentProvider } from "@/server/payments";
+import { verifyUploadedDocuments } from "@/server/uploads";
 
 const CATEGORIES = ["school", "clinic", "pharmacy", "utility", "landlord"] as const;
 // RCCM numbers look like CI-ABJ-2019-B-12345 (country, court, year, form, number).
@@ -72,6 +73,8 @@ export async function registerPayee(input: {
   if (!types.has("rccm") || !types.has("manager_id") || input.documents.some((d) => !d.path.startsWith(`${user.id}/`))) {
     return { error: "documents" };
   }
+
+  if (!(await verifyUploadedDocuments("kyb-documents", input.documents.map((d) => d.path)))) return { error: "documents" };
 
   const payout = await verifyPayout(input.payoutProvider, input.payoutNumber);
   if ("error" in payout) return { error: payout.error };

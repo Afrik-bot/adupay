@@ -11,8 +11,9 @@ import { AdminNav } from "./nav";
 export default async function AdminLayout({ children }: { children: React.ReactNode }) {
   if (!(await getSessionUser())) redirect("/connexion?next=/admin");
   const supabase = await createClient();
-  const { data: staff } = await supabase.rpc("is_staff");
-  if (!staff) notFound();
+  const { data: access } = await supabase.rpc("staff_access");
+  if (access === "mfa") redirect("/securite-admin");
+  if (access !== "ok") notFound();
   const t = await getTranslations("admin");
   return (
     <div className="mx-auto flex min-h-dvh max-w-6xl flex-col">

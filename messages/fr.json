@@ -801,6 +801,21 @@
       "FR": "France",
       "US": "États-Unis",
       "CA": "Canada"
+    },
+    "mfa": {
+      "title": "Sécurité du compte équipe",
+      "lead": "La console d’administration demande un second facteur : un code à 6 chiffres d’une application d’authentification (Google Authenticator, Microsoft Authenticator, Aegis…).",
+      "setupLead": "Aucune application n’est encore liée à ce compte.",
+      "setup": "Configurer l’application",
+      "scan": "Scannez ce QR code avec votre application, puis entrez le code affiché.",
+      "qrAlt": "QR code à scanner avec l’application d’authentification",
+      "manual": "Impossible de scanner ? Saisissez cette clé dans l’application :",
+      "code": "Code à 6 chiffres",
+      "verify": "Vérifier",
+      "errors": {
+        "invalidCode": "Code incorrect. Vérifiez l’heure de votre téléphone et réessayez.",
+        "generic": "Une erreur s’est produite. Réessayez."
+      }
     }
   },
   "onboarding": {
@@ -952,6 +967,7 @@
     "commission": "Commission",
     "currentRound": "Tour {number} : {paid} sur {total} ont payé, échéance le {date}.",
     "unpaidTitle": "{count, plural, one {# membre n’a pas encore payé} other {# membres n’ont pas encore payé}}",
+    "call": "Appeler {phone}",
     "daysLate": "{days, plural, one {# jour de retard} other {# jours de retard}}",
     "notYetDue": "Pas encore en retard",
     "lastReminder": "Dernier rappel le {date}",

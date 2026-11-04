@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import { Inter } from "next/font/google";
+import { headers } from "next/headers";
 import { NextIntlClientProvider } from "next-intl";
 import { getLocale, getMessages } from "next-intl/server";
 import { ServiceWorker } from "@/components/pwa";
@@ -28,10 +29,12 @@ export const viewport: Viewport = {
 
 export default async function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   const locale = await getLocale();
+  // Set by the proxy with the Content-Security-Policy: the theme script is inline.
+  const nonce = (await headers()).get("x-nonce") ?? undefined;
   return (
     <html lang={locale} className={inter.variable} suppressHydrationWarning>
       <body className="min-h-dvh font-sans">
-        <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
+        <ThemeProvider nonce={nonce} attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
           <NextIntlClientProvider messages={pickClientMessages(await getMessages())}>{children}</NextIntlClientProvider>
           <ServiceWorker />
         </ThemeProvider>

@@ -801,6 +801,21 @@
       "FR": "France",
       "US": "United States",
       "CA": "Canada"
+    },
+    "mfa": {
+      "title": "Staff account security",
+      "lead": "The admin console needs a second factor: a 6-digit code from an authenticator app (Google Authenticator, Microsoft Authenticator, Aegis…).",
+      "setupLead": "No app is linked to this account yet.",
+      "setup": "Set up the app",
+      "scan": "Scan this QR code with your app, then enter the code it shows.",
+      "qrAlt": "QR code to scan with the authenticator app",
+      "manual": "Can’t scan? Enter this key in the app:",
+      "code": "6-digit code",
+      "verify": "Verify",
+      "errors": {
+        "invalidCode": "Wrong code. Check your phone’s clock and try again.",
+        "generic": "Something went wrong. Try again."
+      }
     }
   },
   "onboarding": {
@@ -952,6 +967,7 @@
     "commission": "Commission",
     "currentRound": "Round {number}: {paid} of {total} have paid, due {date}.",
     "unpaidTitle": "{count, plural, one {# member hasn’t paid yet} other {# members haven’t paid yet}}",
+    "call": "Call {phone}",
     "daysLate": "{days, plural, one {# day late} other {# days late}}",
     "notYetDue": "Not late yet",
     "lastReminder": "Last reminder {date}",

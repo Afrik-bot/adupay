@@ -16,7 +16,8 @@ export const getSessionUser = cache(async () => {
 /** For app pages: signed in and onboarded, or redirect to the step that is missing. */
 /** The profile columns signed-in users may read (the sanctions flag is staff-only). */
 export type Profile = Omit<Tables<"profiles">, "sanctions_status">;
-const PROFILE_COLUMNS = "id, full_name, phone, user_type, country_code, city, locale, kyc_tier, onboarded_at, created_at, updated_at";
+// phone is not readable through the API (fellow members would see it): it comes from the session.
+const PROFILE_COLUMNS = "id, full_name, user_type, country_code, city, locale, kyc_tier, onboarded_at, created_at, updated_at";
 
 export const requireProfile = cache(async (): Promise<Profile> => {
   const user = await getSessionUser();
@@ -25,5 +26,5 @@ export const requireProfile = cache(async (): Promise<Profile> => {
   const { data: profile } = await supabase.from("profiles").select(PROFILE_COLUMNS).eq("id", user.id).single();
   if (!profile) redirect("/connexion");
   if (!profile.onboarded_at) redirect("/bienvenue");
-  return profile;
+  return { ...profile, phone: user.phone };
 });

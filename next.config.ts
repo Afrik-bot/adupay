@@ -11,8 +11,8 @@ const nextConfig: NextConfig = {
   async headers() {
     return [
       {
-        // Baseline hardening for every response. A full script CSP needs nonces
-        // (dynamic rendering everywhere); framing, sniffing and referrers are locked here.
+        // Baseline hardening for every response. Pages also get the full nonce-based
+        // policy from src/proxy.ts (src/lib/csp.ts); this covers API routes and files.
         source: "/(.*)",
         headers: [
           { key: "Content-Security-Policy", value: "frame-ancestors 'none'; base-uri 'self'; form-action 'self'; object-src 'none'" },

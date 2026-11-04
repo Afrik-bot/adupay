@@ -18,8 +18,11 @@ export default async function KycQueuePage() {
     .order("created_at");
   const userIds = [...new Set((records ?? []).map((r) => r.user_id))];
   const { data: people } = userIds.length
-    ? await supabase.from("profiles").select("id, full_name, phone, kyc_tier, city, country_code").in("id", userIds)
+    ? await supabase.from("profiles").select("id, full_name, kyc_tier, city, country_code").in("id", userIds)
     : { data: [] };
+  // Phone numbers are not readable through the table; staff get them here.
+  const { data: phoneRows } = await supabase.rpc("contact_phones", { p_user_ids: userIds });
+  const phones = new Map((phoneRows ?? []).map((r) => [r.user_id, r.phone]));
   const { data: flags } = await supabase.rpc("admin_sanctions_flags", { p_profile_ids: userIds, p_payee_ids: [] });
   const flagged = new Set((flags ?? []).filter((f) => f.sanctions_status === "hit").map((f) => f.id));
   const when = new Intl.DateTimeFormat(locale === "fr" ? "fr-CI" : "en-GB", { dateStyle: "medium", timeStyle: "short", timeZone: "Africa/Abidjan" });
@@ -36,7 +39,7 @@ export default async function KycQueuePage() {
           <div className="flex flex-wrap items-baseline justify-between gap-2">
             <h2 className="text-lg font-semibold">{person.full_name}</h2>
             <span className="text-sm text-muted-foreground">
-              {person.phone ? formatE164(`+${person.phone.replace(/^\+/, "")}`) : ""} · {person.city} ({person.country_code}) · {t("tier", { tier: person.kyc_tier })}
+              {phones.get(person.id) ? formatE164(`+${phones.get(person.id)!.replace(/^\+/, "")}`) : ""} · {person.city} ({person.country_code}) · {t("tier", { tier: person.kyc_tier })}
             </span>
           </div>
           {flagged.has(person.id) && <p className="rounded-lg bg-destructive/15 p-2 text-sm font-semibold text-destructive">{t("sanctionsWarning")}</p>}

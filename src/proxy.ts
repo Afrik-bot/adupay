@@ -1,19 +1,30 @@
 import { NextResponse, type NextRequest } from "next/server";
 import { createServerClient } from "@supabase/ssr";
+import { buildCsp, cspNonce } from "@/lib/csp";
 
 // App sections that need a signed-in user. The layout re-checks on the server;
 // this is only the fast, cookie-based first pass.
-const PROTECTED = ["/accueil", "/tontines", "/payer-pour", "/epargne", "/profil", "/envoyer", "/rejoindre", "/payee", "/bienvenue", "/admin", "/notifications", "/ussd", "/credit"];
+const PROTECTED = ["/accueil", "/tontines", "/payer-pour", "/epargne", "/profil", "/envoyer", "/rejoindre", "/payee", "/bienvenue", "/admin", "/notifications", "/ussd", "/credit", "/securite-admin"];
 
 export async function proxy(request: NextRequest) {
-  let response = NextResponse.next({ request });
+  // A fresh nonce per request: Next adds it to its own scripts (it reads the CSP
+  // request header) and the root layout passes x-nonce to the theme script.
+  const nonce = cspNonce();
+  const csp = buildCsp(nonce, { dev: process.env.NODE_ENV === "development", supabaseUrl: process.env.NEXT_PUBLIC_SUPABASE_URL });
+  const next = () => {
+    const headers = new Headers(request.headers);
+    headers.set("x-nonce", nonce);
+    headers.set("content-security-policy", csp);
+    return NextResponse.next({ request: { headers } });
+  };
+  let response = next();
 
   const supabase = createServerClient(process.env.NEXT_PUBLIC_SUPABASE_URL!, process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!, {
     cookies: {
       getAll: () => request.cookies.getAll(),
       setAll(cookiesToSet, headers) {
         for (const { name, value } of cookiesToSet) request.cookies.set(name, value);
-        response = NextResponse.next({ request });
+        response = next();
         for (const { name, value, options } of cookiesToSet) response.cookies.set(name, value, options);
         for (const [key, value] of Object.entries(headers ?? {})) response.headers.set(key, value);
       },
@@ -38,6 +49,7 @@ export async function proxy(request: NextRequest) {
     url.pathname = "/accueil";
     return NextResponse.redirect(url);
   }
+  response.headers.set("Content-Security-Policy", csp);
   return response;
 }
 

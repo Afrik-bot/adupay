@@ -32,7 +32,8 @@ export function seedSql(): string {
 }
 
 type Queryable = Pick<Transaction, "query" | "exec">;
-type Who = { role: "anon" } | { role: "authenticated"; userId: string } | { role: "service_role" };
+/** aal "aal2": the session passed two-factor sign-in. The default, so staff tests keep working. */
+type Who = { role: "anon" } | { role: "authenticated"; userId: string; aal?: "aal1" | "aal2" } | { role: "service_role" };
 
 /**
  * Builds the call for a function the way supabase-js rpc() returns it:
@@ -77,15 +78,15 @@ export class TestDb {
   /** Runs fn in a transaction as the given Supabase role, with auth.uid() set. */
   as<T>(who: Who, fn: (q: Queryable) => Promise<T>): Promise<T> {
     return this.pg.transaction(async (tx) => {
-      const claims = who.role === "authenticated" ? { sub: who.userId, role: who.role } : { role: who.role };
+      const claims = who.role === "authenticated" ? { sub: who.userId, role: who.role, aal: who.aal ?? "aal2" } : { role: who.role };
       await tx.query(`select set_config('request.jwt.claims', $1, true)`, [JSON.stringify(claims)]);
       await tx.exec(`set local role ${who.role}`);
       return fn(tx);
     });
   }
 
-  asUser<T>(userId: string, fn: (q: Queryable) => Promise<T>) {
-    return this.as({ role: "authenticated", userId }, fn);
+  asUser<T>(userId: string, fn: (q: Queryable) => Promise<T>, aal: "aal1" | "aal2" = "aal2") {
+    return this.as({ role: "authenticated", userId, aal }, fn);
   }
 
   /** The server-side Db, calling functions as service_role like the real app does. */

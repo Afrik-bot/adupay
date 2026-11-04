@@ -79,7 +79,8 @@ Every later deploy: push to `main`. Vercel builds and promotes it automatically.
 1. Open the production URL: the landing page loads in French; "en" switches to English.
 2. Sign in with a test phone number, open Accueil, Tontines, Payer pour, Épargne, Profil.
 3. Open `/notifications` and `/ussd`, dial `*123#`, choose 1 (Solde).
-4. As an admin, open `/admin`: KPI tiles load.
+4. As an admin, open `/admin`, enter your authenticator code (first time: set the app up there): KPI tiles load.
+   In Supabase → Authentication → Multi-Factor, TOTP must stay enabled (it is by default).
 5. Vercel → Project → **Cron Jobs**: both jobs listed. Run "tontines" once by hand and check
    the response is `"ok": true` (Vercel → Logs).
 6. Vercel → Logs: no new errors.
@@ -106,7 +107,6 @@ so the next push does not bring it back.
 - An SMS provider for real phone OTP (Twilio, Africa's Talking, etc.: paid), and a real
   WhatsApp/SMS `NotificationProvider`.
 - A real KYC provider (e.g. Smile ID) instead of manual document review; malware scanning of uploads.
-- Multi-factor authentication for admin accounts.
 - An independent security review and penetration test, plus a data-protection filing with the
   ARTCI (Côte d'Ivoire) before real ID documents are stored.
 - Supabase Pro (daily backups, point-in-time recovery) and a custom domain with HTTPS.

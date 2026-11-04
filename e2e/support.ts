@@ -1,3 +1,4 @@
+import { createHmac } from "node:crypto";
 import { readFileSync } from "node:fs";
 import { join } from "node:path";
 import { expect, type APIRequestContext, type Page } from "@playwright/test";
@@ -84,4 +85,32 @@ export async function ensureWallet(page: Page, number: string) {
     await makeDefault.click();
     await expect(wave.getByText("Par défaut")).toBeVisible({ timeout: 60_000 });
   }
+}
+
+/** The current 6-digit code for a base32 authenticator secret (RFC 6238, 30-second steps). */
+export function totp(secret: string, now = Date.now()): string {
+  const alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ234567";
+  let bits = "";
+  for (const c of secret.replace(/[s=]/g, "").toUpperCase()) bits += alphabet.indexOf(c).toString(2).padStart(5, "0");
+  const key = Buffer.from(bits.match(/.{8}/g)!.map((b) => parseInt(b, 2)));
+  const counter = Buffer.alloc(8);
+  counter.writeBigUInt64BE(BigInt(Math.floor(now / 30_000)));
+  const hmac = createHmac("sha1", key).update(counter).digest();
+  const offset = hmac[hmac.length - 1] & 0xf;
+  return String((hmac.readUInt32BE(offset) & 0x7fffffff) % 1_000_000).padStart(6, "0");
+}
+
+/**
+ * Opens an admin page. Staff need their authenticator code first: the secret is
+ * E2E_USER_A_TOTP (the key shown when A set up two-factor sign-in, README).
+ */
+export async function openAdmin(page: Page, path: string) {
+  await page.goto(path);
+  if (new URL(page.url()).pathname !== "/securite-admin") return;
+  const secret = process.env.E2E_USER_A_TOTP;
+  if (!secret) throw new Error("A needs two-factor sign-in: set E2E_USER_A_TOTP to the authenticator key (README, End-to-end tests)");
+  await page.locator("#mfaCode").fill(totp(secret));
+  await page.getByRole("button", { name: copy.auth.mfa.verify }).click();
+  await page.waitForURL((url) => url.pathname.startsWith("/admin"), { timeout: 120_000 });
+  if (new URL(page.url()).pathname + new URL(page.url()).search !== path) await page.goto(path);
 }

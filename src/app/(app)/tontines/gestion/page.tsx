@@ -3,6 +3,7 @@ import { getLocale, getTranslations } from "next-intl/server";
 import { ArrowLeft, BadgeCheck, Download, FileText } from "lucide-react";
 import { Card, CardTitle } from "@/components/ui/card";
 import { formatMoney, type Currency, type Locale } from "@/lib/money";
+import { formatE164 } from "@/lib/phone";
 import { createClient } from "@/lib/supabase/server";
 import { cn } from "@/lib/utils";
 import { requireProfile } from "@/server/auth";
@@ -104,7 +105,14 @@ export default async function GestionPage() {
                   {unpaid.map((m) => (
                     <li key={m.member_id} className="flex flex-col gap-2 p-3">
                       <div className="flex items-center justify-between gap-3">
-                        <span className="font-medium">{m.full_name}</span>
+                        <span className="flex min-w-0 flex-col">
+                          <span className="font-medium">{m.full_name}</span>
+                          {m.phone && (
+                            <a href={`tel:+${m.phone.replace(/^\+/, "")}`} className="flex min-h-12 items-center text-sm tabular-nums underline">
+                              {t("call", { phone: formatE164(`+${m.phone.replace(/^\+/, "")}`) })}
+                            </a>
+                          )}
+                        </span>
                         <span className={cn("text-sm", m.days_late > 0 ? "font-semibold text-destructive" : "text-muted-foreground")}>
                           {m.days_late > 0 ? t("daysLate", { days: m.days_late }) : t("notYetDue")}
                         </span>

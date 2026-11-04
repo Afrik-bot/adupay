@@ -1,5 +1,5 @@
 import { expect, test } from "@playwright/test";
-import { copy, signIn, testImage, testUser } from "./support";
+import { copy, openAdmin, signIn, testImage, testUser } from "./support";
 
 // Journey 2: a diaspora sender pays a verified school directly; the school
 // confirms receipt. B registers the school (once), A approves it as admin, then pays it.
@@ -38,7 +38,7 @@ test("a school registers as a payee and an admin verifies it", async ({ page, br
 
   if (pending) {
     await signIn(page, A!);
-    await page.goto("/admin/kyb");
+    await openAdmin(page, "/admin/kyb");
     const card = page.locator("main > div > *").filter({ hasText: schoolName }).first();
     await card.getByRole("button", { name: copy.admin.decision.approve }).click();
     await expect(card).toBeHidden({ timeout: 60_000 });
