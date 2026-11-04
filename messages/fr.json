@@ -40,7 +40,9 @@
       "payFor": "Payer pour",
       "potReceived": "Cagnotte reçue",
       "received": "Argent reçu",
-      "paid": "Paiement"
+      "paid": "Paiement",
+      "savingsIn": "Épargne",
+      "savingsOut": "Retrait d’épargne"
     },
     "status": {
       "succeeded": "Réussi",
@@ -443,7 +445,161 @@
   },
   "savings": {
     "title": "Épargne",
-    "placeholder": "Fixez des objectifs : rentrée scolaire, Tabaski, loyer."
+    "placeholder": "Fixez des objectifs : rentrée scolaire, Tabaski, loyer.",
+    "newGoal": "Objectif",
+    "goals": "Mes objectifs",
+    "empty": "Aucun objectif pour l’instant. Créez-en un : rentrée scolaire, Tabaski, loyer…",
+    "lockedUntil": "Bloqué jusqu’au {date}",
+    "weekly": "{amount} chaque semaine",
+    "ofTarget": "sur {target} · {pct} %",
+    "reached": "Objectif atteint, bravo !",
+    "unlocked": "Débloqué : vous pouvez retirer",
+    "history": "Mouvements",
+    "historyEmpty": "Aucun mouvement pour l’instant.",
+    "autoLabel": "Épargne automatique de {amount} par semaine",
+    "autoHint": "Prélevé sur votre compte par défaut. Désactivable à tout moment.",
+    "kinds": {
+      "school": "Rentrée scolaire",
+      "tabaski": "Tabaski",
+      "rent": "Loyer",
+      "custom": "Autre objectif"
+    },
+    "score": {
+      "aria": "Score Communauté : {score} sur 100",
+      "title": "Score Communauté",
+      "bands": {
+        "starting": "Vous démarrez",
+        "building": "En progression",
+        "good": "Bon historique",
+        "excellent": "Excellent historique"
+      },
+      "private": "Privé : visible par vous seul.",
+      "what": "Il reflète votre régularité dans vos tontines et votre épargne. Il n’est partagé avec personne sans votre accord.",
+      "breakdown": "Ce qui compte",
+      "parts": {
+        "onTime": "Cotisations payées à temps",
+        "cycles": "Tours de tontine complétés",
+        "savings": "Régularité de l’épargne",
+        "age": "Ancienneté du compte"
+      },
+      "partHints": {
+        "onTime": "Payer votre part avant l’échéance. Compte pleinement à partir de 10 cotisations.",
+        "cycles": "Chaque tour versé auquel vous avez cotisé. Maximum à 6 tours.",
+        "savings": "Les semaines avec un versement d’épargne, sur les 12 dernières.",
+        "age": "Augmente avec le temps, jusqu’à un an."
+      },
+      "improve": "Pour faire monter votre score",
+      "tips": {
+        "onTime": "Payez vos parts de tontine avant la date d’échéance.",
+        "cycles": "Restez dans votre tontine jusqu’à la fin des tours.",
+        "savings": "Épargnez un peu chaque semaine, même 1 000 FCFA (activez l’épargne automatique)."
+      },
+      "privacyTitle": "Confidentialité",
+      "sharingOn": "Vous avez accepté de partager votre score avec des partenaires de crédit agréés. Vous pouvez arrêter à tout moment.",
+      "sharingOff": "Votre score n’est partagé avec personne. Vous pouvez choisir de le partager pour voir des offres de crédit.",
+      "seeOffers": "Voir les offres de crédit",
+      "manageSharing": "Gérer le partage",
+      "startSharing": "Partager mon score pour voir des offres"
+    },
+    "form": {
+      "title": "Nouvel objectif",
+      "kind": "Type d’objectif",
+      "name": "Nom",
+      "target": "Montant à atteindre",
+      "lockUntil": "Bloquer jusqu’au (facultatif)",
+      "lockHint": "Aucun retrait possible avant cette date : utile pour ne pas toucher à l’argent de la rentrée.",
+      "weekly": "Versement hebdomadaire (facultatif)",
+      "weeklyHint": "Le montant que vous comptez mettre de côté chaque semaine.",
+      "auto": "Épargner automatiquement chaque semaine",
+      "autoHint": "Prélevé sur votre compte par défaut.",
+      "submit": "Créer l’objectif",
+      "errors": {
+        "name": "Entrez un nom (2 caractères minimum).",
+        "target": "Le montant doit être compris entre 1 000 et 50 000 000 FCFA.",
+        "lockDate": "Choisissez une date dans le futur.",
+        "weekly": "Le versement hebdomadaire doit être d’au moins 500 FCFA et ne pas dépasser l’objectif.",
+        "generic": "L’objectif n’a pas pu être créé. Réessayez."
+      }
+    },
+    "move": {
+      "add": "Ajouter",
+      "withdraw": "Retirer",
+      "addLabel": "Montant à ajouter",
+      "withdrawLabel": "Montant à retirer",
+      "addHint": "Prélevé sur votre compte par défaut.",
+      "withdrawHint": "Versé sur votre compte par défaut.",
+      "added": "Versement en cours : il apparaîtra dès la confirmation de l’opérateur.",
+      "withdrawn": "Retrait en cours vers votre compte.",
+      "lockedNote": "Cet objectif est bloqué : les retraits seront possibles à la date prévue.",
+      "addSubmit": "Ajouter à l’objectif",
+      "withdrawSubmit": "Retirer",
+      "fix": "Régler",
+      "errors": {
+        "amount": "Montant minimum : 500 FCFA.",
+        "noAccount": "Liez d’abord un portefeuille mobile ou un compte.",
+        "goalLocked": "Cet objectif est bloqué jusqu’à sa date de déblocage.",
+        "insufficient": "Vous ne pouvez pas retirer plus que le solde de l’objectif.",
+        "kycRequired": "Vérifiez votre identité pour effectuer des paiements.",
+        "kycLimit": "Ce versement dépasse votre plafond du jour.",
+        "notOwner": "Cet objectif est introuvable.",
+        "generic": "L’opération a échoué. Réessayez."
+      }
+    },
+    "consent": {
+      "back": "Retour au score",
+      "title": "Partager mon Score Communauté",
+      "lead": "Pour vous proposer des offres de crédit, des partenaires agréés doivent voir votre score. Rien n’est partagé sans votre accord.",
+      "sharedTitle": "Ce qui serait partagé",
+      "shared": [
+        "Votre score de 0 à 100 et le détail de ses quatre parties",
+        "Le nombre de cotisations payées à temps et de tours complétés",
+        "Votre prénom et votre ville"
+      ],
+      "notSharedTitle": "Ce qui ne serait jamais partagé",
+      "notShared": [
+        "Le détail de vos paiements, montants et soldes",
+        "Les noms des membres de vos tontines",
+        "Vos documents d’identité et numéros de compte"
+      ],
+      "withWhomTitle": "Avec qui, et jusqu’à quand",
+      "withWhom": "Uniquement avec des établissements de crédit agréés partenaires d’AduPay, pour évaluer une demande que vous faites. AduPay ne revend pas vos données.",
+      "revocable": "Vous pouvez retirer votre accord à tout moment, d’un geste. Votre accord et son retrait sont enregistrés.",
+      "checkbox": "J’accepte qu’AduPay partage mon Score Communauté avec ses partenaires de crédit agréés, comme décrit ci-dessus.",
+      "agree": "Donner mon accord",
+      "activeNow": "Votre accord est actif.",
+      "revoke": "Retirer mon accord"
+    },
+    "offers": {
+      "back": "Retour au score",
+      "title": "Offres de crédit",
+      "lead": "Avec un Score Communauté de {score}, voici le type d’offres que des partenaires pourraient proposer.",
+      "sampleBanner": "Exemples fictifs : aucun partenaire de crédit n’est encore signé. Ces offres illustrent le service et ne peuvent pas être demandées.",
+      "sampleTag": "Exemple",
+      "amount": "Montant",
+      "duration": "Durée",
+      "months": "{months} mois",
+      "rate": "Taux",
+      "rateTbd": "Fixé par le partenaire",
+      "lender": "Prêteur",
+      "lenderTbd": "Établissement agréé (à venir)",
+      "eligible": "Votre score permettrait d’en faire la demande",
+      "notYet": "Accessible à partir d’un score de {score}",
+      "footnote": "Tout crédit sera proposé et accordé par un établissement agréé par la BCEAO, jamais par AduPay.",
+      "items": {
+        "stock": {
+          "name": "Microcrédit marchandises",
+          "purpose": "Renouveler le stock d’une commerçante entre deux marchés."
+        },
+        "school": {
+          "name": "Avance rentrée scolaire",
+          "purpose": "Payer la scolarité et les fournitures, remboursée en plusieurs fois."
+        },
+        "equipment": {
+          "name": "Prêt équipement",
+          "purpose": "Acheter un congélateur, une machine à coudre ou une moto pour travailler."
+        }
+      }
+    }
   },
   "profile": {
     "title": "Profil",

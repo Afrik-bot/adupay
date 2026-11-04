@@ -40,7 +40,9 @@
       "payFor": "Pay for",
       "potReceived": "Pot received",
       "received": "Money received",
-      "paid": "Payment"
+      "paid": "Payment",
+      "savingsIn": "Savings",
+      "savingsOut": "Savings withdrawal"
     },
     "status": {
       "succeeded": "Succeeded",
@@ -443,7 +445,161 @@
   },
   "savings": {
     "title": "Savings",
-    "placeholder": "Set goals: back to school, Tabaski, rent."
+    "placeholder": "Set goals: back to school, Tabaski, rent.",
+    "newGoal": "Goal",
+    "goals": "My goals",
+    "empty": "No goals yet. Create one: back to school, Tabaski, rent…",
+    "lockedUntil": "Locked until {date}",
+    "weekly": "{amount} every week",
+    "ofTarget": "of {target} · {pct}%",
+    "reached": "Goal reached, well done!",
+    "unlocked": "Unlocked: you can withdraw",
+    "history": "Activity",
+    "historyEmpty": "No activity yet.",
+    "autoLabel": "Automatic saving of {amount} a week",
+    "autoHint": "Taken from your default account. Switch off any time.",
+    "kinds": {
+      "school": "Back to school",
+      "tabaski": "Tabaski",
+      "rent": "Rent",
+      "custom": "Other goal"
+    },
+    "score": {
+      "aria": "Community Score: {score} out of 100",
+      "title": "Community Score",
+      "bands": {
+        "starting": "Just starting",
+        "building": "Building up",
+        "good": "Good record",
+        "excellent": "Excellent record"
+      },
+      "private": "Private: only you can see it.",
+      "what": "It reflects how regularly you contribute to tontines and save. It is shared with nobody without your consent.",
+      "breakdown": "What counts",
+      "parts": {
+        "onTime": "Contributions paid on time",
+        "cycles": "Tontine rounds completed",
+        "savings": "Regular saving",
+        "age": "Account age"
+      },
+      "partHints": {
+        "onTime": "Pay your share before the due date. Counts fully from 10 contributions.",
+        "cycles": "Each paid-out round you contributed to. Maximum at 6 rounds.",
+        "savings": "Weeks with a savings deposit, out of the last 12.",
+        "age": "Grows with time, up to one year."
+      },
+      "improve": "To raise your score",
+      "tips": {
+        "onTime": "Pay your tontine shares before the due date.",
+        "cycles": "Stay in your tontine until the rounds are done.",
+        "savings": "Save a little every week, even 1,000 FCFA (turn on automatic saving)."
+      },
+      "privacyTitle": "Privacy",
+      "sharingOn": "You agreed to share your score with licensed credit partners. You can stop at any time.",
+      "sharingOff": "Your score is shared with nobody. You can choose to share it to see credit offers.",
+      "seeOffers": "See credit offers",
+      "manageSharing": "Manage sharing",
+      "startSharing": "Share my score to see offers"
+    },
+    "form": {
+      "title": "New goal",
+      "kind": "Type of goal",
+      "name": "Name",
+      "target": "Target amount",
+      "lockUntil": "Lock until (optional)",
+      "lockHint": "No withdrawals before this date: useful so school money stays untouched.",
+      "weekly": "Weekly amount (optional)",
+      "weeklyHint": "What you plan to put aside each week.",
+      "auto": "Save automatically every week",
+      "autoHint": "Taken from your default account.",
+      "submit": "Create goal",
+      "errors": {
+        "name": "Enter a name (at least 2 characters).",
+        "target": "The amount must be between 1,000 and 50,000,000 FCFA.",
+        "lockDate": "Choose a date in the future.",
+        "weekly": "The weekly amount must be at least 500 FCFA and no more than the goal.",
+        "generic": "The goal couldn’t be created. Please try again."
+      }
+    },
+    "move": {
+      "add": "Add",
+      "withdraw": "Withdraw",
+      "addLabel": "Amount to add",
+      "withdrawLabel": "Amount to withdraw",
+      "addHint": "Taken from your default account.",
+      "withdrawHint": "Paid into your default account.",
+      "added": "Deposit in progress: it will appear once the operator confirms.",
+      "withdrawn": "Withdrawal on its way to your account.",
+      "lockedNote": "This goal is locked: withdrawals open on the date you chose.",
+      "addSubmit": "Add to goal",
+      "withdrawSubmit": "Withdraw",
+      "fix": "Fix this",
+      "errors": {
+        "amount": "Minimum amount: 500 FCFA.",
+        "noAccount": "Link a mobile wallet or account first.",
+        "goalLocked": "This goal is locked until its unlock date.",
+        "insufficient": "You can’t withdraw more than the goal’s balance.",
+        "kycRequired": "Verify your identity to make payments.",
+        "kycLimit": "This deposit is over your daily limit.",
+        "notOwner": "This goal can’t be found.",
+        "generic": "That didn’t work. Please try again."
+      }
+    },
+    "consent": {
+      "back": "Back to score",
+      "title": "Share my Community Score",
+      "lead": "To offer you credit, licensed partners need to see your score. Nothing is shared without your consent.",
+      "sharedTitle": "What would be shared",
+      "shared": [
+        "Your 0–100 score and the breakdown of its four parts",
+        "How many contributions you paid on time and rounds you completed",
+        "Your first name and city"
+      ],
+      "notSharedTitle": "What would never be shared",
+      "notShared": [
+        "The detail of your payments, amounts and balances",
+        "The names of people in your tontines",
+        "Your ID documents and account numbers"
+      ],
+      "withWhomTitle": "With whom, and for how long",
+      "withWhom": "Only with licensed lenders partnered with AduPay, to assess an application you make. AduPay doesn’t sell your data.",
+      "revocable": "You can withdraw your consent at any time, in one tap. Your consent and its withdrawal are recorded.",
+      "checkbox": "I agree that AduPay may share my Community Score with its licensed credit partners, as described above.",
+      "agree": "Give my consent",
+      "activeNow": "Your consent is active.",
+      "revoke": "Withdraw my consent"
+    },
+    "offers": {
+      "back": "Back to score",
+      "title": "Credit offers",
+      "lead": "With a Community Score of {score}, these are the kinds of offers partners could make.",
+      "sampleBanner": "Fictional examples: no credit partner has signed yet. These offers illustrate the service and can’t be applied for.",
+      "sampleTag": "Example",
+      "amount": "Amount",
+      "duration": "Duration",
+      "months": "{months} months",
+      "rate": "Rate",
+      "rateTbd": "Set by the partner",
+      "lender": "Lender",
+      "lenderTbd": "Licensed institution (to come)",
+      "eligible": "Your score would let you apply",
+      "notYet": "Available from a score of {score}",
+      "footnote": "Any credit will be offered and granted by an institution licensed by the BCEAO, never by AduPay.",
+      "items": {
+        "stock": {
+          "name": "Stock microloan",
+          "purpose": "Restock a trader’s goods between two market days."
+        },
+        "school": {
+          "name": "Back-to-school advance",
+          "purpose": "Pay school fees and supplies, repaid in instalments."
+        },
+        "equipment": {
+          "name": "Equipment loan",
+          "purpose": "Buy a freezer, sewing machine or motorbike for work."
+        }
+      }
+    }
   },
   "profile": {
     "title": "Profile",

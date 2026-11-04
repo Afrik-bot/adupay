@@ -94,6 +94,10 @@ function transactionLabel(purpose: string | null, direction: "collect" | "payout
       return "payFor";
     case "tontine_payout":
       return "potReceived";
+    case "savings_topup":
+      return "savingsIn";
+    case "savings_withdrawal":
+      return "savingsOut";
     default:
       return direction === "payout" ? "received" : "paid";
   }

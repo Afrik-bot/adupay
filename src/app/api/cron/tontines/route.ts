@@ -4,6 +4,7 @@ import { adminDb } from "@/lib/supabase/admin";
 import { serverEnv } from "@/server/env";
 import { getPaymentService } from "@/server/payments";
 import { deliverDirectedPayments, runSchedules } from "@/server/directed-payments";
+import { runSavingsTopups } from "@/server/savings";
 import { runTontineEngine } from "@/server/tontine-engine";
 
 export const runtime = "nodejs";
@@ -26,7 +27,8 @@ export async function GET(request: Request) {
   const service = getPaymentService();
   // Recurring Payer pour first: a scheduled tontine share lands before the round is judged.
   const schedules = await runSchedules(db, service, today);
+  const savings = await runSavingsTopups(db, service, today);
   const report = await runTontineEngine(db, service, today);
   const delivered = await deliverDirectedPayments(db, service);
-  return NextResponse.json({ ok: report.errors.length === 0, today, report, schedules, delivered });
+  return NextResponse.json({ ok: report.errors.length === 0, today, report, schedules, savings, delivered });
 }
