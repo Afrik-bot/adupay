@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { getLocale, getTranslations } from "next-intl/server";
-import { ArrowRight, Check, Database, Landmark, ShieldCheck, UserCheck } from "lucide-react";
+import { ArrowRight, Check, Database, Gift, Globe, Landmark, Receipt, ShieldCheck, Smartphone, UserCheck, Wifi } from "lucide-react";
 import { LanguageToggle } from "@/components/language-toggle";
 import { Logo } from "@/components/logo";
 import { DirectedPayShape, LedgerShape, ScoreShape, TontineCircle } from "@/components/marketing/illustrations";
@@ -17,12 +17,14 @@ const PILLARS = [
 ] as const;
 
 const TRUST_ICONS = [Landmark, Database, UserCheck, ShieldCheck];
+const CONNECT_ICONS = [Smartphone, Wifi, Globe, Receipt];
 
 export default async function LandingPage() {
   const t = await getTranslations("landing");
   const locale = await getLocale();
   const steps = t.raw("how.steps") as Step[];
   const trust = t.raw("trust.items") as Item[];
+  const connectPoints = t.raw("connect.points") as Item[];
   const faqs = t.raw("faq.items") as Faq[];
   const percent = (value: number) => (locale === "fr" ? `${String(value).replace(".", ",")} %` : `${value}%`);
 
@@ -47,6 +49,7 @@ export default async function LandingPage() {
                   ["#tontines", "tontines"],
                   ["#payer-pour", "payFor"],
                   ["#score", "score"],
+                  ["#credit-data", "credit"],
                   ["#faq", "faq"],
                 ] as const
               ).map(([href, key]) => (
@@ -142,6 +145,54 @@ export default async function LandingPage() {
               ))}
             </ol>
           </div>
+        </section>
+
+        {/* AduPay Connect: airtime & data, and data rewards */}
+        <section id="credit-data" className="mx-auto max-w-6xl scroll-mt-24 px-4 py-16 md:py-24">
+          <div className="grid gap-10 md:grid-cols-[1.2fr_1fr] md:items-start">
+            <div>
+              <p className="text-sm font-semibold tracking-wide text-muted-foreground uppercase">{t("connect.eyebrow")}</p>
+              <h2 className="mt-2 text-3xl font-bold text-balance">{t("connect.title")}</h2>
+              <p className="mt-3 text-lg text-muted-foreground">{t("connect.lead")}</p>
+              <ul className="mt-8 grid gap-6 sm:grid-cols-2">
+                {connectPoints.map((point, i) => {
+                  const Icon = CONNECT_ICONS[i];
+                  return (
+                    <li key={point.title} className="flex gap-3">
+                      <span className="flex size-12 shrink-0 items-center justify-center rounded-xl bg-accent text-accent-foreground">
+                        <Icon aria-hidden className="size-6" />
+                      </span>
+                      <div>
+                        <h3 className="text-lg font-semibold">{point.title}</h3>
+                        <p className="mt-1 text-muted-foreground">{point.body}</p>
+                      </div>
+                    </li>
+                  );
+                })}
+              </ul>
+              <Button asChild size="lg" className="mt-8">
+                <Link href="/credit">
+                  {t("connect.cta")}
+                  <ArrowRight aria-hidden />
+                </Link>
+              </Button>
+            </div>
+
+            <div className="flex flex-col gap-5 rounded-2xl bg-brand-indigo p-6 text-brand-offwhite md:p-8">
+              <Gift aria-hidden className="size-8 text-brand-saffron" />
+              <p className="text-sm font-semibold tracking-wide text-brand-saffron uppercase">{t("connect.rewardEyebrow")}</p>
+              <h3 className="text-2xl font-bold text-balance">{t("connect.rewardTitle")}</h3>
+              <p className="text-brand-offwhite/80">{t("connect.rewardBody")}</p>
+              <figure className="rounded-xl bg-brand-offwhite p-4 text-brand-indigo shadow-sm">
+                <figcaption className="text-xs font-medium text-brand-indigo/70">{t("connect.notificationLabel")}</figcaption>
+                <p className="mt-1 flex gap-2 font-medium">
+                  <Wifi aria-hidden className="mt-0.5 size-5 shrink-0" />
+                  {t("connect.notification")}
+                </p>
+              </figure>
+            </div>
+          </div>
+          <p className="mt-8 text-sm text-muted-foreground">{t("connect.note")}</p>
         </section>
 
         {/* Fee comparison */}

@@ -629,7 +629,8 @@
       "faq": "Questions",
       "open": "Ouvrir l’app",
       "menu": "Menu du site",
-      "language": "Langue"
+      "language": "Langue",
+      "credit": "Crédit & Data"
     },
     "badge": "Bientôt à Abidjan · en préparation",
     "hero": {
@@ -687,6 +688,36 @@
         }
       ]
     },
+    "connect": {
+      "eyebrow": "AduPay Connect · Crédit & Data",
+      "title": "Du crédit et de la data, pour vous ou pour la famille",
+      "lead": "Rechargez n’importe quel numéro Orange, MTN ou Moov en Côte d’Ivoire, en quelques secondes, depuis Abidjan ou depuis l’étranger.",
+      "points": [
+        {
+          "title": "Pour vous ou un proche",
+          "body": "Entrez le numéro : l’opérateur est reconnu tout seul. Gardez vos proches en favoris et rechargez-les en un geste avec « Répéter »."
+        },
+        {
+          "title": "Crédit ou forfait data",
+          "body": "Le prix, le volume et la validité sont affichés avant de payer. Payez avec votre solde, votre Mobile Money ou votre carte."
+        },
+        {
+          "title": "Depuis l’étranger",
+          "body": "Payez par carte en euros ou en dollars, au taux affiché. Le crédit arrive directement sur le téléphone de votre proche."
+        },
+        {
+          "title": "Suivi jusqu’à la livraison",
+          "body": "Un reçu suit chaque recharge jusqu’à la confirmation de l’opérateur. Si elle échoue, vous êtes remboursé."
+        }
+      ],
+      "rewardEyebrow": "Data offerte",
+      "rewardTitle": "Cotisez à l’heure, gagnez de la data",
+      "rewardBody": "Chaque cotisation de tontine payée à temps peut vous rapporter un forfait data offert par AduPay. Un cycle complet sans retard et les gérants dont tous les membres paient à l’heure sont aussi récompensés.",
+      "notificationLabel": "Exemple de notification",
+      "notification": "Bravo ! Vous avez gagné 500 Mo pour votre cotisation à l’heure.",
+      "cta": "Recharger un numéro",
+      "note": "Les recharges passeront par un distributeur agréé, en cours de mise en place. Les récompenses ont un plafond mensuel par membre."
+    },
     "fees": {
       "eyebrow": "Frais",
       "title": "Envoyer 200 $ vers l’Afrique subsaharienne",
@@ -741,6 +772,10 @@
         {
           "q": "Qui voit mon Score Communauté ?",
           "a": "Vous seul, par défaut. Il n’est partagé avec un partenaire de crédit agréé que si vous l’acceptez, et vous pouvez retirer votre accord à tout moment."
+        },
+        {
+          "q": "Comment gagner de la data offerte ?",
+          "a": "Payez votre cotisation de tontine à l’heure. Le forfait arrive automatiquement sur votre numéro, avec une notification. Les retards ne donnent pas de récompense, et un plafond mensuel s’applique."
         }
       ]
     },

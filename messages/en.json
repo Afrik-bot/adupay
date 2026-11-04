@@ -629,7 +629,8 @@
       "faq": "Questions",
       "open": "Open the app",
       "menu": "Site menu",
-      "language": "Language"
+      "language": "Language",
+      "credit": "Airtime & Data"
     },
     "badge": "Coming soon to Abidjan · in preparation",
     "hero": {
@@ -687,6 +688,36 @@
         }
       ]
     },
+    "connect": {
+      "eyebrow": "AduPay Connect · Airtime & Data",
+      "title": "Airtime and data, for you or for family",
+      "lead": "Top up any Orange, MTN or Moov number in Côte d’Ivoire in seconds, from Abidjan or from abroad.",
+      "points": [
+        {
+          "title": "For you or a relative",
+          "body": "Enter the number and the network is recognised automatically. Keep relatives as favourites and top them up again in one tap with “Repeat”."
+        },
+        {
+          "title": "Airtime or a data bundle",
+          "body": "Price, volume and validity are shown before you pay. Pay from your balance, Mobile Money or a card."
+        },
+        {
+          "title": "From abroad",
+          "body": "Pay by card in euros or dollars at the displayed rate. The top-up lands straight on your relative’s phone."
+        },
+        {
+          "title": "Tracked until delivered",
+          "body": "A receipt follows each top-up until the network confirms it. If it fails, you are refunded."
+        }
+      ],
+      "rewardEyebrow": "Free data",
+      "rewardTitle": "Pay your contribution on time, earn data",
+      "rewardBody": "Each tontine contribution paid on time can earn you a data bundle on AduPay. A full cycle with no late payment, and managers whose members all pay on time, are rewarded too.",
+      "notificationLabel": "Example notification",
+      "notification": "Well done! You earned 500 MB for paying your contribution on time.",
+      "cta": "Top up a number",
+      "note": "Top-ups will go through a licensed distributor, being set up now. Rewards have a monthly cap per member."
+    },
     "fees": {
       "eyebrow": "Fees",
       "title": "Sending $200 to sub-Saharan Africa",
@@ -741,6 +772,10 @@
         {
           "q": "Who can see my Community Score?",
           "a": "Only you, by default. It is shared with a licensed credit partner only if you agree, and you can withdraw consent at any time."
+        },
+        {
+          "q": "How do I earn free data?",
+          "a": "Pay your tontine contribution on time. The bundle lands on your number automatically, with a notification. Late payments earn nothing, and a monthly cap applies."
         }
       ]
     },
