@@ -69,7 +69,10 @@ export function SignInForm() {
     // The app layout sends first-time users on to onboarding. Only same-site
     // paths are followed, so the link cannot send anyone elsewhere.
     const next = new URLSearchParams(window.location.search).get("next");
-    router.replace(next && /^\/(?!\/)[a-z0-9/_-]*$/i.test(next) ? next : "/accueil");
+    const safe = next && /^\/(?!\/)[a-z0-9/_-]*$/i.test(next) ? next : null;
+    // If this is a first sign-in, onboarding comes first and then returns here.
+    if (safe) document.cookie = `adupay_next=${encodeURIComponent(safe)}; path=/; max-age=1800; samesite=lax`;
+    router.replace(safe ?? "/accueil");
     router.refresh();
   }
 

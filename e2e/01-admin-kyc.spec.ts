@@ -15,6 +15,9 @@ let step: "id" | "address" | "done" = "id";
 test("a member submits documents for the next tier", async ({ page }) => {
   await signIn(page, B!);
   await page.goto("/profil/verification");
+  // Never skip by accident: we must really be on the verification page.
+  await expect(page).toHaveURL(/\/profil\/verification$/);
+  await expect(page.getByRole("heading", { level: 1 })).toBeVisible({ timeout: 60_000 });
   const form = page.getByRole("button", { name: copy.kyc.form.submit });
   if (!(await form.count())) {
     step = "done";

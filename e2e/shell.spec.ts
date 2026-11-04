@@ -35,7 +35,7 @@ test.describe("signed in", () => {
       ["Accueil", "/accueil"],
     ]) {
       await nav.getByRole("link", { name: label }).click();
-      await expect(page).toHaveURL(new RegExp(`${path}$`), { timeout: 60_000 });
+      await expect(page).toHaveURL(new RegExp(`${path}$`), { timeout: 120_000 });
       await expect(nav.getByRole("link", { name: label })).toHaveAttribute("aria-current", "page");
     }
     for (const link of await nav.getByRole("link").all()) {

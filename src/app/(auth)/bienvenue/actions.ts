@@ -10,6 +10,9 @@ export type OnboardingError = "name" | "city" | "type" | "generic";
 
 const RESIDENCE_COUNTRIES = new Set(["CI", "FR", "US", "CA", "SN", "ML", "BF", "NE", "TG", "BJ", "GW", "XX"]);
 
+const NEXT_COOKIE = "adupay_next";
+const SAFE_NEXT = /^\/(?!\/)[a-z0-9/_-]*$/i;
+
 export async function completeOnboarding(input: {
   locale: string;
   userType: string;
@@ -44,6 +47,15 @@ export async function completeOnboarding(input: {
     .eq("id", user.id);
   if (error) return { error: "generic" };
 
-  (await cookies()).set(LOCALE_COOKIE, locale, { path: "/", maxAge: 60 * 60 * 24 * 365, sameSite: "lax" });
-  redirect("/accueil");
+  const jar = await cookies();
+  jar.set(LOCALE_COOKIE, locale, { path: "/", maxAge: 60 * 60 * 24 * 365, sameSite: "lax" });
+  // A first sign-in from an invite or payee link comes back to that link (same-site paths only).
+  let next = jar.get(NEXT_COOKIE)?.value;
+  try {
+    next = next && decodeURIComponent(next);
+  } catch {
+    next = undefined;
+  }
+  jar.delete(NEXT_COOKIE);
+  redirect(next && SAFE_NEXT.test(next) ? next : "/accueil");
 }

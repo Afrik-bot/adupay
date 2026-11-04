@@ -27,9 +27,11 @@ test("a resident buys a data bundle for a relative from their wallet", async ({ 
   await page.getByRole("button", { name: copy.credit.next }).click();
   await page.getByRole("button", { name: /500 Mo/ }).click();
   await page.getByRole("button", { name: copy.credit.next }).click();
-  await expect(page.getByText(copy.credit.review.feeValue)).toBeVisible();
+  await expect(page.getByText(copy.credit.review.feeValue, { exact: true })).toBeVisible();
   await page.getByRole("button", { name: /^Mobile Money/ }).click();
-  await page.getByLabel(copy.credit.review.save).check();
+  // Offered only while the number is not a favourite yet.
+  const save = page.getByLabel(copy.credit.review.save);
+  if (await save.count()) await save.check();
   await page.getByRole("button", { name: /^Payer / }).click();
   await delivered(page);
   await expect(page.getByText(/Pass 500 Mo/).first()).toBeVisible();

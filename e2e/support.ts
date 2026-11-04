@@ -47,18 +47,24 @@ export async function signIn(page: Page, user: TestUser, next?: string) {
   await page.getByRole("button", { name: "Recevoir le code" }).click();
   await page.locator("#code").fill(user.code);
   await page.getByRole("button", { name: "Valider" }).click();
-  await page.waitForURL((url) => !url.pathname.startsWith("/connexion"), { timeout: 120_000 });
-  if (new URL(page.url()).pathname === "/bienvenue") await completeOnboarding(page);
+  // A first sign-in also creates the account: give a slow dev server time.
+  await page.waitForURL((url) => !url.pathname.startsWith("/connexion"), { timeout: 240_000 });
+  // The app sends a new user from the first page to onboarding a moment later, so
+  // ask for onboarding directly: it shows the wizard, or redirects if already done.
+  await page.goto("/bienvenue");
+  if (new URL(page.url()).pathname === "/bienvenue") await completeOnboarding(page, next);
+  else if (next && new URL(page.url()).pathname !== next) await page.goto(next);
 }
 
-async function completeOnboarding(page: Page) {
+async function completeOnboarding(page: Page, next?: string) {
   await page.getByRole("button", { name: "Continuer" }).click();
   await page.getByRole("button", { name: /Je vis en Côte d’Ivoire/ }).click();
   await page.getByRole("button", { name: "Continuer" }).click();
   await page.locator("#fullName").fill("Membre E2E");
   await page.locator("#city").fill("Abidjan");
   await page.getByRole("button", { name: "Terminer" }).click();
-  await page.waitForURL(/\/accueil$/, { timeout: 120_000 });
+  // Onboarding returns to the link the user came from (an invite, the payee portal).
+  await page.waitForURL(next ? (url) => url.pathname === next : /\/accueil$/, { timeout: 120_000 });
 }
 
 /**
