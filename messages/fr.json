@@ -1305,5 +1305,11 @@
     "hint": "Tapez le numéro du choix. 0 = retour, 00 = menu principal.",
     "link": "Simulateur USSD *123#",
     "error": "Le réseau ne répond pas. Réessayez."
+  },
+  "offline": {
+    "title": "Pas de connexion",
+    "lead": "Cet écran n’a pas encore été enregistré sur votre téléphone. Reconnectez-vous à internet, ou ouvrez l’accueil : vos derniers écrans consultés restent visibles hors ligne.",
+    "retry": "Ouvrir l’accueil",
+    "banner": "Hors ligne : vous voyez la dernière version enregistrée."
   }
 }

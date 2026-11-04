@@ -1,20 +1,18 @@
 import Link from "next/link";
 import { getLocale, getTranslations } from "next-intl/server";
-import { ChevronRight, LogOut, Phone, Wallet } from "lucide-react";
-import { Button } from "@/components/ui/button";
+import { ChevronRight, Phone, Wallet } from "lucide-react";
 import { Card } from "@/components/ui/card";
 import { formatE164 } from "@/lib/phone";
 import { createClient } from "@/lib/supabase/server";
 import { getSessionUser, requireProfile } from "@/server/auth";
-import { signOut } from "./actions";
 import { KycCard } from "./kyc-card";
 import { Preferences } from "./preferences";
+import { SignOutButton } from "./sign-out-button";
 
 export default async function ProfilPage() {
   const profile = await requireProfile();
   const user = await getSessionUser();
   const t = await getTranslations("profile");
-  const auth = await getTranslations("auth");
   const accountsT = await getTranslations("accounts");
   const ussdT = await getTranslations("ussdSim");
   const locale = await getLocale();
@@ -82,12 +80,7 @@ export default async function ProfilPage() {
           system: t("themeSystem"),
         }}
       />
-      <form action={signOut}>
-        <Button type="submit" variant="outline" className="w-full">
-          <LogOut aria-hidden />
-          {auth("signOut")}
-        </Button>
-      </form>
+      <SignOutButton />
     </div>
   );
 }

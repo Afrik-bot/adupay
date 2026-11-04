@@ -5,7 +5,7 @@ import { cn } from "@/lib/utils";
 
 // shadcn/ui button; sizes keep the 48px minimum tap target from CLAUDE.md.
 const buttonVariants = cva(
-  "inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-lg text-base font-semibold transition-colors disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-5 [&_svg]:shrink-0 outline-none focus-visible:ring-[3px] focus-visible:ring-ring",
+  "inline-flex items-center justify-center gap-2 text-center text-balance rounded-lg text-base font-semibold transition-colors disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-5 [&_svg]:shrink-0 outline-none focus-visible:ring-[3px] focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background",
   {
     variants: {
       variant: {

@@ -53,7 +53,7 @@ export default async function GestionPage() {
             <div className="flex items-start justify-between gap-3">
               <div className="min-w-0">
                 <CardTitle className="truncate">
-                  <Link href={`/tontines/${g.group_id}`} className="hover:underline">
+                  <Link href={`/tontines/${g.group_id}`} className="flex min-h-12 items-center hover:underline">
                     {g.name}
                   </Link>
                 </CardTitle>

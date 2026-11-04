@@ -1305,5 +1305,11 @@
     "hint": "Type the number of your choice. 0 = back, 00 = main menu.",
     "link": "USSD simulator *123#",
     "error": "The network is not answering. Try again."
+  },
+  "offline": {
+    "title": "No connection",
+    "lead": "This screen has not been saved on your phone yet. Reconnect to the internet, or open home: the screens you viewed last stay visible offline.",
+    "retry": "Open home",
+    "banner": "Offline: you are seeing the last saved version."
   }
 }

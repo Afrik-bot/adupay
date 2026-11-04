@@ -21,11 +21,11 @@
   --accent: #f2a93b;
   --accent-foreground: #1f2a5a;
   --destructive: #b42318;
-  --success: #1e7a46;
+  --success: #1a6e3f;
   --warning: #8a5a00;
   --border: #ddd6c9;
   --input: #ddd6c9;
-  --ring: #f2a93b;
+  --ring: #b86e00; /* darker saffron: 3:1 against the page for focus (WCAG 2.2) */
 }
 
 .dark {
@@ -84,7 +84,7 @@
 
 @layer base {
   * {
-    @apply border-border outline-ring/50;
+    @apply border-border outline-ring;
   }
   body {
     @apply bg-background text-foreground antialiased;

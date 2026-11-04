@@ -43,5 +43,5 @@ export async function proxy(request: NextRequest) {
 
 export const config = {
   // Skip static assets, images and API routes (webhooks authenticate themselves).
-  matcher: ["/((?!api/|_next/static|_next/image|brand/|icon.svg|.*\\.(?:svg|png|jpg|jpeg|webp|ico)$).*)"],
+  matcher: ["/((?!api/|_next/static|_next/image|brand/|icons/|icon.svg|sw.js|manifest.webmanifest|.*\\.(?:svg|png|jpg|jpeg|webp|ico)$).*)"],
 };
