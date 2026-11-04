@@ -8,7 +8,7 @@ import { formatMoney, type Currency, type Locale } from "@/lib/money";
 import { createClient } from "@/lib/supabase/server";
 import { requireProfile } from "@/server/auth";
 import { serverEnv } from "@/server/env";
-import { AutoRefresh } from "../../tontines/[id]/recu/[paymentId]/auto-refresh";
+import { LiveStatus } from "./live-status";
 import { ShareWithFamily } from "./share";
 
 export default async function DirectedPaymentPage({ params }: { params: Promise<{ id: string }> }) {
@@ -33,7 +33,8 @@ export default async function DirectedPaymentPage({ params }: { params: Promise<
   const when = new Intl.DateTimeFormat(locale === "fr" ? "fr-CI" : "en-GB", { dateStyle: "medium", timeStyle: "short", timeZone: "Africa/Abidjan" });
   const payeeName = target?.name;
   const shareUrl = new URL(`/suivi/${dp.share_token}`, serverEnv.appUrl()).toString();
-  const moving = dp.status === "initiated" || dp.status === "paid";
+  // Live until the last step: Reçu -> Confirmé comes from the payee portal.
+  const moving = dp.status !== "confirmed" && dp.status !== "failed";
 
   return (
     <div className="flex flex-col gap-6">
@@ -95,7 +96,7 @@ export default async function DirectedPaymentPage({ params }: { params: Promise<
       {dp.status !== "failed" && (
         <ShareWithFamily url={shareUrl} message={t("shareMessage", { payee: payeeName ?? "", amount: formatMoney(dp.amount, "XOF", locale), url: shareUrl })} />
       )}
-      {moving && <AutoRefresh />}
+      {moving && <LiveStatus id={dp.id} />}
     </div>
   );
 }

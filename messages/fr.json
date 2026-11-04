@@ -594,7 +594,8 @@
       "complaints": "Réclamations",
       "legal": "AduPay est un projet en préparation. Ce site ne constitue pas une offre de services financiers.",
       "rights": "© 2026 AduPay",
-      "legalNav": "Liens juridiques"
+      "legalNav": "Liens juridiques",
+      "payeeSpace": "Espace établissement"
     }
   },
   "legal": {
@@ -828,6 +829,117 @@
       "confirmed": "Confirmée",
       "waived": "Annulée",
       "charged": "Payée"
+    }
+  },
+  "payee": {
+    "badge": "Espace établissement",
+    "nav": {
+      "label": "Menu de l’établissement",
+      "payments": "Paiements",
+      "settings": "Paramètres"
+    },
+    "welcomeTitle": "Recevez les paiements de la diaspora",
+    "welcomeLead": "Écoles, cliniques, pharmacies, fournisseurs d’eau et d’électricité, propriétaires : inscrivez votre établissement pour recevoir les paiements Payer pour.",
+    "pending": "Votre dossier est en cours de vérification par AduPay.",
+    "pendingHint": "Vous apparaîtrez dans l’annuaire et pourrez recevoir des paiements dès sa validation.",
+    "rejected": "Votre dossier a été refusé : {reason}. Contactez AduPay pour le compléter.",
+    "dashboardLead": "Les paiements reçus pour vos élèves, patients ou clients.",
+    "filters": {
+      "label": "Filtrer les paiements",
+      "to_confirm": "À confirmer",
+      "confirmed": "Confirmés",
+      "all": "Tous",
+      "search": "Rechercher",
+      "searchPlaceholder": "Nom ou référence",
+      "from": "Du",
+      "to": "Au",
+      "apply": "Filtrer"
+    },
+    "count": "{count, plural, one {# paiement} other {# paiements}} · {total}",
+    "exportCsv": "Exporter (CSV)",
+    "from": "Envoyé par {name} ({country})",
+    "confirmedOn": "Réception confirmée le {date}",
+    "onTheWay": "En route vers votre compte",
+    "confirm": "Confirmer la réception",
+    "confirmError": "La confirmation a échoué. Réessayez.",
+    "empty": "Aucun paiement pour ce filtre.",
+    "csv": {
+      "date": "Date",
+      "beneficiary": "Bénéficiaire",
+      "reference": "Référence",
+      "amount": "Montant",
+      "sender": "Envoyé par",
+      "status": "Statut",
+      "confirmed": "Confirmé le",
+      "statuses": {
+        "paid": "En route",
+        "received": "À confirmer",
+        "confirmed": "Confirmé",
+        "initiated": "En cours",
+        "failed": "Échoué"
+      }
+    },
+    "register": {
+      "title": "Inscrire mon établissement",
+      "lead": "Ces informations sont vérifiées par AduPay (KYB) avant votre ouverture aux paiements.",
+      "name": "Nom de l’établissement",
+      "rccm": "N° RCCM",
+      "rccmHint": "Le numéro du Registre du commerce, par exemple CI-ABJ-2019-B-12345.",
+      "category": "Type d’établissement",
+      "categories": {
+        "school": "École",
+        "clinic": "Clinique",
+        "pharmacy": "Pharmacie",
+        "utility": "Fournisseur (eau, électricité)",
+        "landlord": "Propriétaire"
+      },
+      "city": "Ville",
+      "address": "Adresse",
+      "contact": "Téléphone de contact",
+      "contactHint": "Le numéro sur lequel AduPay peut joindre l’établissement.",
+      "payout": "Compte de versement",
+      "payoutHint": "Où AduPay vous verse l’argent reçu. Il est vérifié auprès de l’opérateur ou de la banque.",
+      "documents": "Documents",
+      "rccmDoc": "Extrait RCCM",
+      "idDoc": "Pièce d’identité du responsable",
+      "chooseFile": "Choisir un fichier (photo ou PDF)",
+      "fileReady": "Fichier prêt : {name}",
+      "submit": "Envoyer pour vérification",
+      "sending": "Envoi en cours…",
+      "errors": {
+        "name": "Entrez le nom de l’établissement.",
+        "rccm": "N° RCCM invalide (format CI-ABJ-2019-B-12345).",
+        "category": "Choisissez le type d’établissement.",
+        "city": "Entrez la ville.",
+        "contact": "Numéro de téléphone invalide.",
+        "documents": "Ajoutez l’extrait RCCM et la pièce d’identité (5 Mo maximum chacun).",
+        "alreadyRegistered": "Un établissement est déjà inscrit avec ce compte.",
+        "generic": "L’inscription a échoué. Réessayez.",
+        "invalidNumber": "Numéro invalide.",
+        "wrongNetwork": "Numéro d’un autre opérateur.",
+        "invalidIban": "IBAN invalide.",
+        "verificationFailed": "Compte introuvable chez l’opérateur."
+      }
+    },
+    "settings": {
+      "title": "Paramètres",
+      "status": "Statut",
+      "statuses": {
+        "approved": "Vérifié",
+        "pending": "En cours de vérification",
+        "rejected": "Refusé"
+      },
+      "identityHint": "Pour modifier le nom, le RCCM ou le type d’établissement, contactez AduPay : ces informations sont vérifiées.",
+      "contactTitle": "Coordonnées",
+      "saved": "Coordonnées enregistrées.",
+      "save": "Enregistrer",
+      "payoutTitle": "Compte de versement",
+      "payoutCurrent": "Compte actuel : {account}",
+      "noPayout": "aucun",
+      "payoutSubmit": "Vérifier et remplacer",
+      "payoutChanged": "Nouveau compte vérifié et enregistré.",
+      "payoutAudit": "Chaque changement de compte de versement est enregistré dans le journal d’audit d’AduPay.",
+      "error": "Une erreur s’est produite. Réessayez."
     }
   }
 }

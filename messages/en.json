@@ -594,7 +594,8 @@
       "complaints": "Complaints",
       "legal": "AduPay is a project in preparation. This site is not an offer of financial services.",
       "rights": "© 2026 AduPay",
-      "legalNav": "Legal links"
+      "legalNav": "Legal links",
+      "payeeSpace": "Business space"
     }
   },
   "legal": {
@@ -828,6 +829,117 @@
       "confirmed": "Confirmed",
       "waived": "Waived",
       "charged": "Paid"
+    }
+  },
+  "payee": {
+    "badge": "Business space",
+    "nav": {
+      "label": "Business menu",
+      "payments": "Payments",
+      "settings": "Settings"
+    },
+    "welcomeTitle": "Receive payments from the diaspora",
+    "welcomeLead": "Schools, clinics, pharmacies, water and power utilities, landlords: register to receive Pay for payments.",
+    "pending": "AduPay is reviewing your application.",
+    "pendingHint": "You’ll appear in the directory and can receive payments as soon as it’s approved.",
+    "rejected": "Your application was rejected: {reason}. Contact AduPay to complete it.",
+    "dashboardLead": "Payments received for your pupils, patients or customers.",
+    "filters": {
+      "label": "Filter payments",
+      "to_confirm": "To confirm",
+      "confirmed": "Confirmed",
+      "all": "All",
+      "search": "Search",
+      "searchPlaceholder": "Name or reference",
+      "from": "From",
+      "to": "To",
+      "apply": "Filter"
+    },
+    "count": "{count, plural, one {# payment} other {# payments}} · {total}",
+    "exportCsv": "Export (CSV)",
+    "from": "Sent by {name} ({country})",
+    "confirmedOn": "Receipt confirmed on {date}",
+    "onTheWay": "On its way to your account",
+    "confirm": "Confirm receipt",
+    "confirmError": "Confirmation failed. Please try again.",
+    "empty": "No payments for this filter.",
+    "csv": {
+      "date": "Date",
+      "beneficiary": "Beneficiary",
+      "reference": "Reference",
+      "amount": "Amount",
+      "sender": "Sent by",
+      "status": "Status",
+      "confirmed": "Confirmed on",
+      "statuses": {
+        "paid": "On its way",
+        "received": "To confirm",
+        "confirmed": "Confirmed",
+        "initiated": "In progress",
+        "failed": "Failed"
+      }
+    },
+    "register": {
+      "title": "Register my business",
+      "lead": "AduPay verifies these details (KYB) before you can receive payments.",
+      "name": "Business name",
+      "rccm": "RCCM number",
+      "rccmHint": "Your trade register number, for example CI-ABJ-2019-B-12345.",
+      "category": "Type of business",
+      "categories": {
+        "school": "School",
+        "clinic": "Clinic",
+        "pharmacy": "Pharmacy",
+        "utility": "Utility (water, power)",
+        "landlord": "Landlord"
+      },
+      "city": "City",
+      "address": "Address",
+      "contact": "Contact phone",
+      "contactHint": "The number AduPay can reach the business on.",
+      "payout": "Payout account",
+      "payoutHint": "Where AduPay sends the money you receive. It’s checked with the operator or bank.",
+      "documents": "Documents",
+      "rccmDoc": "RCCM extract",
+      "idDoc": "Manager’s ID document",
+      "chooseFile": "Choose a file (photo or PDF)",
+      "fileReady": "File ready: {name}",
+      "submit": "Send for review",
+      "sending": "Sending…",
+      "errors": {
+        "name": "Enter the business name.",
+        "rccm": "Invalid RCCM number (format CI-ABJ-2019-B-12345).",
+        "category": "Choose the type of business.",
+        "city": "Enter the city.",
+        "contact": "Invalid phone number.",
+        "documents": "Add the RCCM extract and the ID document (5 MB maximum each).",
+        "alreadyRegistered": "A business is already registered with this account.",
+        "generic": "Registration failed. Please try again.",
+        "invalidNumber": "Invalid number.",
+        "wrongNetwork": "This number belongs to another network.",
+        "invalidIban": "Invalid IBAN.",
+        "verificationFailed": "The operator couldn’t find this account."
+      }
+    },
+    "settings": {
+      "title": "Settings",
+      "status": "Status",
+      "statuses": {
+        "approved": "Verified",
+        "pending": "Under review",
+        "rejected": "Rejected"
+      },
+      "identityHint": "To change the name, RCCM or type of business, contact AduPay: these details are verified.",
+      "contactTitle": "Contact details",
+      "saved": "Contact details saved.",
+      "save": "Save",
+      "payoutTitle": "Payout account",
+      "payoutCurrent": "Current account: {account}",
+      "noPayout": "none",
+      "payoutSubmit": "Verify and replace",
+      "payoutChanged": "New account verified and saved.",
+      "payoutAudit": "Every payout account change is recorded in AduPay’s audit log.",
+      "error": "Something went wrong. Please try again."
     }
   }
 }

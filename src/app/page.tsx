@@ -242,6 +242,7 @@ export default async function LandingPage() {
                   ["/conditions", "terms"],
                   ["/confidentialite", "privacy"],
                   ["/reclamations", "complaints"],
+                  ["/payee", "payeeSpace"],
                 ] as const
               ).map(([href, key]) => (
                 <li key={href}>
