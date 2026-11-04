@@ -4,6 +4,7 @@ import { adminDb } from "@/lib/supabase/admin";
 import { createClient } from "@/lib/supabase/server";
 import { RpcError } from "./db";
 import { getPaymentService } from "./payments";
+import { allow } from "./rate-limit";
 import type { WalletProvider } from "./payments/types";
 
 export type PayShareError =
@@ -14,6 +15,7 @@ export type PayShareError =
   | "relinkAccount"
   | "kycRequired"
   | "kycLimit"
+  | "tooMany"
   | "generic";
 
 interface ContributionRow {
@@ -28,6 +30,7 @@ interface ContributionRow {
  * the contribution is reused and the payment is keyed on it.
  */
 export async function payShare(userId: string, groupId: string): Promise<{ paymentId: string } | { error: PayShareError }> {
+  if (!(await allow("payment", userId))) return { error: "tooMany" };
   const supabase = await createClient();
 
   const { data: membership } = await supabase

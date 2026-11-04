@@ -29,9 +29,11 @@ interface SandboxPlan {
 
 /**
  * Demo account numbers that force an outcome, so a demo or test can show each path.
+ * 4242 is the test card the payment screen advertises as accepted, so it must be.
  * Any other account gets the 90 / 7 / 3 % distribution.
  */
 export const SANDBOX_TEST_ACCOUNTS: Record<string, SandboxOutcome> = {
+  "4242": "success",
   "9990": "success",
   "9991": "pending_success",
   "9992": "failure",

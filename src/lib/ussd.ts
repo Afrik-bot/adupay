@@ -14,7 +14,7 @@ export interface UssdDue {
   paid: boolean;
 }
 
-export type UssdPayError = "notMember" | "notStarted" | "alreadyPaid" | "noAccount" | "relinkAccount" | "kycRequired" | "kycLimit" | "generic";
+export type UssdPayError = "notMember" | "notStarted" | "alreadyPaid" | "noAccount" | "relinkAccount" | "kycRequired" | "kycLimit" | "tooMany" | "generic";
 
 export interface UssdBackend {
   balances(): Promise<{ currency: Currency; balance: number }[]>;

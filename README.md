@@ -72,6 +72,24 @@ Get-Content supabase\seed.sql -Raw -Encoding UTF8 | Set-Clipboard
 | `npm run typecheck` / `npm run lint` / `npm run format` | TypeScript, ESLint, Prettier |
 | `npm run db:types` | Regenerate `src/types/database.ts` from the migrations |
 
+## End-to-end tests
+
+Playwright drives the three core journeys against the configured Supabase project, one file at a time:
+`01-admin-kyc` (a member's documents approved by an admin), `02-tontine` (a full round paid in and paid out)
+and `03-payer-pour` (a school paid from abroad confirms receipt).
+
+1. In Supabase → Authentication → Providers → Phone, add two **test phone numbers** with fixed codes
+   (no SMS is sent), e.g. `2250700000099=123456` and `2250700000098=123456`.
+2. Give user A the admin role once (SQL Editor):
+   `insert into public.user_roles (user_id, role) select id, 'admin' from public.profiles where phone = '2250700000099' on conflict do nothing;`
+3. Run, with the dev server on port 3000 (Playwright starts it if needed):
+   ```powershell
+   $env:E2E_USER_A = "CI:0700000099:123456"; $env:E2E_USER_B = "CI:0700000098:123456"; npm run test:e2e
+   ```
+
+The journeys leave test data behind (a tontine, a payee, payments in the sandbox) and are written to be re-run.
+Once B reaches KYC tier 2 the KYC journey skips itself.
+
 ## Layout
 
 ```

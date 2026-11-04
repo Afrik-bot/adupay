@@ -33,7 +33,9 @@ async function railSettles(rounds = 2) {
   }
 }
 
-const card = (last4 = "4242") => ({ token: `sbxcard_test_${last4}`, brand: "visa", last4 });
+// 9990 = the sandbox's "always succeeds" card. Other endings get a hashed outcome
+// (3% fail), which made these tests flaky.
+const card = (last4 = "9990") => ({ token: `sbxcard_test_${last4}`, brand: "visa", last4 });
 const pay = (overrides: Partial<Parameters<typeof startDirectedPayment>[2]> = {}) =>
   startDirectedPayment(db.serviceDb(), service, {
     senderId: DEMO.aminata,
@@ -219,7 +221,7 @@ describe("recurring schedules", () => {
     const today = new Date().toISOString().slice(0, 10);
     const schedule = await db.one<{ id: string }>(
       `insert into public.directed_payment_schedules (sender_id, purpose, payee_id, beneficiary_name, reference, amount, source_currency, frequency, next_run_on, card_token, card_brand, card_last4)
-       values ($1, 'school', $2, 'Fatou Traoré', 'CM2 B', 75000, 'EUR', 'monthly', $3, 'sbxcard_sched_4242', 'visa', '4242') returning id`,
+       values ($1, 'school', $2, 'Fatou Traoré', 'CM2 B', 75000, 'EUR', 'monthly', $3, 'sbxcard_sched_9990', 'visa', '9990') returning id`,
       [DEMO.aminata, school, today],
     );
     const first = await runSchedules(db.serviceDb(), service, today);
@@ -253,7 +255,7 @@ describe("the family share link", () => {
     const rows = await db.as({ role: "anon" }, async (q) => (await q.query<Record<string, unknown>>("select * from public.directed_payment_public($1)", [token])).rows);
     expect(rows).toHaveLength(1);
     expect(rows[0]).toMatchObject({ status: "received", beneficiary_name: "Fatou Traoré", sender_first_name: "Aminata", amount: 150_000, reference_hint: "…1234" });
-    expect(JSON.stringify(rows[0])).not.toMatch(/matricule|4242|EUR/);
+    expect(JSON.stringify(rows[0])).not.toMatch(/matricule|9990|EUR/);
     expect((await db.as({ role: "anon" }, async (q) => (await q.query("select * from public.directed_payment_public('short')")).rows))).toEqual([]);
   });
 });

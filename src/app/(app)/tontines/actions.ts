@@ -4,6 +4,7 @@ import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
 import { createClient } from "@/lib/supabase/server";
 import { getSessionUser } from "@/server/auth";
+import { allow } from "@/server/rate-limit";
 import { payShare, type PayShareError } from "@/server/tontines";
 
 export type CreateTontineError = "name" | "amount" | "startDate" | "limit" | "penalty" | "generic";
@@ -57,10 +58,11 @@ export async function createTontine(input: {
   redirect(`/tontines/${id}?nouvelle=1`);
 }
 
-export type JoinError = "notFound" | "started" | "full" | "generic";
+export type JoinError = "notFound" | "started" | "full" | "tooMany" | "generic";
 
 export async function joinTontine(code: string): Promise<{ error: JoinError } | void> {
-  await requireUser();
+  const user = await requireUser();
+  if (!(await allow("join", user.id))) return { error: "tooMany" };
   const supabase = await createClient();
   const { data: id, error } = await supabase.rpc("join_group", { p_invite_code: code });
   if (error || !id) {
@@ -72,11 +74,12 @@ export async function joinTontine(code: string): Promise<{ error: JoinError } | 
   redirect(`/tontines/${id}`);
 }
 
-export type SponsorError = "notFound" | "alreadyMember" | "alreadySponsored" | "generic";
+export type SponsorError = "notFound" | "alreadyMember" | "alreadySponsored" | "tooMany" | "generic";
 
 /** A diaspora relative joins to pay a member's share; they take no turn in the rotation. */
 export async function joinAsSponsor(code: string, memberId: string): Promise<{ error: SponsorError } | void> {
-  await requireUser();
+  const user = await requireUser();
+  if (!(await allow("join", user.id))) return { error: "tooMany" };
   const supabase = await createClient();
   const { data: id, error } = await supabase.rpc("join_group_as_sponsor", { p_invite_code: code, p_member_id: memberId });
   if (error || !id) {

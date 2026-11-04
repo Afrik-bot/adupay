@@ -18,8 +18,10 @@ export default async function KycQueuePage() {
     .order("created_at");
   const userIds = [...new Set((records ?? []).map((r) => r.user_id))];
   const { data: people } = userIds.length
-    ? await supabase.from("profiles").select("id, full_name, phone, kyc_tier, city, country_code, sanctions_status").in("id", userIds)
+    ? await supabase.from("profiles").select("id, full_name, phone, kyc_tier, city, country_code").in("id", userIds)
     : { data: [] };
+  const { data: flags } = await supabase.rpc("admin_sanctions_flags", { p_profile_ids: userIds, p_payee_ids: [] });
+  const flagged = new Set((flags ?? []).filter((f) => f.sanctions_status === "hit").map((f) => f.id));
   const when = new Intl.DateTimeFormat(locale === "fr" ? "fr-CI" : "en-GB", { dateStyle: "medium", timeStyle: "short", timeZone: "Africa/Abidjan" });
 
   return (
@@ -37,7 +39,7 @@ export default async function KycQueuePage() {
               {person.phone ? formatE164(`+${person.phone.replace(/^\+/, "")}`) : ""} · {person.city} ({person.country_code}) · {t("tier", { tier: person.kyc_tier })}
             </span>
           </div>
-          {person.sanctions_status === "hit" && <p className="rounded-lg bg-destructive/15 p-2 text-sm font-semibold text-destructive">{t("sanctionsWarning")}</p>}
+          {flagged.has(person.id) && <p className="rounded-lg bg-destructive/15 p-2 text-sm font-semibold text-destructive">{t("sanctionsWarning")}</p>}
           <ul className="divide-y">
             {(records ?? [])
               .filter((r) => r.user_id === person.id)

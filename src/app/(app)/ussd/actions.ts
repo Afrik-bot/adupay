@@ -8,6 +8,7 @@ import type { Currency, Locale } from "@/lib/money";
 import { createClient } from "@/lib/supabase/server";
 import { runUssd, type UssdBackend, type UssdReply } from "@/lib/ussd";
 import { getSessionUser } from "@/server/auth";
+import { allow } from "@/server/rate-limit";
 import { payShare } from "@/server/tontines";
 
 /**
@@ -18,6 +19,10 @@ export async function ussdStep(input: string): Promise<UssdReply | { error: true
   if (!/^[0-9*#]{0,40}$/.test(input)) return { error: true };
   const user = await getSessionUser();
   if (!user) return { error: true };
+  if (!(await allow("ussd", user.id))) {
+    const t = await getTranslations("ussd");
+    return { end: true, text: t("tooMany") };
+  }
   const supabase = await createClient();
 
   const backend: UssdBackend = {

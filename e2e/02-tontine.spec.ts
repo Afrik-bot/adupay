@@ -1,5 +1,5 @@
 import { expect, test } from "@playwright/test";
-import { ensureWallet, signIn, testUser } from "./support";
+import { ensureWallet, runCron, signIn, testUser } from "./support";
 
 // Runs against the configured Supabase project with two test phone numbers.
 // User A must be KYC tier 1+ to pay (see README, "End-to-end tests").
@@ -77,4 +77,29 @@ test("the manager starts it and pays their share, with a receipt", async ({ page
   await expect(page.getByText("1 sur 2 ont payé")).toBeVisible();
   await expect(page.getByText("Vous avez payé votre part pour ce tour.")).toBeVisible();
   await expect(page.getByText(/Cotisation de .* · tour 1/)).toBeVisible();
+});
+
+test("the second member pays, the daily job pays the pot out and opens round 2", async ({ browser, request }) => {
+  const context = await browser.newContext();
+  const page = await context.newPage();
+  await signIn(page, B!);
+  await ensureWallet(page, "05 00 00 99 90"); // a different …9990 wallet: always succeeds
+  await page.goto(groupUrl);
+  await page.getByRole("button", { name: /Payer ma part/ }).click();
+  await page.waitForURL(/\/recu\//, { timeout: 120_000 });
+  await expect(page.getByRole("heading", { name: "Paiement réussi" })).toBeVisible({ timeout: 90_000 });
+  await context.close();
+
+  // Everyone paid: the engine pays the pot to round 1's recipient (the manager,
+  // fixed order). The payout settles through the signed webhook and opens round 2.
+  const report = await runCron(request, "tontines");
+  expect(report.ok).toBe(true);
+  const managerPage = await browser.newPage();
+  await signIn(managerPage, A!);
+  await expect(async () => {
+    await managerPage.goto(groupUrl);
+    await expect(managerPage.getByText(/Tour 2 sur 2/)).toBeVisible({ timeout: 5_000 });
+  }).toPass({ timeout: 120_000 });
+  await managerPage.goto("/notifications");
+  await expect(managerPage.getByText(/la cagnotte de « E2E \d+ » \(tour 1\) a été versée/)).toBeVisible();
 });

@@ -6,10 +6,11 @@ import { validateAccount, WALLET_PROVIDERS, type AccountError, type WalletProvid
 import { createAdminClient } from "@/lib/supabase/admin";
 import { createClient } from "@/lib/supabase/server";
 import { getSessionUser } from "@/server/auth";
+import { allow } from "@/server/rate-limit";
 import { keyedHash } from "@/server/hash";
 import { getPaymentProvider } from "@/server/payments";
 
-export type LinkAccountError = AccountError | "duplicate" | "verificationFailed" | "label" | "generic";
+export type LinkAccountError = AccountError | "duplicate" | "verificationFailed" | "label" | "tooMany" | "generic";
 
 function refresh() {
   revalidatePath("/profil/comptes");
@@ -23,6 +24,7 @@ export async function linkAccount(input: {
 }): Promise<{ error: LinkAccountError } | { ok: true }> {
   const user = await getSessionUser();
   if (!user) redirect("/connexion");
+  if (!(await allow("linkAccount", user.id))) return { error: "tooMany" };
   if (!WALLET_PROVIDERS.includes(input.provider as WalletProvider)) return { error: "generic" };
   const provider = input.provider as WalletProvider;
   const label = input.label.trim();

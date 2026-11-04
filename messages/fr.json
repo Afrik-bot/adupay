@@ -147,7 +147,8 @@
         "notFound": "Invitation introuvable.",
         "started": "Cette tontine a déjà commencé.",
         "full": "Cette tontine est complète.",
-        "generic": "Une erreur s’est produite. Réessayez."
+        "generic": "Une erreur s’est produite. Réessayez.",
+        "tooMany": "Trop de tentatives en peu de temps. Patientez quelques minutes puis réessayez."
       }
     },
     "group": {
@@ -207,7 +208,8 @@
         "relinkAccount": "Votre compte par défaut doit être relié à nouveau.",
         "kycRequired": "Vérifiez votre identité pour effectuer des paiements.",
         "kycLimit": "Ce paiement dépasse votre plafond du jour.",
-        "generic": "Le paiement n’a pas pu être lancé. Réessayez."
+        "generic": "Le paiement n’a pas pu être lancé. Réessayez.",
+        "tooMany": "Trop de tentatives en peu de temps. Patientez quelques minutes puis réessayez."
       },
       "fix": {
         "noAccount": "Lier un compte",
@@ -271,7 +273,8 @@
         "notFound": "Cette tontine ou ce membre est introuvable.",
         "alreadyMember": "Vous faites déjà partie de cette tontine.",
         "alreadySponsored": "Ce membre a déjà un parrain.",
-        "generic": "Une erreur s’est produite. Réessayez."
+        "generic": "Une erreur s’est produite. Réessayez.",
+        "tooMany": "Trop de tentatives en peu de temps. Patientez quelques minutes puis réessayez."
       }
     }
   },
@@ -380,7 +383,8 @@
       "kycLimit": "Ce paiement dépasse votre plafond du jour.",
       "amount": "Le montant doit être compris entre 1 000 et 2 000 000 FCFA.",
       "generic": "Le paiement n’a pas pu être lancé. Réessayez.",
-      "card": "La carte n’a pas pu être lue. Vérifiez les informations."
+      "card": "La carte n’a pas pu être lue. Vérifiez les informations.",
+      "tooMany": "Trop de tentatives en peu de temps. Patientez quelques minutes puis réessayez."
     },
     "forBeneficiary": "Pour {name}",
     "timeline": {
@@ -542,7 +546,8 @@
         "kycRequired": "Vérifiez votre identité pour effectuer des paiements.",
         "kycLimit": "Ce versement dépasse votre plafond du jour.",
         "notOwner": "Cet objectif est introuvable.",
-        "generic": "L’opération a échoué. Réessayez."
+        "generic": "L’opération a échoué. Réessayez.",
+        "tooMany": "Trop de tentatives en peu de temps. Patientez quelques minutes puis réessayez."
       }
     },
     "consent": {
@@ -882,7 +887,8 @@
         "tooLarge": "Fichier trop lourd (5 Mo maximum).",
         "type": "Format non accepté (JPEG, PNG, WebP ou PDF).",
         "idNumber": "Entrez le numéro de la pièce.",
-        "generic": "L’envoi a échoué. Vérifiez votre connexion et réessayez."
+        "generic": "L’envoi a échoué. Vérifiez votre connexion et réessayez.",
+        "tooMany": "Trop de tentatives en peu de temps. Patientez quelques minutes puis réessayez."
       }
     }
   },
@@ -925,7 +931,8 @@
       "duplicate": "Ce compte est déjà lié.",
       "verificationFailed": "Compte introuvable chez l’opérateur. Vérifiez le numéro.",
       "label": "Nom trop long (40 caractères maximum).",
-      "generic": "Une erreur s’est produite. Réessayez."
+      "generic": "Une erreur s’est produite. Réessayez.",
+      "tooMany": "Trop de tentatives en peu de temps. Patientez quelques minutes puis réessayez."
     }
   },
   "send": {
@@ -1290,8 +1297,10 @@
       "relinkAccount": "Reliez à nouveau votre compte Mobile Money dans l’app.",
       "kycRequired": "Vérifiez votre identité dans l’app pour payer.",
       "kycLimit": "Limite du jour atteinte pour votre niveau.",
-      "generic": "Une erreur s’est produite. Réessayez plus tard."
-    }
+      "generic": "Une erreur s’est produite. Réessayez plus tard.",
+      "tooMany": "Trop de tentatives. Réessayez dans quelques minutes."
+    },
+    "tooMany": "Trop de tentatives. Réessayez dans quelques minutes."
   },
   "ussdSim": {
     "title": "Simulateur USSD",

@@ -20,9 +20,11 @@ export default async function RisksPage({ searchParams }: { searchParams: Promis
   const subjects = [...new Set((cases ?? []).map((c) => c.subject_user_id).filter(Boolean))] as string[];
   const [{ data: notes }, { data: people }] = await Promise.all([
     ids.length ? supabase.from("risk_event_notes").select("risk_event_id, note, status_change, created_at, author_id").in("risk_event_id", ids).order("id") : Promise.resolve({ data: [] }),
-    subjects.length ? supabase.from("profiles").select("id, full_name, sanctions_status").in("id", subjects) : Promise.resolve({ data: [] }),
+    subjects.length ? supabase.from("profiles").select("id, full_name").in("id", subjects) : Promise.resolve({ data: [] }),
   ]);
   const person = new Map((people ?? []).map((p) => [p.id, p]));
+  const { data: flags } = await supabase.rpc("admin_sanctions_flags", { p_profile_ids: subjects, p_payee_ids: [] });
+  const flagged = new Set((flags ?? []).filter((f) => f.sanctions_status === "hit").map((f) => f.id));
   const when = new Intl.DateTimeFormat(locale === "fr" ? "fr-CI" : "en-GB", { dateStyle: "short", timeStyle: "short", timeZone: "Africa/Abidjan" });
 
   return (
@@ -46,7 +48,7 @@ export default async function RisksPage({ searchParams }: { searchParams: Promis
           c.kind === "sanctions_hit"
             ? details.subject === "payee"
               ? { kind: "payee" as const, id: String(details.payee_id) }
-              : subject?.sanctions_status === "hit"
+              : subject && flagged.has(subject.id)
                 ? { kind: "profile" as const, id: subject.id }
                 : null
             : null;

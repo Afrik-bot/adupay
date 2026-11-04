@@ -5,6 +5,7 @@ import { redirect } from "next/navigation";
 import { adminDb } from "@/lib/supabase/admin";
 import { createClient } from "@/lib/supabase/server";
 import { getSessionUser } from "@/server/auth";
+import { allow } from "@/server/rate-limit";
 import { getPaymentService } from "@/server/payments";
 import { topUpGoal, withdrawFromGoal, type SavingsError } from "@/server/savings";
 
@@ -66,8 +67,9 @@ async function ownGoal(goalId: string) {
   return data;
 }
 
-export async function addToGoal(goalId: string, amount: number, requestKey: string): Promise<{ error: SavingsError | "amount" } | { ok: true }> {
+export async function addToGoal(goalId: string, amount: number, requestKey: string): Promise<{ error: SavingsError | "amount" | "tooMany" } | { ok: true }> {
   const user = await requireUser();
+  if (!(await allow("payment", user.id))) return { error: "tooMany" };
   if (!Number.isSafeInteger(amount) || amount < 500) return { error: "amount" };
   const goal = await ownGoal(goalId);
   if (!goal) return { error: "notOwner" };
@@ -77,8 +79,9 @@ export async function addToGoal(goalId: string, amount: number, requestKey: stri
   return { ok: true };
 }
 
-export async function withdrawGoal(goalId: string, amount: number, requestKey: string): Promise<{ error: SavingsError | "amount" } | { ok: true }> {
+export async function withdrawGoal(goalId: string, amount: number, requestKey: string): Promise<{ error: SavingsError | "amount" | "tooMany" } | { ok: true }> {
   const user = await requireUser();
+  if (!(await allow("payment", user.id))) return { error: "tooMany" };
   if (!Number.isSafeInteger(amount) || amount < 500) return { error: "amount" };
   const goal = await ownGoal(goalId);
   if (!goal) return { error: "notOwner" };

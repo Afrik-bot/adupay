@@ -147,7 +147,8 @@
         "notFound": "Invite not found.",
         "started": "This tontine has already started.",
         "full": "This tontine is full.",
-        "generic": "Something went wrong. Please try again."
+        "generic": "Something went wrong. Please try again.",
+        "tooMany": "Too many attempts in a short time. Wait a few minutes and try again."
       }
     },
     "group": {
@@ -207,7 +208,8 @@
         "relinkAccount": "Your default account needs to be linked again.",
         "kycRequired": "Verify your identity to make payments.",
         "kycLimit": "This payment is over your daily limit.",
-        "generic": "The payment couldn’t be started. Please try again."
+        "generic": "The payment couldn’t be started. Please try again.",
+        "tooMany": "Too many attempts in a short time. Wait a few minutes and try again."
       },
       "fix": {
         "noAccount": "Link an account",
@@ -271,7 +273,8 @@
         "notFound": "This tontine or member can’t be found.",
         "alreadyMember": "You’re already part of this tontine.",
         "alreadySponsored": "This member already has a sponsor.",
-        "generic": "Something went wrong. Please try again."
+        "generic": "Something went wrong. Please try again.",
+        "tooMany": "Too many attempts in a short time. Wait a few minutes and try again."
       }
     }
   },
@@ -380,7 +383,8 @@
       "kycLimit": "This payment is over your daily limit.",
       "amount": "The amount must be between 1,000 and 2,000,000 FCFA.",
       "generic": "The payment couldn’t be started. Please try again.",
-      "card": "The card couldn’t be read. Check the details."
+      "card": "The card couldn’t be read. Check the details.",
+      "tooMany": "Too many attempts in a short time. Wait a few minutes and try again."
     },
     "forBeneficiary": "For {name}",
     "timeline": {
@@ -542,7 +546,8 @@
         "kycRequired": "Verify your identity to make payments.",
         "kycLimit": "This deposit is over your daily limit.",
         "notOwner": "This goal can’t be found.",
-        "generic": "That didn’t work. Please try again."
+        "generic": "That didn’t work. Please try again.",
+        "tooMany": "Too many attempts in a short time. Wait a few minutes and try again."
       }
     },
     "consent": {
@@ -882,7 +887,8 @@
         "tooLarge": "File too large (5 MB maximum).",
         "type": "Format not accepted (JPEG, PNG, WebP or PDF).",
         "idNumber": "Enter the document number.",
-        "generic": "Upload failed. Check your connection and try again."
+        "generic": "Upload failed. Check your connection and try again.",
+        "tooMany": "Too many attempts in a short time. Wait a few minutes and try again."
       }
     }
   },
@@ -925,7 +931,8 @@
       "duplicate": "This account is already linked.",
       "verificationFailed": "The operator couldn’t find this account. Check the number.",
       "label": "Name too long (40 characters maximum).",
-      "generic": "Something went wrong. Please try again."
+      "generic": "Something went wrong. Please try again.",
+      "tooMany": "Too many attempts in a short time. Wait a few minutes and try again."
     }
   },
   "send": {
@@ -1290,8 +1297,10 @@
       "relinkAccount": "Link your Mobile Money account again in the app.",
       "kycRequired": "Verify your identity in the app to pay.",
       "kycLimit": "Daily limit reached for your tier.",
-      "generic": "Something went wrong. Try again later."
-    }
+      "generic": "Something went wrong. Try again later.",
+      "tooMany": "Too many attempts. Try again in a few minutes."
+    },
+    "tooMany": "Too many attempts. Try again in a few minutes."
   },
   "ussdSim": {
     "title": "USSD simulator",

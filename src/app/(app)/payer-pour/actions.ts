@@ -6,6 +6,7 @@ import { adminDb } from "@/lib/supabase/admin";
 import { createAdminClient } from "@/lib/supabase/admin";
 import { createClient } from "@/lib/supabase/server";
 import { getSessionUser } from "@/server/auth";
+import { allow } from "@/server/rate-limit";
 import { startDirectedPayment, type Purpose, type StartError } from "@/server/directed-payments";
 import { getPaymentService } from "@/server/payments";
 
@@ -93,8 +94,9 @@ export async function payDirected(input: {
   currency: string;
   card: { token: string; brand: string; last4: string };
   recurring: boolean;
-}): Promise<{ error: StartError | "card" } | void> {
+}): Promise<{ error: StartError | "card" | "tooMany" } | void> {
   const user = await requireUser();
+  if (!(await allow("payment", user.id))) return { error: "tooMany" };
   if (!PURPOSES.includes(input.purpose as Purpose) || !CURRENCIES.includes(input.currency as SourceCurrency)) return { error: "generic" };
   // Only a sandbox token ever reaches the server; never a card number.
   if (!/^sbxcard_[a-f0-9]{12}_\d{4}$/.test(input.card.token) || !/^\d{4}$/.test(input.card.last4)) return { error: "card" };

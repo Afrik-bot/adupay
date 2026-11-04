@@ -138,7 +138,7 @@ export function PayForWizard({
         card,
         recurring,
       });
-      if (result?.error) setError(t(`startErrors.${result.error satisfies StartError | "card"}`));
+      if (result?.error) setError(t(`startErrors.${result.error satisfies StartError | "card" | "tooMany"}`));
     });
   }
 

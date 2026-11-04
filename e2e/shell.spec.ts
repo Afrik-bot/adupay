@@ -1,13 +1,16 @@
 import { expect, test } from "@playwright/test";
 import { signIn, testUser } from "./support";
 
+// The dev server compiles each page on first visit; give it time.
+test.describe.configure({ timeout: 300_000 });
+
 test("landing page is in French by default and switches to English", async ({ page }) => {
   await page.goto("/");
   await expect(page.locator("html")).toHaveAttribute("lang", "fr");
   await expect(page.getByRole("heading", { level: 1, name: "Votre argent, votre communauté." })).toBeVisible();
-  await page.getByRole("button", { name: "en" }).click();
+  await page.getByRole("button", { name: "en", exact: true }).click();
   await expect(page.getByRole("heading", { level: 1, name: "Your money, your community." })).toBeVisible();
-  await page.getByRole("button", { name: "fr" }).click();
+  await page.getByRole("button", { name: "fr", exact: true }).click();
 });
 
 test("app pages send signed-out visitors to sign-in", async ({ page }) => {
@@ -32,7 +35,7 @@ test.describe("signed in", () => {
       ["Accueil", "/accueil"],
     ]) {
       await nav.getByRole("link", { name: label }).click();
-      await expect(page).toHaveURL(new RegExp(`${path}$`));
+      await expect(page).toHaveURL(new RegExp(`${path}$`), { timeout: 60_000 });
       await expect(nav.getByRole("link", { name: label })).toHaveAttribute("aria-current", "page");
     }
     for (const link of await nav.getByRole("link").all()) {

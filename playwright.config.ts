@@ -2,7 +2,10 @@ import { defineConfig, devices } from "@playwright/test";
 
 export default defineConfig({
   testDir: "e2e",
-  fullyParallel: true,
+  // The journeys share one Supabase project and build on each other
+  // (01 verifies B, 02 needs B verified), so files run one at a time, in name order.
+  fullyParallel: false,
+  workers: 1,
   retries: process.env.CI ? 2 : 0,
   use: {
     baseURL: "http://localhost:3000",

@@ -12,13 +12,15 @@ export default async function KybQueuePage() {
   const supabase = await createClient();
   const { data: payees } = await supabase
     .from("payees")
-    .select("id, name, rccm_number, category, city, address, contact_phone, payout_provider, payout_account_masked, submitted_at, sanctions_status")
+    .select("id, name, rccm_number, category, city, address, contact_phone, payout_provider, payout_account_masked, submitted_at")
     .eq("kyb_status", "pending")
     .order("submitted_at");
   const ids = (payees ?? []).map((p) => p.id);
   const { data: docs } = ids.length
     ? await supabase.from("kyb_documents").select("id, payee_id, document_type").in("payee_id", ids)
     : { data: [] };
+  const { data: flags } = await supabase.rpc("admin_sanctions_flags", { p_profile_ids: [], p_payee_ids: ids });
+  const flagged = new Set((flags ?? []).filter((f) => f.sanctions_status === "hit").map((f) => f.id));
   const when = new Intl.DateTimeFormat(locale === "fr" ? "fr-CI" : "en-GB", { dateStyle: "medium", timeZone: "Africa/Abidjan" });
 
   return (
@@ -34,7 +36,7 @@ export default async function KybQueuePage() {
             <h2 className="text-lg font-semibold">{p.name}</h2>
             {p.submitted_at && <span className="text-sm text-muted-foreground">{t("submitted", { date: when.format(new Date(p.submitted_at)) })}</span>}
           </div>
-          {p.sanctions_status === "hit" && <p className="rounded-lg bg-destructive/15 p-2 text-sm font-semibold text-destructive">{t("sanctionsWarning")}</p>}
+          {flagged.has(p.id) && <p className="rounded-lg bg-destructive/15 p-2 text-sm font-semibold text-destructive">{t("sanctionsWarning")}</p>}
           <dl className="grid grid-cols-[auto_1fr] gap-x-4 gap-y-1 text-sm">
             <dt className="text-muted-foreground">{register("rccm")}</dt>
             <dd className="font-mono">{p.rccm_number}</dd>

@@ -45,3 +45,6 @@ next-env.d.ts
 /playwright-report
 /test-results
 /supabase/.temp
+
+# database dumps (personal data)
+backups/

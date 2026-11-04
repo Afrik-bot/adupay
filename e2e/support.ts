@@ -1,4 +1,27 @@
-import { expect, type Page } from "@playwright/test";
+import { readFileSync } from "node:fs";
+import { join } from "node:path";
+import { expect, type APIRequestContext, type Page } from "@playwright/test";
+import sharp from "sharp";
+import fr from "../messages/fr.json";
+
+/** UI copy, so tests follow the same words users read. */
+export const copy = fr;
+
+/** Runs a cron route like Vercel does (the secret is read from .env.local, never printed). */
+export async function runCron(request: APIRequestContext, job: "tontines" | "reconcile") {
+  const env = readFileSync(join(process.cwd(), ".env.local"), "utf8");
+  const secret = /^CRON_SECRET=(.*)$/m.exec(env)?.[1]?.trim();
+  if (!secret) throw new Error("CRON_SECRET missing from .env.local");
+  const response = await request.get(`/api/cron/${job}`, { headers: { authorization: `Bearer ${secret}` }, timeout: 180_000 });
+  expect(response.ok()).toBe(true);
+  return response.json();
+}
+
+/** A small real PNG for document uploads (the app compresses images client-side). */
+export async function testImage(name: string) {
+  const buffer = await sharp({ create: { width: 640, height: 400, channels: 3, background: "#d9d2c3" } }).png().toBuffer();
+  return { name, mimeType: "image/png", buffer };
+}
 
 /**
  * Test users come from Supabase "Test Phone Numbers and OTPs" (no SMS sent).

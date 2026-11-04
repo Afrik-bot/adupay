@@ -5,8 +5,24 @@ const withNextIntl = createNextIntlPlugin("./src/i18n/request.ts");
 
 const nextConfig: NextConfig = {
   poweredByHeader: false,
+  // The dev badge sits over the bottom navigation's first tab (and swallows taps
+  // in tests). Compile and runtime errors still show without it.
+  devIndicators: false,
   async headers() {
     return [
+      {
+        // Baseline hardening for every response. A full script CSP needs nonces
+        // (dynamic rendering everywhere); framing, sniffing and referrers are locked here.
+        source: "/(.*)",
+        headers: [
+          { key: "Content-Security-Policy", value: "frame-ancestors 'none'; base-uri 'self'; form-action 'self'; object-src 'none'" },
+          { key: "X-Frame-Options", value: "DENY" },
+          { key: "X-Content-Type-Options", value: "nosniff" },
+          { key: "Referrer-Policy", value: "strict-origin-when-cross-origin" },
+          { key: "Permissions-Policy", value: "camera=(self), microphone=(), geolocation=(), payment=(), usb=()" },
+          { key: "Strict-Transport-Security", value: "max-age=63072000; includeSubDomains" },
+        ],
+      },
       {
         // The service worker must always be fresh and may only run our own scripts.
         source: "/sw.js",

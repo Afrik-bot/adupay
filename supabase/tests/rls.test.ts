@@ -201,9 +201,9 @@ describe("payees", () => {
       `insert into public.payees (name, category, city, owner_id, kyb_status) values ('Pending school', 'school', 'Abidjan', $1, 'pending')`,
       [DEMO.koffi],
     );
-    const others = await db.asUser(DEMO.aminata, (q) => q.query("select * from public.payees where kyb_status = 'pending'"));
+    const others = await db.asUser(DEMO.aminata, (q) => q.query("select id, name from public.payees where kyb_status = 'pending'"));
     expect(others.rows).toHaveLength(0);
-    const owner = await db.asUser(DEMO.koffi, (q) => q.query("select * from public.payees where kyb_status = 'pending'"));
+    const owner = await db.asUser(DEMO.koffi, (q) => q.query("select id, name from public.payees where kyb_status = 'pending'"));
     expect(owner.rows).toHaveLength(1);
   });
 });
